@@ -183,7 +183,7 @@ const blogs = [
   {
     id: "02",
     eyebrow: "FIGHT CLUB_",
-    title: "SELF IMPROVEMENT IS MASTURBATION...",
+    title: "SELF IMPROVEMENT IS MASTURBATION.",
     subtitle: "A self improvement thought experiment.",
     image: gameimg5,
   },
@@ -285,7 +285,7 @@ const Section3 = () => {
                   textClassName="text-[#a39171] text-[12px] mt-4 font-sans font-light tracking-[0.1em]"
                 />
 
-                <h3 className="mt-2 text-[16px] font-bold font-orbitron uppercase">
+                <h3 className="mt-2 xl:text-[16px] text-[14px] font-bold font-orbitron uppercase">
                   <TypingText text={item.title} />
                 </h3>
 

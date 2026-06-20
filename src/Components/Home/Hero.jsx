@@ -77,7 +77,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative xl:pt-10 xl:pb-16 w-full overflow-hidden bg-[#030303] flex items-center justify-center py-6">
+    <section className="relative xl:pt-10 xl:pb-16 w-full overflow-x-hidden bg-[#030303] flex items-center justify-center py-10">
       {/* Absolute right social icons bar */}
       <div className="absolute right-6 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col gap-6 text-[#505050]">
         <SocialIcon icon={<FaYoutube size={20} />} />
@@ -122,7 +122,7 @@ const Hero = () => {
         </div>
 
         {/* Animated Right Text Section (Overlaps left section slightly) */}
-        <div className="relative w-full lg:w-1/2 flex flex-col justify-center min-h-[400px] md:min-h-[450px] lg:min-h-[500px] z-20 lg:-ml-12 xl:-ml-24 lg:pl-10 overflow-hidden">
+        <div className="relative w-full lg:w-1/2 flex flex-col justify-center min-h-[550px] md:min-h-[550px] lg:min-h-[500px] z-20 lg:-ml-12 xl:-ml-24 lg:pl-10 overflow-x-hidden">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide}
@@ -133,7 +133,7 @@ const Hero = () => {
               className="absolute inset-0 flex flex-col justify-center items-start text-left w-full h-full"
             >
               {slides[currentSlide].isTitleSlide ? (
-                <div className="flex flex-col justify-center items-start text-left w-full pl-4 lg:pl-8">
+                <div className="flex flex-col justify-center items-start text-left w-full pl-0 lg:pl-8">
                   <h1 className="font-cinzel leading-[0.9] font-extralight lg:leading-[1] tracking-tight mb-4 lg:mb-4 overflow-hidden">
                     <AnimatedTypingText
                       text={slides[currentSlide].title1}
@@ -247,7 +247,7 @@ const AnimatedTypingText = ({ text, delay = 0 }) => {
 
   return (
     <motion.span
-      className="block text-[70px] md:text-[90px] lg:text-[90px] font-extralight text-white whitespace-nowrap overflow-visible py-1"
+      className="block text-[45px] min-[400px]:text-[52px] sm:text-[60px] md:text-[80px] lg:text-[90px] font-extralight text-white whitespace-nowrap overflow-visible py-1 pr-4"
       variants={containerVariants}
       initial="hidden"
       animate="visible"

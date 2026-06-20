@@ -187,14 +187,14 @@ const Section4 = () => {
             delay={0.6}
           />
 
-          <h2 className="mt-2 font-michroma text-[28px] font-bold uppercase text-white">
+          <h2 className="mt-2 font-michroma xl:text-[28px] text-[20px] font-bold uppercase text-white">
             <TypingText text="HOST OF THE GHOST" delay={0.8} />
           </h2>
 
           <BlockRevealText
             text="SOME OF THE THINGS WE WATCH ARE THE SUM OF THE THINGS WE ARE."
             className="mt-4"
-            textClassName="font-michroma text-[10px] md:text-[12px] lg:text-[12px] font-bold tracking-[0em] text-[#a39171] uppercase"
+            textClassName="font-michroma text-[11.5px] md:text-[12px] lg:text-[12px] font-bold tracking-[0em] text-[#a39171] uppercase"
             delay={1}
             glitchI={true}
           />
@@ -222,7 +222,7 @@ const Section4 = () => {
           <BlockRevealText
             text="SOME OF THE TRUTH WE CAN'T SAY IN PLAIN LANGUAGE, CAN BE A SUM OF THE TRUTH IN A NARRATIVE."
             className="mt-4"
-            textClassName="font-michroma text-[10px] md:text-[12px] lg:text-[12px] font-bold tracking-[0em] text-[#a39171] uppercase"
+            textClassName="font-michroma text-[12px] md:text-[12px] lg:text-[12px] font-bold tracking-[0em] text-[#a39171] uppercase"
             delay={1.2}
             glitchI={true}
           />

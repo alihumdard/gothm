@@ -49,7 +49,7 @@ const Section2 = () => {
 
             <BlockRevealText
               text="SAFEHOUSED AND DISTRIBUTED. MARKET AND COMMODIFIED."
-              textClassName="font-michroma text-[10px] md:text-[12px] lg:text-[12px] font-bold tracking-[0em] text-[#a39171] uppercase"
+              textClassName="font-michroma text-[12px] md:text-[12px] lg:text-[12px] font-bold tracking-[0em] text-[#a39171] uppercase"
               className="block"
               delay={0.8}
               glitchI={true}
@@ -76,21 +76,21 @@ const Section2 = () => {
             </p>
           </div>
 
-          <div className="mt-4 flex flex-col gap-3">
-            <div className="flex items-center gap-6">
-              <span className="w-56 font-sans text-[15px] font-semibold text-[#d4d4d4]">
+          <div className="mt-4 flex flex-col gap-6 sm:gap-3">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
+              <span className="w-full sm:w-56 font-sans text-[14px] sm:text-[15px] font-semibold text-[#d4d4d4]">
                 Extracting the ideas within...
               </span>
-              <button className="border border-[#303030] font-light bg-[#000000] px-6 py-2 font-sans text-[13px] font-light tracking-[0.1em] text-[#a39171] transition-colors hover:border-[#a39171]">
+              <button className="w-fit whitespace-nowrap border border-[#303030] font-light bg-[#000000] px-6 py-2 font-sans text-[12px] sm:text-[13px] tracking-[0.1em] text-[#a39171] transition-colors hover:border-[#a39171]">
                 GOTHM PODCAST &gt;&gt;
               </button>
             </div>
 
-            <div className="flex items-center gap-6">
-              <span className="w-56 font-sans text-[15px] font-bold text-[#d4d4d4]">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
+              <span className="w-full sm:w-56 font-sans text-[14px] sm:text-[15px] font-bold text-[#d4d4d4]">
                 Synthesizing the findings...
               </span>
-              <button className="border border-[#303030] bg-[#000000] px-6 py-2 font-sans text-[13px] font-light tracking-[0.1em] text-[#a39171] transition-colors hover:border-[#a39171]">
+              <button className="w-fit whitespace-nowrap border border-[#303030] bg-[#000000] px-6 py-2 font-sans text-[12px] sm:text-[13px] font-light tracking-[0.1em] text-[#a39171] transition-colors hover:border-[#a39171]">
                 GOTHM BLOG &gt;&gt;
               </button>
             </div>
@@ -99,7 +99,7 @@ const Section2 = () => {
           <div className="mt-4 mb-4">
             <BlockRevealText
               text="SAFEHOUSED AND DISTRIBUTED. MARKET AND COMMODIFIED."
-              textClassName="font-michroma text-[10px] md:text-[12px] lg:text-[12px] font-bold tracking-[0em] text-[#a39171] uppercase"
+              textClassName="font-michroma text-[12px] md:text-[12px] lg:text-[12px] font-bold tracking-[0em] text-[#a39171] uppercase"
               className="block"
               delay={0.8}
               glitchI={true}

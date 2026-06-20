@@ -49,7 +49,7 @@ export default function Footer() {
         </div>
 
         {/* ================= RIGHT SECTION (Links Grid) ================= */}
-        <div className="flex flex-col sm:flex-row sm:ml-4 gap-16 lg:gap-24">
+        <div className="flex flex-col sm:flex-row sm:ml-4 gap-8 lg:gap-24">
           {/* Column 1: EXPLORE */}
           <div className="flex flex-col">
             <BlockRevealText

@@ -29,7 +29,7 @@ const Section5 = () => {
             delay={0.8}
           />
 
-          <h2 className="mb-4 font-michroma text-[24px] font-extrabold uppercase tracking-tight text-white leading-[1.2]">
+          <h2 className="mb-4 font-michroma xl:text-[24px] text-[16px] font-extrabold uppercase tracking-tight text-white leading-[1.2]">
             <TypingText text="A WEEKLY DISPATCH" delay={0.8} />
             <br />
             <TypingText text="FROM INSIDE THE MACHINE" delay={2.1} />
@@ -50,7 +50,7 @@ const Section5 = () => {
             <BlockRevealText
               text="JOIN THE PEOPLE WHO READ BETWEEN THE LINES"
               className="mb-4 block"
-              textClassName="font-michroma text-[10px] md:text-[12px] lg:text-[12px] font-bold tracking-[0em] text-[#a39171] uppercase"
+              textClassName="font-michroma text-[12px] md:text-[12px] lg:text-[12px] font-bold tracking-[0em] text-[#a39171] uppercase"
               delay={0.8}
               glitchI={true}
             />
@@ -102,7 +102,7 @@ const Section5 = () => {
             delay={1.2}
           />
 
-          <h2 className="mb-4 font-michroma text-[24px] font-extrabold uppercase text-white leading-[1.2] tracking-tight">
+          <h2 className="mb-4 font-michroma xl:text-[24px] text-[22px] font-extrabold uppercase text-white leading-[1.2] tracking-tight">
             <TypingText
               text="COME MEET US AT THE WINDOW BEHIND THE FOURTH WALL"
               delay={1.2}
