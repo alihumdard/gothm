@@ -6,9 +6,9 @@ const Section2 = () => {
   return (
     <section
       id="what-is-gothm"
-      className="relative w-full overflow-hidden bg-[#000000] py-16 text-white"
+      className="relative w-full overflow-hidden bg-[#000000] xl:py-16 py-6  text-white"
     >
-      <div className="mx-auto flex max-w-7xl flex-col lg:flex-row px-6 lg:px-0">
+      <div className="mx-auto flex max-w-5xl flex-col lg:flex-row px-6">
         {/* LEFT SIDE: Content Section */}
         <motion.div
           initial="hidden"
@@ -16,24 +16,28 @@ const Section2 = () => {
           viewport={{ once: true, margin: "-50px" }}
           variants={{
             hidden: { opacity: 0, x: -50 },
-            visible: { opacity: 1, x: 0, transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } }
+            visible: {
+              opacity: 1,
+              x: 0,
+              transition: { duration: 1, ease: [0.16, 1, 0.3, 1] },
+            },
           }}
           className="flex w-full lg:w-3/5 flex-col pr-8"
         >
-          <BlockRevealText 
-            text="WHAT IS GOTHM..." 
-            className="mb-1 text-left block" 
-            textClassName="font-cinzel text-[13px] font-extrabold tracking-[0.2em] text-[#a39171]" 
+          <BlockRevealText
+            text="WHAT IS GOTHM_"
+            className="mb-1 text-left block"
+            textClassName="font-sans text-[13px] font-light tracking-[0.1em] text-[#a39171]"
             delay={0.8}
           />
 
-          <h2 className="mb-2 font-michroma text-[25px] font-medium leading-[1.25] tracking-wide text-white">
+          <h2 className="mb-2 font-michroma text-[20px] lg:text-[22px] font-bold leading-[1.4] tracking-wide text-white">
             <TypingText text="THE NARRATIVE IS THE MACHINE." delay={0.8} />
             <br />
             <TypingText text="THE GHOST IS THE MESSAGE WITHIN." delay={2.1} />
           </h2>
 
-          <div className="space-y-3 font-sans text-[14px] leading-[1.2] font-semibold text-[#d4d4d4]">
+          <div className="space-y-3 font-sans text-[15px] leading-[1.2] font-bold text-[#d4d4d4]">
             <p>
               Hosted safely inside a story, a message that you could never say
               out loud can be safehoused, and distributed to billions of people.
@@ -43,11 +47,12 @@ const Section2 = () => {
               embraced with open wallets by the companies in big media.
             </p>
 
-            <BlockRevealText 
-              text="SAFEHOUSED AND DISTRIBUTED. MARKET AND COMMODIFIED." 
-              textClassName="font-cinzel text-[14px] font-extrabold tracking-[0em] text-[#a39171] uppercase" 
+            <BlockRevealText
+              text="SAFEHOUSED AND DISTRIBUTED. MARKET AND COMMODIFIED."
+              textClassName="font-michroma text-[10px] md:text-[12px] lg:text-[12px] font-bold tracking-[0em] text-[#a39171] uppercase"
               className="block"
               delay={0.8}
+              glitchI={true}
             />
 
             <p>
@@ -73,35 +78,36 @@ const Section2 = () => {
 
           <div className="mt-4 flex flex-col gap-3">
             <div className="flex items-center gap-6">
-              <span className="w-56 font-sans text-[15px] font-semibold text-white">
+              <span className="w-56 font-sans text-[15px] font-semibold text-[#d4d4d4]">
                 Extracting the ideas within...
               </span>
-              <button className="border border-[#303030] font-extrabold bg-[#000000] px-6 py-2 font-cinzel text-[13px] font-semibold tracking-[0.15em] text-[#a39171] transition-colors hover:border-[#a39171]">
+              <button className="border border-[#303030] font-light bg-[#000000] px-6 py-2 font-sans text-[13px] font-light tracking-[0.1em] text-[#a39171] transition-colors hover:border-[#a39171]">
                 GOTHM PODCAST &gt;&gt;
               </button>
             </div>
 
             <div className="flex items-center gap-6">
-              <span className="w-56 font-sans text-[15px] font-bold text-white">
+              <span className="w-56 font-sans text-[15px] font-bold text-[#d4d4d4]">
                 Synthesizing the findings...
               </span>
-              <button className="border border-[#303030] bg-[#000000] px-6 py-2 font-cinzel text-[13px] font-extrabold tracking-[0.15em] text-[#a39171] transition-colors hover:border-[#a39171]">
+              <button className="border border-[#303030] bg-[#000000] px-6 py-2 font-sans text-[13px] font-light tracking-[0.1em] text-[#a39171] transition-colors hover:border-[#a39171]">
                 GOTHM BLOG &gt;&gt;
               </button>
             </div>
           </div>
 
           <div className="mt-4 mb-4">
-            <BlockRevealText 
-              text="SAFEHOUSED AND DISTRIBUTED. MARKET AND COMMODIFIED." 
-              textClassName="font-cinzel text-[14px] font-extrabold tracking-[0em] text-[#a39171] uppercase" 
+            <BlockRevealText
+              text="SAFEHOUSED AND DISTRIBUTED. MARKET AND COMMODIFIED."
+              textClassName="font-michroma text-[10px] md:text-[12px] lg:text-[12px] font-bold tracking-[0em] text-[#a39171] uppercase"
               className="block"
               delay={0.8}
+              glitchI={true}
             />
           </div>
 
           <div>
-            <button className="border border-[#303030] bg-[#000000] px-8 py-3.5 font-cinzel text-[13px] font-extrabold tracking-[0.15em] text-[#a39171] transition-colors hover:border-[#a39171]">
+            <button className="border border-[#303030] bg-[#000000] px-8 py-3.5 font-sans text-[13px] font-light tracking-[0.1em] text-[#a39171] transition-colors hover:border-[#a39171]">
               SUBSCRIBE TO GHOST MAIL &gt;&gt;
             </button>
           </div>
@@ -114,17 +120,37 @@ const Section2 = () => {
           viewport={{ once: true, margin: "-50px" }}
           variants={{
             hidden: { opacity: 0, x: 50 },
-            visible: { opacity: 1, x: 0, transition: { duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] } }
+            visible: {
+              opacity: 1,
+              x: 0,
+              transition: { duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] },
+            },
           }}
           className="flex w-full lg:w-2/5 flex-col items-center justify-center pt-16 lg:pt-0"
         >
           <div className="relative flex w-full max-w-[280px] justify-center mx-auto items-center mt-8 mb-8">
-            <BlockRevealText 
-              text="SYNTHESIS" 
-              className="absolute -top-32 left-54 -translate-x-1/2" 
-              textClassName="font-cinzel text-[12px] lg:text-[13px] font-bold tracking-[0em] text-[#a39171] uppercase whitespace-nowrap" 
-              delay={1.2}
-            />
+            {/* TOP CENTER: SYNTHESIS - pyramid ki tip ke upar center mein */}
+            <motion.div
+              className="absolute -top-8 left-1/2 -translate-x-1/2"
+              animate={{
+                opacity: [1, 0.15, 1],
+                textShadow: [
+                  "0 0 10px rgba(163, 145, 113, 0.9)",
+                  "0 0 2px rgba(163, 145, 113, 0.1)",
+                  "0 0 10px rgba(163, 145, 113, 0.9)",
+                ],
+              }}
+              transition={{
+                duration: 2.8,
+                ease: "easeInOut",
+                repeat: Infinity,
+                delay: 0,
+              }}
+            >
+              <span className="font-sans text-[12px] lg:text-[13px] font-light tracking-[0.1em] text-[#a39171] uppercase whitespace-nowrap">
+                SYNTHESIS
+              </span>
+            </motion.div>
 
             <img
               src={pyramidImage}
@@ -133,19 +159,51 @@ const Section2 = () => {
               style={{ mixBlendMode: "screen" }}
             />
 
-            <BlockRevealText 
-              text="EXTRACTION" 
-              className="absolute -bottom-32 -left-80" 
-              textClassName="font-cinzel text-[12px] lg:text-[13px] font-extrabold tracking-[0em] text-[#a39171] uppercase whitespace-nowrap" 
-              delay={1.2}
-            />
+            {/* BOTTOM LEFT: EXTRACTION - pyramid ka neeche left corner */}
+            <motion.div
+              className="absolute -bottom-8 left-0 -translate-x-1/4"
+              animate={{
+                opacity: [1, 0.15, 1],
+                textShadow: [
+                  "0 0 10px rgba(163, 145, 113, 0.9)",
+                  "0 0 2px rgba(163, 145, 113, 0.1)",
+                  "0 0 10px rgba(163, 145, 113, 0.9)",
+                ],
+              }}
+              transition={{
+                duration: 2.8,
+                ease: "easeInOut",
+                repeat: Infinity,
+                delay: 0.9,
+              }}
+            >
+              <span className="font-sans text-[12px] lg:text-[13px] font-light tracking-[0.1em] text-[#a39171] uppercase whitespace-nowrap">
+                EXTRACTION
+              </span>
+            </motion.div>
 
-            <BlockRevealText 
-              text="ANALYSIS" 
-              className="absolute -bottom-32 right-30" 
-              textClassName="font-cinzel text-[12px] lg:text-[13px] font-extrabold tracking-[0em] text-[#a39171] uppercase whitespace-nowrap" 
-              delay={1.2}
-            />
+            {/* BOTTOM RIGHT: ANALYSIS - pyramid ka neeche right corner */}
+            <motion.div
+              className="absolute -bottom-8 right-0 translate-x-1/4"
+              animate={{
+                opacity: [1, 0.15, 1],
+                textShadow: [
+                  "0 0 10px rgba(163, 145, 113, 0.9)",
+                  "0 0 2px rgba(163, 145, 113, 0.1)",
+                  "0 0 10px rgba(163, 145, 113, 0.9)",
+                ],
+              }}
+              transition={{
+                duration: 2.8,
+                ease: "easeInOut",
+                repeat: Infinity,
+                delay: 1.8,
+              }}
+            >
+              <span className="font-sans text-[12px] lg:text-[13px] font-light tracking-[0.1em] text-[#a39171] uppercase whitespace-nowrap">
+                ANALYSIS
+              </span>
+            </motion.div>
           </div>
         </motion.div>
       </div>
@@ -173,12 +231,13 @@ const TypingText = ({ text, delay = 0, className = "" }) => {
   };
 
   return (
-    <motion.span
-      className={className}
-      variants={containerVariants}
-    >
+    <motion.span className={className} variants={containerVariants}>
       {letters.map((char, index) => (
-        <motion.span key={index} variants={letterVariants} className="inline-block">
+        <motion.span
+          key={index}
+          variants={letterVariants}
+          className="inline-block"
+        >
           {char === " " ? "\u00A0" : char}
         </motion.span>
       ))}
@@ -186,7 +245,13 @@ const TypingText = ({ text, delay = 0, className = "" }) => {
   );
 };
 
-const BlockRevealText = ({ text, delay = 0, className = "", textClassName = "" }) => {
+const BlockRevealText = ({
+  text,
+  delay = 0,
+  className = "",
+  textClassName = "",
+  glitchI = false,
+}) => {
   const letters = Array.from(text);
 
   const blockVariants = {
@@ -229,11 +294,28 @@ const BlockRevealText = ({ text, delay = 0, className = "", textClassName = "" }
         className={`m-0 w-full ${textClassName}`}
         variants={containerVariants}
       >
-        {letters.map((char, index) => (
-          <motion.span key={index} variants={letterVariants} className="inline-block">
-            {char === " " ? "\u00A0" : char}
-          </motion.span>
-        ))}
+        {letters.map((char, index) => {
+          if (glitchI && char === "I") {
+            return (
+              <motion.span
+                key={index}
+                variants={letterVariants}
+                className="inline-block"
+              >
+                <span className="tracking-[-0.2em] pr-[0.2em]">I</span>
+              </motion.span>
+            );
+          }
+          return (
+            <motion.span
+              key={index}
+              variants={letterVariants}
+              className="inline-block"
+            >
+              {char === " " ? "\u00A0" : char}
+            </motion.span>
+          );
+        })}
       </motion.p>
     </div>
   );

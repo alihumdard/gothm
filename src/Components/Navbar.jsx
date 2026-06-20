@@ -21,7 +21,7 @@ export default function SourceGuyNavbar() {
           </div>
 
           {/* Navigation Links */}
-          <div className="hidden items-center gap-5 text-[12px] font-cinzel font-extrabold tracking-[0.15em] lg:flex text-[#a39171]">
+          <div className="hidden items-center gap-5 text-[12px] font-sans font-light tracking-[0.1em] lg:flex text-[#a39171]">
             <Link to="/" className="transition-colors hover:text-white">
               HOME
             </Link>

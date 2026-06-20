@@ -5,15 +5,19 @@ import logoImage from "../assets/images/logo.png";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-[#000000] py-16 font-sans overflow-hidden">
-      <motion.div 
-        className="mx-auto flex w-full max-w-7xl flex-col lg:flex-row justify-between gap-16 px-6 lg:px-0"
+    <footer className="w-full bg-[#000000] py-16 lg:px-0 px-6 font-sans overflow-hidden">
+      <motion.div
+        className=" flex w-full max-w-7xl flex-col lg:flex-row justify-between gap-16 pl-0 pr-6 lg:pr-0"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-50px" }}
         variants={{
           hidden: { opacity: 0, y: 40 },
-          visible: { opacity: 1, y: 0, transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } }
+          visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 1, ease: [0.16, 1, 0.3, 1] },
+          },
         }}
       >
         {/* ================= LEFT SECTION (Logo & Tagline) ================= */}
@@ -28,31 +32,33 @@ export default function Footer() {
           </div>
 
           {/* Tagline */}
-          <div className="mt-4 flex flex-col gap-1">
+          <div className="mt-1 flex flex-col gap-0">
             <BlockRevealText
-              text="THE NARRATIVE IS THE MACHINE."
-              textClassName="font-cinzel text-[13px] font-extrabold text-[#a39171] uppercase tracking-[0em]"
+              text="THE THINGS YOU WATCH,"
+              textClassName="font-michroma text-[10px] lg:text-[12px] ml-14 mt-5 font-bold text-[#a39171] uppercase tracking-[0em]"
               delay={0.8}
+              glitchI={true}
             />
             <BlockRevealText
-              text="THE GHOST IS THE MESSAGE WITHIN."
-              textClassName="font-cinzel text-[13px] font-extrabold text-[#a39171] uppercase tracking-[0em]"
+              text="ARE WATCHING YOU."
+              textClassName="font-michroma text-[10px] lg:text-[12px] ml-14 font-bold text-[#a39171] uppercase tracking-[0em]"
               delay={1.2}
+              glitchI={true}
             />
           </div>
         </div>
 
         {/* ================= RIGHT SECTION (Links Grid) ================= */}
-        <div className="flex flex-col sm:flex-row gap-16 lg:gap-24">
+        <div className="flex flex-col sm:flex-row sm:ml-4 gap-16 lg:gap-24">
           {/* Column 1: EXPLORE */}
           <div className="flex flex-col">
             <BlockRevealText
               text="EXPLORE"
               className="mb-2 block"
-              textClassName="font-cinzel text-[14px] font-extrabold text-[#a39171] tracking-[0em] uppercase"
+              textClassName="font-sans text-[14px] font-light text-[#a39171] tracking-[0.1em] uppercase"
               delay={0.8}
             />
-            <ul className="flex flex-col gap-2 font-cinzel text-[12px] font-extrabold text-white uppercase tracking-[0.15em]">
+            <ul className="flex flex-col gap-2 font-sans text-[12px] font-light text-white uppercase tracking-[0.1em]">
               <li>
                 <Link to="/" className="hover:text-white transition-colors">
                   HOME
@@ -111,10 +117,10 @@ export default function Footer() {
             <BlockRevealText
               text="FOLLOW"
               className="mb-2 block"
-              textClassName="font-cinzel text-[14px] font-extrabold text-[#a39171] tracking-[0em] uppercase"
+              textClassName="font-sans text-[14px] font-light text-[#a39171] tracking-[0.1em] uppercase"
               delay={1.0}
             />
-            <ul className="flex flex-col gap-2 font-cinzel text-[12px] font-extrabold text-white uppercase tracking-[0.15em]">
+            <ul className="flex flex-col gap-2 font-sans text-[12px] font-light text-white uppercase tracking-[0.1em]">
               <li>
                 <a href="#" className="hover:text-white transition-colors">
                   YOUTUBE
@@ -158,10 +164,10 @@ export default function Footer() {
             <BlockRevealText
               text="THE SMALL PRINT"
               className="mb-2 block"
-              textClassName="font-cinzel text-[14px] font-extrabold text-[#a39171] tracking-[0em] uppercase"
+              textClassName="font-sans text-[14px] font-light text-[#a39171] tracking-[0.1em] uppercase"
               delay={1.2}
             />
-            <ul className="flex flex-col gap-2 font-cinzel text-[12px] font-extrabold text-white uppercase tracking-[0.15em]">
+            <ul className="flex flex-col gap-2 font-sans text-[12px] font-light text-white uppercase tracking-[0.1em]">
               <li>
                 <Link
                   to="/terms"
@@ -192,20 +198,23 @@ export default function Footer() {
       </motion.div>
 
       {/* ================= BOTTOM BAR ================= */}
-      <motion.div 
+      <motion.div
         className="mx-auto mt-24 w-full max-w-[1400px] px-8"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-50px" }}
         variants={{
           hidden: { opacity: 0 },
-          visible: { opacity: 1, transition: { duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] } }
+          visible: {
+            opacity: 1,
+            transition: { duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] },
+          },
         }}
       >
         <div className="flex w-full items-center justify-start border-t border-[#a39171]/30 pt-8">
           <BlockRevealText
             text="© GOTHM / GHOST OF THE MACHINE."
-            textClassName="font-cinzel text-[12px] font-extrabold text-[#a39171] tracking-[0.1em] uppercase"
+            textClassName="font-michroma text-[12px] font-extrabold text-[#a39171] tracking-[0.1em] uppercase"
             delay={1.0}
           />
         </div>
@@ -214,7 +223,14 @@ export default function Footer() {
   );
 }
 
-const BlockRevealText = ({ text, delay = 0, className = "", textClassName = "", style = {} }) => {
+const BlockRevealText = ({
+  text,
+  delay = 0,
+  className = "",
+  textClassName = "",
+  style = {},
+  glitchI = false,
+}) => {
   const letters = Array.from(text);
 
   const blockVariants = {
@@ -258,11 +274,28 @@ const BlockRevealText = ({ text, delay = 0, className = "", textClassName = "", 
         style={style}
         variants={containerVariants}
       >
-        {letters.map((char, index) => (
-          <motion.span key={index} variants={letterVariants} className="inline-block">
-            {char === " " ? "\u00A0" : char}
-          </motion.span>
-        ))}
+        {letters.map((char, index) => {
+          if (glitchI && char === "I") {
+            return (
+              <motion.span
+                key={index}
+                variants={letterVariants}
+                className="inline-block"
+              >
+                <span className="tracking-[-0.2em] pr-[0.2em]">|||</span>
+              </motion.span>
+            );
+          }
+          return (
+            <motion.span
+              key={index}
+              variants={letterVariants}
+              className="inline-block"
+            >
+              {char === " " ? "\u00A0" : char}
+            </motion.span>
+          );
+        })}
       </motion.p>
     </div>
   );

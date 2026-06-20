@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   FaYoutube,
   FaSpotify,
@@ -64,10 +64,6 @@ const slides = [
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const { scrollY } = useScroll();
-  
-  // Parallax / Sticky effect for the right image (cyber2)
-  const cyber2Y = useTransform(scrollY, [0, 800], [0, 300]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -81,7 +77,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-[calc(100vh-88px)] w-full overflow-hidden bg-[#030303] flex items-center justify-center py-8">
+    <section className="relative xl:pt-10 xl:pb-16 w-full overflow-hidden bg-[#030303] flex items-center justify-center py-6">
       {/* Absolute right social icons bar */}
       <div className="absolute right-6 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col gap-6 text-[#505050]">
         <SocialIcon icon={<FaYoutube size={20} />} />
@@ -93,7 +89,7 @@ const Hero = () => {
         <SocialIcon icon={<FaXTwitter size={20} />} />
       </div>
 
-      <div className="relative mx-auto flex flex-col lg:flex-row w-full max-w-7xl items-center justify-center px-6 lg:px-12 h-full gap-8 lg:gap-0">
+      <div className="relative mx-auto flex flex-col lg:flex-row w-full max-w-7xl items-center justify-center px-6 lg:px-12 h-full gap-10 md:gap-12 lg:gap-0">
         {/* Left Image Section */}
         <div className="flex w-full lg:w-1/2 justify-center lg:justify-end items-center z-10 relative">
           <div className="flex justify-center items-center gap-4 w-full max-w-[500px]">
@@ -108,17 +104,25 @@ const Hero = () => {
             <motion.img
               src={cyber2}
               alt="Cyber 2"
-              initial={{ opacity: 0, x: 50, filter: "blur(10px)" }}
-              animate={{ opacity: 0.9, x: 0, filter: "blur(0px)" }}
-              transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
-              style={{ y: cyber2Y }}
+              initial={{
+                opacity: 1,
+                x: 0,
+              }}
+              animate={{
+                opacity: [1, 0.2, 1, 0.3, 1],
+                x: [0, -8, 8, -5, 0],
+              }}
+              transition={{
+                duration: 0.7,
+                ease: "easeInOut",
+              }}
               className="xl:w-72 w-44 h-auto object-contain drop-shadow-[0_0_15px_rgba(100,180,255,0.1)] -ml-[5%]"
             />
           </div>
         </div>
 
         {/* Animated Right Text Section (Overlaps left section slightly) */}
-        <div className="relative w-full lg:w-1/2 flex flex-col justify-center min-h-[600px] lg:min-h-[500px] z-20 lg:-ml-12 xl:-ml-24 lg:pl-10 overflow-hidden">
+        <div className="relative w-full lg:w-1/2 flex flex-col justify-center min-h-[400px] md:min-h-[450px] lg:min-h-[500px] z-20 lg:-ml-12 xl:-ml-24 lg:pl-10 overflow-hidden">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide}
@@ -130,12 +134,24 @@ const Hero = () => {
             >
               {slides[currentSlide].isTitleSlide ? (
                 <div className="flex flex-col justify-center items-start text-left w-full pl-4 lg:pl-8">
-                  <h1 className="font-cinzel leading-[0.9] lg:leading-[1] tracking-tight mb-6 lg:mb-4 overflow-hidden">
-                    <AnimatedTypingText text={slides[currentSlide].title1} delay={0} />
-                    <AnimatedTypingText text={slides[currentSlide].title2} delay={0.6} />
-                    <AnimatedTypingText text={slides[currentSlide].title3} delay={1.2} />
+                  <h1 className="font-cinzel leading-[0.9] font-extralight lg:leading-[1] tracking-tight mb-4 lg:mb-4 overflow-hidden">
+                    <AnimatedTypingText
+                      text={slides[currentSlide].title1}
+                      delay={0}
+                    />
+                    <AnimatedTypingText
+                      text={slides[currentSlide].title2}
+                      delay={0.6} // Waits for title1 to finish
+                    />
+                    <AnimatedTypingText
+                      text={slides[currentSlide].title3}
+                      delay={1.2} // Waits for title2 to finish
+                    />
                   </h1>
-                  <BlockRevealSubtitle text={slides[currentSlide].subtitle} delay={1.8} />
+                  <BlockRevealSubtitle
+                    text={slides[currentSlide].subtitle}
+                    delay={2.0}
+                  />
                 </div>
               ) : (
                 <motion.div
@@ -145,7 +161,7 @@ const Hero = () => {
                   transition={{ duration: 0.8 }}
                   className="flex flex-col w-full max-w-[550px] gap-4 lg:gap-5 lg:pl-6 bg-[#030303]/40 backdrop-blur-sm lg:backdrop-blur-none p-4 lg:p-0 rounded-xl lg:rounded-none"
                 >
-                  <h3 className="font-cinzel text-[#a39171] text-[13px] tracking-[0em] font-extrabold uppercase">
+                  <h3 className="font-sans font-light tracking-[0.2em] text-[#a39171] text-[13px] tracking-[0em] font-extrabold uppercase">
                     {slides[currentSlide].subheading}
                   </h3>
                   <h2 className="font-michroma text-white text-[18px] lg:text-[22px] leading-[1.3] lg:leading-[1.4] uppercase mb-1">
@@ -165,7 +181,7 @@ const Hero = () => {
                     {slides[currentSlide].buttons.map((btn, idx) => (
                       <button
                         key={idx}
-                        className="border border-[#a39171] text-[#a39171] bg-transparent hover:bg-[#a39171] hover:text-[#030303] transition-colors duration-300 font-cinzel text-[13px] font-extrabold tracking-[0] px-6 py-3 uppercase"
+                        className="border border-[#a39171] text-[#a39171] bg-transparent hover:bg-[#a39171] hover:text-[#030303] transition-colors duration-300 font-sans text-[13px] font-light tracking-[0.1em] px-6 py-3 uppercase"
                       >
                         {btn.text}
                       </button>
@@ -173,7 +189,7 @@ const Hero = () => {
                   </div>
                   <button
                     onClick={handleNext}
-                    className="text-[#a39171] font-cinzel font-extrabold text-[13px] tracking-[0em] hover:text-white transition-colors flex items-center w-fit uppercase"
+                    className="text-[#a39171] font-sans font-light tracking-[0.2em] text-[13px] tracking-[0em]  hover:text-white transition-colors flex items-center w-fit uppercase"
                   >
                     NEXT&gt;&gt;
                   </button>
@@ -205,32 +221,49 @@ const AnimatedTypingText = ({ text, delay = 0 }) => {
       opacity: 1,
       transition: {
         delayChildren: delay,
-        staggerChildren: 0.08, // Adjust typing speed here
+        staggerChildren: 0.08, // Thoda delay between letters
+        staggerDirection: -1, // Right se
       },
     },
   };
 
   const letterVariants = {
-    hidden: { opacity: 0, filter: "blur(10px)" },
-    visible: { opacity: 1, filter: "blur(0px)", transition: { duration: 0.4 } },
+    hidden: {
+      opacity: 0,
+      x: -30, // Content sliding from the left
+      filter: "blur(12px)",
+    },
+    visible: {
+      opacity: [0, 1, 0.2, 1], // Premium blink animation
+      x: [-30, 0, 0, 0],
+      filter: ["blur(12px)", "blur(0px)", "blur(4px)", "blur(0px)"],
+      transition: {
+        duration: 0.8, // Smooth premium duration
+        times: [0, 0.4, 0.6, 1],
+        ease: "easeOut",
+      },
+    },
   };
 
   return (
     <motion.span
-      className="block text-[50px] md:text-[70px] lg:text-[60px] font-extralight text-white whitespace-nowrap"
+      className="block text-[70px] md:text-[90px] lg:text-[90px] font-extralight text-white whitespace-nowrap overflow-visible py-1"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
       {letters.map((char, index) => (
-        <motion.span key={index} variants={letterVariants} className="inline-block">
+        <motion.span
+          key={index}
+          variants={letterVariants}
+          className="inline-block"
+        >
           {char === " " ? "\u00A0" : char}
         </motion.span>
       ))}
     </motion.span>
   );
 };
-
 const BlockRevealSubtitle = ({ text, delay = 0 }) => {
   const letters = Array.from(text);
 
@@ -273,16 +306,33 @@ const BlockRevealSubtitle = ({ text, delay = 0 }) => {
         animate="visible"
       />
       <motion.p
-        className="font-cinzel text-[10px] md:text-[12px] lg:text-[14px] font-extrabold tracking-[0.2em] lg:tracking-[0em] text-[#a39171] uppercase whitespace-nowrap m-0"
+        className="font-michroma text-[10px] md:text-[12px] lg:text-[13px] font-bold tracking-[0em] text-[#a39171] uppercase whitespace-nowrap m-0"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        {letters.map((char, index) => (
-          <motion.span key={index} variants={letterVariants} className="inline-block">
-            {char === " " ? "\u00A0" : char}
-          </motion.span>
-        ))}
+        {letters.map((char, index) => {
+          if (char === "I") {
+            return (
+              <motion.span
+                key={index}
+                variants={letterVariants}
+                className="inline-block"
+              >
+                <span className="tracking-[-0.15em] pr-[0.15em]">I</span>
+              </motion.span>
+            );
+          }
+          return (
+            <motion.span
+              key={index}
+              variants={letterVariants}
+              className="inline-block"
+            >
+              {char === " " ? "\u00A0" : char}
+            </motion.span>
+          );
+        })}
       </motion.p>
     </div>
   );
