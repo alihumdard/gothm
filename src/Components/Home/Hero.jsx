@@ -147,7 +147,7 @@ const Hero = () => {
                     repeat: Infinity,
                     repeatDelay: 3,
                   }}
-                  className="xl:w-[650px] lg:w-[350px] md:w-80 w-56 h-auto object-contain"
+                  className="xl:w-[650px] lg:w-[350px] md:w-80 w-64 h-auto object-contain"
                 />
               </motion.div>
             </div>

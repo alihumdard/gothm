@@ -31,7 +31,7 @@ const Section2 = () => {
             delay={0.8}
           />
 
-          <h2 className="mb-2 font-michroma text-[20px] lg:text-[20px] font-bold leading-[1.4] tracking-wide text-white">
+          <h2 className="mb-2 font-michroma xl:text-[20px] text-md font-bold leading-[1.4] tracking-wide text-white">
             <TypingText text="THE NARRATIVE IS THE MACHINE." delay={0.8} />
             <br />
             <TypingText text="THE GHOST IS THE MESSAGE WITHIN." delay={2.1} />
