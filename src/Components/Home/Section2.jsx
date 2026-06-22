@@ -31,7 +31,7 @@ const Section2 = () => {
             delay={0.8}
           />
 
-          <h2 className="mb-2 font-michroma text-[20px] lg:text-[22px] font-bold leading-[1.4] tracking-wide text-white">
+          <h2 className="mb-2 font-michroma text-[20px] lg:text-[20px] font-bold leading-[1.4] tracking-wide text-white">
             <TypingText text="THE NARRATIVE IS THE MACHINE." delay={0.8} />
             <br />
             <TypingText text="THE GHOST IS THE MESSAGE WITHIN." delay={2.1} />
@@ -152,11 +152,28 @@ const Section2 = () => {
               </span>
             </motion.div>
 
-            <img
+            <motion.img
               src={pyramidImage}
               alt="Synthesis Extraction Analysis Pyramid"
-              className="w-full h-auto object-contain opacity-90"
+              className="w-full h-auto object-contain"
               style={{ mixBlendMode: "screen" }}
+              initial={{ opacity: 0, filter: "blur(10px)" }}
+              whileInView={{
+                opacity: [0, 1, 0, 1, 0.5, 1],
+                filter: [
+                  "blur(10px) drop-shadow(0 0 0px rgba(163, 145, 113, 0))",
+                  "blur(0px) drop-shadow(0 0 15px rgba(163, 145, 113, 0.8))",
+                  "blur(5px) drop-shadow(0 0 5px rgba(163, 145, 113, 0.2))",
+                  "blur(0px) drop-shadow(0 0 15px rgba(163, 145, 113, 0.8))",
+                  "blur(0px) drop-shadow(0 0 8px rgba(163, 145, 113, 0.4))",
+                  "blur(0px) drop-shadow(0 0 10px rgba(163, 145, 113, 0.5))"
+                ],
+              }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{
+                duration: 0.8,
+                ease: "easeInOut",
+              }}
             />
 
             {/* BOTTOM LEFT: EXTRACTION - pyramid ka neeche left corner */}
@@ -303,6 +320,22 @@ const BlockRevealText = ({
                 className="inline-block"
               >
                 <span className="tracking-[-0.2em] pr-[0.2em]">I</span>
+              </motion.span>
+            );
+          }
+          if (char === "_") {
+            return (
+              <motion.span
+                key={index}
+                variants={letterVariants}
+                className="inline-block"
+              >
+                <motion.span
+                  animate={{ opacity: [1, 0, 1] }}
+                  transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
+                >
+                  _
+                </motion.span>
               </motion.span>
             );
           }

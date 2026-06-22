@@ -91,6 +91,25 @@ const BlockRevealText = ({
               </motion.span>
             );
           }
+          if (char === "_") {
+            return (
+              <motion.span
+                key={i}
+                variants={{
+                  hidden: { opacity: 0, filter: "blur(5px)" },
+                  visible: { opacity: 1, filter: "blur(0px)" },
+                }}
+                className="inline-block"
+              >
+                <motion.span
+                  animate={{ opacity: [1, 0, 1] }}
+                  transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
+                >
+                  _
+                </motion.span>
+              </motion.span>
+            );
+          }
           return (
             <motion.span
               key={i}
@@ -117,31 +136,41 @@ const Section4 = () => {
 
   const imgControls = useAnimation();
 
-  /* IMAGE BLINK */
+  /* IMAGE BLINK (SYNCED, NO BLUR) */
   useEffect(() => {
     if (!inView) return;
 
-    const run = async () => {
+    const runEntranceAndGlitch = async () => {
       await imgControls.start({ opacity: 1 });
 
-      for (let i = 0; i < 3; i++) {
-        await imgControls.start({
-          opacity: 0.25,
-          transition: { duration: 0.12 },
-        });
+      const syncDelay = 3000 - (Date.now() % 3000);
+      await new Promise((r) => setTimeout(r, syncDelay));
 
+      while (true) {
         await imgControls.start({
-          opacity: 1,
-          transition: { duration: 0.12 },
+          opacity: [1, 0.4, 1, 0.7, 1],
+          x: [0, -5, 5, -2, 0],
+          y: [0, 3, -3, 1, 0],
+          scale: [1, 1.03, 0.97, 1.01, 1],
+          // No blur, just contrast changes to simulate fade/glitch
+          filter: [
+            "contrast(1)",
+            "contrast(1.5)",
+            "contrast(2)",
+            "contrast(1.2)",
+            "contrast(1)"
+          ],
+          transition: { duration: 0.35, ease: "linear" }
         });
+        await new Promise((r) => setTimeout(r, 2650));
       }
     };
 
-    run();
+    runEntranceAndGlitch();
   }, [inView, imgControls]);
 
   return (
-    <section ref={ref} className="w-full bg-[#000000] xl:py-16 py-6 text-white">
+    <section id="about-the-host" ref={ref} className="w-full bg-[#000000] xl:py-16 py-6 text-white">
       <div className="mx-auto flex max-w-7xl flex-col lg:flex-row gap-8 px-6">
         {/* LEFT SIDE */}
         <motion.div

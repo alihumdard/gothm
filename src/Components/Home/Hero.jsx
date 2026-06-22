@@ -77,9 +77,9 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative xl:pt-10 xl:pb-16 w-full overflow-x-hidden bg-[#030303] flex items-center justify-center py-10">
-      {/* Absolute right social icons bar */}
-      <div className="absolute right-6 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col gap-6 text-[#505050]">
+    <section id="home" className="relative w-full bg-[#030303] flex items-start justify-center h-[110vh]">
+      {/* Social icons bar - made sticky so it stays visible */}
+      <div className="sticky top-[50vh] -translate-y-1/2 h-0 right-6 z-50 hidden lg:flex flex-col gap-6 text-[#505050] self-start ml-auto">
         <SocialIcon icon={<FaYoutube size={20} />} />
         <SocialIcon icon={<FaSpotify size={20} />} />
         <SocialIcon icon={<FaPodcast size={20} />} />
@@ -89,41 +89,75 @@ const Hero = () => {
         <SocialIcon icon={<FaXTwitter size={20} />} />
       </div>
 
-      <div className="relative mx-auto flex flex-col lg:flex-row w-full max-w-7xl items-center justify-center px-6 lg:px-12 h-full gap-10 md:gap-12 lg:gap-0">
+      <div className="absolute inset-0 mx-auto flex flex-col lg:flex-row w-full max-w-7xl items-stretch justify-center px-6 lg:px-12 gap-10 md:gap-12 lg:gap-0">
         {/* Left Image Section */}
-        <div className="flex w-full lg:w-1/2 justify-center lg:justify-end items-center z-10 relative">
-          <div className="flex justify-center items-center gap-4 w-full max-w-[500px]">
+        <div className="flex w-full lg:w-1/2 justify-center lg:justify-end items-stretch z-10 relative">
+          <div className="flex justify-center items-start gap-4 w-full max-w-[600px] h-full relative">
+            {/* Cyber1 (Skull) is sticky and scrolls with you */}
+            <div className=" z-20 h-fit mt-10">
             <motion.img
               src={cyber1}
               alt="Cyber 1"
-              initial={{ opacity: 0, x: -50, filter: "blur(10px)" }}
-              animate={{ opacity: 0.9, x: 0, filter: "blur(0px)" }}
-              transition={{ duration: 1, ease: "easeOut" }}
-              className="xl:w-72 w-52 h-auto object-contain drop-shadow-[0_0_15px_rgba(100,180,255,0.1)]"
+              initial={{ opacity: 0, x: -20, filter: "blur(10px)" }}
+              animate={{ 
+                opacity: [0, 1, 0, 1, 0.5, 0.9], 
+                x: [-20, 0, -10, 5, -5, 0], 
+                filter: ["blur(10px)", "blur(0px)", "blur(5px)", "blur(0px)", "blur(0px)", "blur(0px)"] 
+              }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="xl:w-[650px] lg:w-[350px] md:w-80 w-64 h-auto object-contain drop-shadow-[0_0_15px_rgba(100,180,255,0.1)]"
             />
-            <motion.img
-              src={cyber2}
-              alt="Cyber 2"
-              initial={{
-                opacity: 1,
-                x: 0,
-              }}
-              animate={{
-                opacity: [1, 0.2, 1, 0.3, 1],
-                x: [0, -8, 8, -5, 0],
-              }}
-              transition={{
-                duration: 0.7,
-                ease: "easeInOut",
-              }}
-              className="xl:w-72 w-44 h-auto object-contain drop-shadow-[0_0_15px_rgba(100,180,255,0.1)] -ml-[5%]"
-            />
+            </div>
+            
+            <div className="z-10 h-fit sticky top-[4vh]">
+              <motion.div
+                initial={{ opacity: 0, filter: "blur(10px)" }}
+                animate={{ 
+                  opacity: [0, 1, 0, 1, 0.5, 1],
+                  filter: ["blur(10px)", "blur(0px)", "blur(5px)", "blur(0px)", "blur(0px)", "blur(0px)"]
+                }}
+                transition={{ duration: 0.8, ease: "easeInOut" }}
+              >
+                <motion.img
+                  src={cyber2}
+                  alt="Cyber 2"
+                  initial={{
+                    opacity: 0.9,
+                    x: 0,
+                    y: 0,
+                    scale: 1,
+                    filter: "drop-shadow(0px 0px 15px rgba(100,180,255,0.2))"
+                  }}
+                  animate={{
+                    opacity: [1, 0.7, 1, 0.8, 1],
+                    x: [0, -4, 4, -2, 0],
+                    y: [0, 2, -2, 1, 0],
+                    scale: [1, 1.01, 0.99, 1.01, 1],
+                    filter: [
+                      "drop-shadow(0px 0px 15px rgba(100,180,255,0.2))",
+                      "drop-shadow(5px 0px 0px rgba(255,0,80,0.8)) drop-shadow(-5px 0px 0px rgba(0,255,255,0.8)) drop-shadow(0px 0px 25px rgba(100,180,255,0.6))",
+                      "drop-shadow(-4px 3px 0px rgba(255,0,80,0.8)) drop-shadow(4px -3px 0px rgba(0,255,255,0.8)) drop-shadow(0px 0px 25px rgba(100,180,255,0.6))",
+                      "drop-shadow(2px -2px 0px rgba(255,0,80,0.5)) drop-shadow(-2px 2px 0px rgba(0,255,255,0.5)) drop-shadow(0px 0px 15px rgba(100,180,255,0.3))",
+                      "drop-shadow(0px 0px 15px rgba(100,180,255,0.2))"
+                    ]
+                  }}
+                  transition={{
+                    duration: 0.25,
+                    ease: "linear",
+                    repeat: Infinity,
+                    repeatDelay: 3,
+                  }}
+                  className="xl:w-[650px] lg:w-[350px] md:w-80 w-56 h-auto object-contain"
+                />
+              </motion.div>
+            </div>
           </div>
         </div>
 
-        {/* Animated Right Text Section (Overlaps left section slightly) */}
-        <div className="relative w-full lg:w-1/2 flex flex-col justify-center min-h-[550px] md:min-h-[550px] lg:min-h-[500px] z-20 lg:-ml-12 xl:-ml-24 lg:pl-10 overflow-x-hidden">
-          <AnimatePresence mode="wait">
+        {/* Animated Right Text Section */}
+        <div className="relative w-full lg:w-1/2 flex flex-col justify-start h-full z-20 lg:-ml-12 xl:-ml-24 lg:pl-10">
+          <div className="w-full flex flex-col justify-center relative top-[5vh] min-h-[450px] lg:mt-10">
+            <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide}
               initial={{ opacity: 0 }}
@@ -134,18 +168,18 @@ const Hero = () => {
             >
               {slides[currentSlide].isTitleSlide ? (
                 <div className="flex flex-col justify-center items-start text-left w-full pl-0 lg:pl-8">
-                  <h1 className="font-cinzel leading-[0.9] font-extralight lg:leading-[1] tracking-tight mb-4 lg:mb-4 overflow-hidden">
+                  <h1 className="font-feonie leading-[0.9] font-normal lg:leading-[1] tracking-tight mb-4 lg:mb-4 overflow-hidden">
                     <AnimatedTypingText
                       text={slides[currentSlide].title1}
                       delay={0}
                     />
                     <AnimatedTypingText
                       text={slides[currentSlide].title2}
-                      delay={0.6} // Waits for title1 to finish
+                      delay={0}
                     />
                     <AnimatedTypingText
                       text={slides[currentSlide].title3}
-                      delay={1.2} // Waits for title2 to finish
+                      delay={0}
                     />
                   </h1>
                   <BlockRevealSubtitle
@@ -162,7 +196,17 @@ const Hero = () => {
                   className="flex flex-col w-full max-w-[550px] gap-4 lg:gap-5 lg:pl-6 bg-[#030303]/40 backdrop-blur-sm lg:backdrop-blur-none p-4 lg:p-0 rounded-xl lg:rounded-none"
                 >
                   <h3 className="font-sans font-light tracking-[0.2em] text-[#a39171] text-[13px] tracking-[0em] font-extrabold uppercase">
-                    {slides[currentSlide].subheading}
+                    {slides[currentSlide].subheading?.split('').map((char, i) => (
+                      char === '_' ? (
+                        <motion.span
+                          key={i}
+                          animate={{ opacity: [1, 0, 1] }}
+                          transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
+                        >
+                          _
+                        </motion.span>
+                      ) : char
+                    ))}
                   </h3>
                   <h2 className="font-michroma text-white text-[18px] lg:text-[22px] leading-[1.3] lg:leading-[1.4] uppercase mb-1">
                     {slides[currentSlide].heading}
@@ -197,6 +241,7 @@ const Hero = () => {
               )}
             </motion.div>
           </AnimatePresence>
+          </div>
         </div>
       </div>
     </section>
@@ -221,8 +266,8 @@ const AnimatedTypingText = ({ text, delay = 0 }) => {
       opacity: 1,
       transition: {
         delayChildren: delay,
-        staggerChildren: 0.08, // Thoda delay between letters
-        staggerDirection: -1, // Right se
+        staggerChildren: 0.05,
+        staggerDirection: -1, // Staggers from right to left
       },
     },
   };
@@ -230,17 +275,16 @@ const AnimatedTypingText = ({ text, delay = 0 }) => {
   const letterVariants = {
     hidden: {
       opacity: 0,
-      x: -30, // Content sliding from the left
-      filter: "blur(12px)",
+      x: 20,
+      filter: "blur(5px)",
     },
     visible: {
-      opacity: [0, 1, 0.2, 1], // Premium blink animation
-      x: [-30, 0, 0, 0],
-      filter: ["blur(12px)", "blur(0px)", "blur(4px)", "blur(0px)"],
+      opacity: 1,
+      x: 0,
+      filter: "blur(0px)",
       transition: {
-        duration: 0.8, // Smooth premium duration
-        times: [0, 0.4, 0.6, 1],
-        ease: "easeOut",
+        duration: 0.8,
+        ease: [0.16, 1, 0.3, 1],
       },
     },
   };
@@ -320,6 +364,22 @@ const BlockRevealSubtitle = ({ text, delay = 0 }) => {
                 className="inline-block"
               >
                 <span className="tracking-[-0.15em] pr-[0.15em]">I</span>
+              </motion.span>
+            );
+          }
+          if (char === "_") {
+            return (
+              <motion.span
+                key={index}
+                variants={letterVariants}
+                className="inline-block"
+              >
+                <motion.span
+                  animate={{ opacity: [1, 0, 1] }}
+                  transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
+                >
+                  _
+                </motion.span>
               </motion.span>
             );
           }

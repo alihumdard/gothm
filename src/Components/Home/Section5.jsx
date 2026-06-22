@@ -9,6 +9,7 @@ const Section5 = () => {
       <div className="mx-auto flex max-w-5xl flex-col lg:flex-row gap-16 lg:gap-10 px-6">
         {/* LEFT SIDE */}
         <motion.div
+          id="ghost-mail"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
@@ -82,6 +83,7 @@ const Section5 = () => {
 
         {/* RIGHT SIDE */}
         <motion.div
+          id="contact"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
@@ -215,6 +217,18 @@ const BlockRevealText = ({
             return (
               <motion.span key={i} className="inline-block">
                 <span className="tracking-[-0.2em] pr-[0.2em]">I</span>
+              </motion.span>
+            );
+          }
+          if (c === "_") {
+            return (
+              <motion.span key={i} className="inline-block">
+                <motion.span
+                  animate={{ opacity: [1, 0, 1] }}
+                  transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
+                >
+                  _
+                </motion.span>
               </motion.span>
             );
           }

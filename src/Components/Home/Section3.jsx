@@ -71,18 +71,39 @@ const BlockRevealText = ({
       />
 
       <motion.p className={`relative z-0 m-0 ${textClassName}`}>
-        {letters.map((char, i) => (
-          <motion.span
-            key={i}
-            variants={{
-              hidden: { opacity: 0 },
-              visible: { opacity: 1 },
-            }}
-            className="inline-block"
-          >
-            {char === " " ? "\u00A0" : char}
-          </motion.span>
-        ))}
+        {letters.map((char, i) => {
+          if (char === "_") {
+            return (
+              <motion.span
+                key={i}
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: { opacity: 1 },
+                }}
+                className="inline-block"
+              >
+                <motion.span
+                  animate={{ opacity: [1, 0, 1] }}
+                  transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
+                >
+                  _
+                </motion.span>
+              </motion.span>
+            );
+          }
+          return (
+            <motion.span
+              key={i}
+              variants={{
+                hidden: { opacity: 0 },
+                visible: { opacity: 1 },
+              }}
+              className="inline-block"
+            >
+              {char === " " ? "\u00A0" : char}
+            </motion.span>
+          );
+        })}
       </motion.p>
     </motion.div>
   );
@@ -90,41 +111,54 @@ const BlockRevealText = ({
 
 /* ---------------- IMAGE COMPONENT (BLINK + STAGGER) ---------------- */
 
-const ImageReveal = ({ image, alt, delay }) => {
+const ImageReveal = ({ image, alt, delay, sectionInView }) => {
   const controls = useAnimation();
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true });
 
   useEffect(() => {
-    if (!inView) return;
+    if (!sectionInView) return;
 
-    const run = async () => {
-      await new Promise((r) => setTimeout(r, delay));
+    const runEntranceAndGlitch = async () => {
+      // Synced Entrance Blink (No delay, all together)
+      await controls.start({
+        opacity: [0, 1, 0, 1, 0.5, 1],
+        filter: ["blur(10px)", "blur(0px)", "blur(5px)", "blur(0px)", "blur(0px)", "blur(0px)"],
+        transition: { duration: 0.6, ease: "easeInOut" }
+      });
 
-      await controls.start({ opacity: 1 });
+      // Synced Infinite Glitch Loop (happens every 3 seconds)
+      // We calculate time so all images hit the glitch loop at the exact same modulo time
+      const syncDelay = 3000 - (Date.now() % 3000);
+      await new Promise((r) => setTimeout(r, syncDelay));
 
-      for (let i = 0; i < 4; i++) {
+      while (true) {
         await controls.start({
-          opacity: 0.25,
-          transition: { duration: 0.12 },
+          opacity: [1, 0.4, 1, 0.7, 1],
+          x: [0, -5, 5, -2, 0],
+          y: [0, 3, -3, 1, 0],
+          scale: [1, 1.03, 0.97, 1.01, 1],
+          filter: [
+            "blur(0px) contrast(1)",
+            "blur(3px) contrast(1.5)",
+            "blur(2px) contrast(2)",
+            "blur(1px) contrast(1.2)",
+            "blur(0px) contrast(1)"
+          ],
+          transition: { duration: 0.35, ease: "linear" }
         });
-
-        await controls.start({
-          opacity: 1,
-          transition: { duration: 0.12 },
-        });
+        await new Promise((r) => setTimeout(r, 2650)); // Wait for next loop
       }
     };
 
-    run();
-  }, [inView, delay, controls]);
+    runEntranceAndGlitch();
+  }, [sectionInView, delay, controls]);
 
   return (
     <div ref={ref} className="relative aspect-video overflow-hidden">
       <motion.img
         src={image}
         alt={alt}
-        initial={{ opacity: 0 }}
+        initial={{ opacity: 0, filter: "blur(10px)" }}
         animate={controls}
         className="w-full h-full object-cover"
       />
@@ -206,7 +240,7 @@ const Section3 = () => {
     <section ref={ref} className="w-full bg-black xl:py-16 py-6 text-white">
       <div className="mx-auto max-w-7xl flex flex-col gap-16 px-6">
         {/* EPISODES */}
-        <div>
+        <div id="episodes">
           <BlockRevealText
             text="COMING SOON_"
             textClassName="text-[#a39171] text-[13px] font-light font-sans tracking-[0.1em]"
@@ -228,7 +262,8 @@ const Section3 = () => {
                 <ImageReveal
                   image={item.image}
                   alt={item.title}
-                  delay={index * 400}
+                  delay={index * 200}
+                  sectionInView={inView}
                 />
 
                 {/* 🔥 ORIGINAL TEXT (KEPT SAME) */}
@@ -254,7 +289,7 @@ const Section3 = () => {
         </div>
 
         {/* BLOGS */}
-        <div>
+        <div id="blog">
           <BlockRevealText
             text="GOTHM BLOG_"
             textClassName="text-[#a39171] text-[13px] font-light font-sans tracking-[0.1em]"
@@ -276,7 +311,8 @@ const Section3 = () => {
                 <ImageReveal
                   image={item.image}
                   alt={item.title}
-                  delay={(index + 3) * 400}
+                  delay={(index + 3) * 200}
+                  sectionInView={inView}
                 />
 
                 {/* 🔥 ORIGINAL TEXT (KEPT SAME) */}

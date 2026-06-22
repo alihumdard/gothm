@@ -7,6 +7,15 @@ import logoImage from "../assets/images/logo.png";
 export default function SourceGuyNavbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const handleScrollTo = (e, targetId) => {
+    e.preventDefault();
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({ behavior: "instant" });
+    }
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <>
       <nav className="relative z-50 w-full bg-[#030303] py-6 font-orbitron text-[#a0a0a0]">
@@ -22,36 +31,27 @@ export default function SourceGuyNavbar() {
 
           {/* Navigation Links */}
           <div className="hidden items-center gap-5 text-[12px] font-sans font-light tracking-[0.1em] lg:flex text-[#a39171]">
-            <Link to="/" className="transition-colors hover:text-white">
+            <a href="#home" onClick={(e) => handleScrollTo(e, 'home')} className="transition-colors hover:text-white cursor-pointer">
               HOME
-            </Link>
-            <Link
-              to="/what-is-gothm"
-              className="transition-colors hover:text-white"
-            >
+            </a>
+            <a href="#what-is-gothm" onClick={(e) => handleScrollTo(e, 'what-is-gothm')} className="transition-colors hover:text-white cursor-pointer">
               WHAT IS GOTHM
-            </Link>
-            <Link to="/episodes" className="transition-colors hover:text-white">
+            </a>
+            <a href="#episodes" onClick={(e) => handleScrollTo(e, 'episodes')} className="transition-colors hover:text-white cursor-pointer">
               EPISODES
-            </Link>
-            <Link to="/blog" className="transition-colors hover:text-white">
+            </a>
+            <a href="#blog" onClick={(e) => handleScrollTo(e, 'blog')} className="transition-colors hover:text-white cursor-pointer">
               BLOG
-            </Link>
-            <Link
-              to="/about-the-host"
-              className="transition-colors hover:text-white"
-            >
+            </a>
+            <a href="#about-the-host" onClick={(e) => handleScrollTo(e, 'about-the-host')} className="transition-colors hover:text-white cursor-pointer">
               ABOUT THE HOST
-            </Link>
-            <Link
-              to="/ghost-mail"
-              className="transition-colors hover:text-white"
-            >
+            </a>
+            <a href="#ghost-mail" onClick={(e) => handleScrollTo(e, 'ghost-mail')} className="transition-colors hover:text-white cursor-pointer">
               GHOST MAIL
-            </Link>
-            <Link to="/contact" className="transition-colors hover:text-white">
+            </a>
+            <a href="#contact" onClick={(e) => handleScrollTo(e, 'contact')} className="transition-colors hover:text-white cursor-pointer">
               CONTACT
-            </Link>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -81,55 +81,27 @@ export default function SourceGuyNavbar() {
               <FaTimes size={32} />
             </button>
             <div className="flex flex-col items-center gap-8 font-cinzel text-[20px] font-medium tracking-[0.2em] text-[#a39171]">
-              <Link
-                to="/"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="hover:text-white transition-colors"
-              >
+              <a href="#home" onClick={(e) => handleScrollTo(e, 'home')} className="hover:text-white transition-colors cursor-pointer">
                 HOME
-              </Link>
-              <Link
-                to="/what-is-gothm"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="hover:text-white transition-colors"
-              >
+              </a>
+              <a href="#what-is-gothm" onClick={(e) => handleScrollTo(e, 'what-is-gothm')} className="hover:text-white transition-colors cursor-pointer">
                 WHAT IS GOTHM
-              </Link>
-              <Link
-                to="/episodes"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="hover:text-white transition-colors"
-              >
+              </a>
+              <a href="#episodes" onClick={(e) => handleScrollTo(e, 'episodes')} className="hover:text-white transition-colors cursor-pointer">
                 EPISODES
-              </Link>
-              <Link
-                to="/blog"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="hover:text-white transition-colors"
-              >
+              </a>
+              <a href="#blog" onClick={(e) => handleScrollTo(e, 'blog')} className="hover:text-white transition-colors cursor-pointer">
                 BLOG
-              </Link>
-              <Link
-                to="/about-the-host"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="hover:text-white transition-colors"
-              >
+              </a>
+              <a href="#about-the-host" onClick={(e) => handleScrollTo(e, 'about-the-host')} className="hover:text-white transition-colors cursor-pointer">
                 ABOUT THE HOST
-              </Link>
-              <Link
-                to="/ghost-mail"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="hover:text-white transition-colors"
-              >
+              </a>
+              <a href="#ghost-mail" onClick={(e) => handleScrollTo(e, 'ghost-mail')} className="hover:text-white transition-colors cursor-pointer">
                 GHOST MAIL
-              </Link>
-              <Link
-                to="/contact"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="hover:text-white transition-colors"
-              >
+              </a>
+              <a href="#contact" onClick={(e) => handleScrollTo(e, 'contact')} className="hover:text-white transition-colors cursor-pointer">
                 CONTACT
-              </Link>
+              </a>
             </div>
           </motion.div>
         )}
