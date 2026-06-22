@@ -103,7 +103,11 @@ const BlockRevealText = ({
               >
                 <motion.span
                   animate={{ opacity: [1, 0, 1] }}
-                  transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
+                  transition={{
+                    duration: 0.8,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
                 >
                   _
                 </motion.span>
@@ -158,9 +162,9 @@ const Section4 = () => {
             "contrast(1.5)",
             "contrast(2)",
             "contrast(1.2)",
-            "contrast(1)"
+            "contrast(1)",
           ],
-          transition: { duration: 0.35, ease: "linear" }
+          transition: { duration: 0.35, ease: "linear" },
         });
         await new Promise((r) => setTimeout(r, 2650));
       }
@@ -170,7 +174,11 @@ const Section4 = () => {
   }, [inView, imgControls]);
 
   return (
-    <section id="about-the-host" ref={ref} className="w-full bg-[#000000] xl:py-16 py-6 text-white">
+    <section
+      id="about-the-host"
+      ref={ref}
+      className="w-full bg-[#000000] xl:py-16 py-6 text-white"
+    >
       <div className="mx-auto flex max-w-7xl flex-col lg:flex-row gap-8 px-6">
         {/* LEFT SIDE */}
         <motion.div
@@ -269,7 +277,7 @@ const Section4 = () => {
             </p>
           </div>
 
-          <h3 className="mt-10 font-michroma text-[22px] text-[#d4d4d4]">
+          <h3 className="mt-10 font-michroma text-[20px] text-[#d4d4d4]">
             <TypingText text="The Things You Watch, Are Watching You." />
           </h3>
 

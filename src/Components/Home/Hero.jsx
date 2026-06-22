@@ -77,7 +77,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative w-full bg-[#030303] flex items-start justify-center h-[110vh]">
+    <section id="home" className="relative w-full bg-[#030303] flex items-start justify-center min-h-[128vh] lg:min-h-0 lg:h-[110vh] overflow-hidden lg:overflow-visible">
       {/* Social icons bar - made sticky so it stays visible */}
       <div className="sticky top-[50vh] -translate-y-1/2 h-0 right-6 z-50 hidden lg:flex flex-col gap-6 text-[#505050] self-start ml-auto">
         <SocialIcon icon={<FaYoutube size={20} />} />

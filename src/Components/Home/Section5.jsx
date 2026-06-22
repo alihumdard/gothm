@@ -104,7 +104,7 @@ const Section5 = () => {
             delay={1.2}
           />
 
-          <h2 className="mb-4 font-michroma xl:text-[24px] text-[22px] font-extrabold uppercase text-white leading-[1.2] tracking-tight">
+          <h2 className="mb-4 font-michroma xl:text-[22px] text-[21px] font-extrabold uppercase text-white leading-[1.2] tracking-tight">
             <TypingText
               text="COME MEET US AT THE WINDOW BEHIND THE FOURTH WALL"
               delay={1.2}
@@ -225,7 +225,11 @@ const BlockRevealText = ({
               <motion.span key={i} className="inline-block">
                 <motion.span
                   animate={{ opacity: [1, 0, 1] }}
-                  transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
+                  transition={{
+                    duration: 0.8,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
                 >
                   _
                 </motion.span>
