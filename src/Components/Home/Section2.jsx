@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import pyramidImage from "../../assets/images/diagram.png";
+import pyramidImage from "../../assets/images/gothm_symbol.png";
 
 const Section2 = () => {
   return (
@@ -78,7 +78,7 @@ const Section2 = () => {
 
           <div className="mt-4 flex flex-col gap-6 sm:gap-3">
             <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6">
-              <span className="w-full sm:w-56 font-sans text-[14px] sm:text-[15px] font-semibold text-[#d4d4d4]">
+              <span className="w-full sm:w-56 font-sans text-[14px] sm:text-[15px] font-bold text-[#d4d4d4]">
                 Extracting the ideas within...
               </span>
               <button className="w-fit whitespace-nowrap border border-[#303030] font-light bg-[#000000] px-6 py-2 font-sans text-[12px] sm:text-[13px] tracking-[0.1em] text-[#a39171] transition-colors hover:border-[#a39171]">

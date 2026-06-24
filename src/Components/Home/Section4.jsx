@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
-import hostImage from "../../assets/images/sahafi.png";
+import hostImage from "../../assets/images/anchor.jpeg";
 
 /* ---------------- Typing Text ---------------- */
 const TypingText = ({ text = "", delay = 0, className = "" }) => {
@@ -185,7 +185,7 @@ const Section4 = () => {
           initial={{ opacity: 0, x: -50 }}
           animate={inView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 1 }}
-          className="flex w-full lg:w-2/5 flex-col items-start pt-8"
+          className="flex w-full lg:w-2/5 flex-col items-start"
         >
           <div className="w-full max-w-[400px] overflow-hidden">
             <motion.img
@@ -193,7 +193,7 @@ const Section4 = () => {
               alt="Julian"
               initial={{ opacity: 0 }}
               animate={imgControls}
-              className="w-full h-auto object-cover opacity-90 brightness-90"
+              className="w-full h-[500px] object-cover opacity-90 brightness-90"
             />
           </div>
 

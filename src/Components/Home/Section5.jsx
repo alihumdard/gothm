@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import diagramImg from "../../assets/images/diagram.png";
+import diagramImg from "../../assets/images/gothm_symbol.png";
 
 const Section5 = () => {
   return (
@@ -57,18 +57,18 @@ const Section5 = () => {
             />
 
             <form
-              className="flex w-full max-w-md"
+              className="flex w-full max-w-md gap-[1px]"
               onSubmit={(e) => e.preventDefault()}
             >
               <input
                 type="email"
                 placeholder="Your Email"
-                className="w-2/3 bg-[#0a0a0a] border border-[#a39171]/40 border-r-0 px-4 py-2 text-white focus:outline-none text-sm"
+                className="w-2/3 bg-[#0a0a0a] border border-[#a39171]/40 px-4 py-2 text-white focus:outline-none text-sm"
                 required
               />
               <button
                 type="submit"
-                className="w-1/3 bg-[#a39171] text-white font-light font-sans tracking-[0.1em] text-[13px] px-2 py-2 flex items-center justify-center gap-2"
+                className="w-1/3 bg-[#67563D] text-[#888] font-light font-sans tracking-[0.1em] text-[13px] px-2 py-2 flex items-center justify-center gap-2"
               >
                 SUBSCRIBE{" "}
                 <img

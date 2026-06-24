@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaBars, FaTimes } from "react-icons/fa";
-import logoImage from "../assets/images/logo.png";
+import symbolImage from "../assets/images/gothm_symbol.png";
+import textImage from "../assets/images/gothm_text.png";
+import taglineImage from "../assets/images/gothm_tagline.png";
 
 export default function SourceGuyNavbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -21,12 +23,26 @@ export default function SourceGuyNavbar() {
       <nav className="relative z-50 w-full bg-[#030303] py-6 font-orbitron text-[#a0a0a0]">
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 lg:px-0">
           {/* Logo Section */}
-          <div className="flex items-center gap-4 cursor-pointer hover:opacity-80 transition-opacity">
+          <div className="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity">
+            {/* Symbol */}
             <img
-              src={logoImage}
-              alt="GOTHM Logo"
+              src={symbolImage}
+              alt="GOTHM Symbol"
               className="h-[40px] w-auto object-contain"
             />
+            {/* Text & Tagline */}
+            <div className="flex flex-col justify-center gap-1 mt-1">
+              <img
+                src={textImage}
+                alt="GOTHM Text"
+                className="h-[18px] w-auto object-contain"
+              />
+              <img
+                src={taglineImage}
+                alt="GOTHM Tagline"
+                className="h-[8px] w-[162px] object-contain object-left"
+              />
+            </div>
           </div>
 
           {/* Navigation Links */}

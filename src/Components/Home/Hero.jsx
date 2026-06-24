@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   FaYoutube,
@@ -9,10 +9,12 @@ import {
   FaTiktok,
   FaXTwitter,
 } from "react-icons/fa6";
-import cyber1 from "../../assets/images/cyber1.png";
-import cyber2 from "../../assets/images/cyber2.png";
+import cyber1 from "../../assets/images/left.png";
+import cyber2 from "../../assets/images/right.png";
 
-const slides = [
+// ─── Constants ───────────────────────────────────────────────────────────────
+
+const SLIDES = [
   {
     id: 4,
     isTitleSlide: true,
@@ -62,253 +64,150 @@ const slides = [
   },
 ];
 
-const Hero = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
+const SOCIAL_ICONS = [
+  FaYoutube,
+  FaSpotify,
+  FaPodcast,
+  FaAmazon,
+  FaInstagram,
+  FaTiktok,
+  FaXTwitter,
+];
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, []);
+// ─── Animation Variants ──────────────────────────────────────────────────────
 
-  const handleNext = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
-
-  return (
-    <section id="home" className="relative w-full bg-[#030303] flex items-start justify-center min-h-[128vh] lg:min-h-0 lg:h-[110vh] overflow-hidden lg:overflow-visible">
-      {/* Social icons bar - made sticky so it stays visible */}
-      <div className="sticky top-[50vh] -translate-y-1/2 h-0 right-6 z-50 hidden lg:flex flex-col gap-6 text-[#505050] self-start ml-auto">
-        <SocialIcon icon={<FaYoutube size={20} />} />
-        <SocialIcon icon={<FaSpotify size={20} />} />
-        <SocialIcon icon={<FaPodcast size={20} />} />
-        <SocialIcon icon={<FaAmazon size={20} />} />
-        <SocialIcon icon={<FaInstagram size={20} />} />
-        <SocialIcon icon={<FaTiktok size={20} />} />
-        <SocialIcon icon={<FaXTwitter size={20} />} />
-      </div>
-
-      <div className="absolute inset-0 mx-auto flex flex-col lg:flex-row w-full max-w-7xl items-stretch justify-center px-6 lg:px-12 gap-10 md:gap-12 lg:gap-0">
-        {/* Left Image Section */}
-        <div className="flex w-full lg:w-1/2 justify-center lg:justify-end items-stretch z-10 relative">
-          <div className="flex justify-center items-start gap-4 w-full max-w-[600px] h-full relative">
-            {/* Cyber1 (Skull) is sticky and scrolls with you */}
-            <div className=" z-20 h-fit mt-10">
-            <motion.img
-              src={cyber1}
-              alt="Cyber 1"
-              initial={{ opacity: 0, x: -20, filter: "blur(10px)" }}
-              animate={{ 
-                opacity: [0, 1, 0, 1, 0.5, 0.9], 
-                x: [-20, 0, -10, 5, -5, 0], 
-                filter: ["blur(10px)", "blur(0px)", "blur(5px)", "blur(0px)", "blur(0px)", "blur(0px)"] 
-              }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="xl:w-[650px] lg:w-[350px] md:w-80 w-64 h-auto object-contain drop-shadow-[0_0_15px_rgba(100,180,255,0.1)]"
-            />
-            </div>
-            
-            <div className="z-10 h-fit sticky top-[4vh]">
-              <motion.div
-                initial={{ opacity: 0, filter: "blur(10px)" }}
-                animate={{ 
-                  opacity: [0, 1, 0, 1, 0.5, 1],
-                  filter: ["blur(10px)", "blur(0px)", "blur(5px)", "blur(0px)", "blur(0px)", "blur(0px)"]
-                }}
-                transition={{ duration: 0.8, ease: "easeInOut" }}
-              >
-                <motion.img
-                  src={cyber2}
-                  alt="Cyber 2"
-                  initial={{
-                    opacity: 0.9,
-                    x: 0,
-                    y: 0,
-                    scale: 1,
-                    filter: "drop-shadow(0px 0px 15px rgba(100,180,255,0.2))"
-                  }}
-                  animate={{
-                    opacity: [1, 0.7, 1, 0.8, 1],
-                    x: [0, -4, 4, -2, 0],
-                    y: [0, 2, -2, 1, 0],
-                    scale: [1, 1.01, 0.99, 1.01, 1],
-                    filter: [
-                      "drop-shadow(0px 0px 15px rgba(100,180,255,0.2))",
-                      "drop-shadow(5px 0px 0px rgba(255,0,80,0.8)) drop-shadow(-5px 0px 0px rgba(0,255,255,0.8)) drop-shadow(0px 0px 25px rgba(100,180,255,0.6))",
-                      "drop-shadow(-4px 3px 0px rgba(255,0,80,0.8)) drop-shadow(4px -3px 0px rgba(0,255,255,0.8)) drop-shadow(0px 0px 25px rgba(100,180,255,0.6))",
-                      "drop-shadow(2px -2px 0px rgba(255,0,80,0.5)) drop-shadow(-2px 2px 0px rgba(0,255,255,0.5)) drop-shadow(0px 0px 15px rgba(100,180,255,0.3))",
-                      "drop-shadow(0px 0px 15px rgba(100,180,255,0.2))"
-                    ]
-                  }}
-                  transition={{
-                    duration: 0.25,
-                    ease: "linear",
-                    repeat: Infinity,
-                    repeatDelay: 3,
-                  }}
-                  className="xl:w-[650px] lg:w-[350px] md:w-80 w-64 h-auto object-contain"
-                />
-              </motion.div>
-            </div>
-          </div>
-        </div>
-
-        {/* Animated Right Text Section */}
-        <div className="relative w-full lg:w-1/2 flex flex-col justify-start h-full z-20 lg:-ml-12 xl:-ml-24 lg:pl-10">
-          <div className="w-full flex flex-col justify-center relative top-[5vh] min-h-[450px] lg:mt-10">
-            <AnimatePresence mode="wait">
-            <motion.div
-              key={currentSlide}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="absolute inset-0 flex flex-col justify-center items-start text-left w-full h-full"
-            >
-              {slides[currentSlide].isTitleSlide ? (
-                <div className="flex flex-col justify-center items-start text-left w-full pl-0 lg:pl-8">
-                  <h1 className="font-feonie leading-[0.9] font-normal lg:leading-[1] tracking-tight mb-4 lg:mb-4 overflow-hidden">
-                    <AnimatedTypingText
-                      text={slides[currentSlide].title1}
-                      delay={0}
-                    />
-                    <AnimatedTypingText
-                      text={slides[currentSlide].title2}
-                      delay={0}
-                    />
-                    <AnimatedTypingText
-                      text={slides[currentSlide].title3}
-                      delay={0}
-                    />
-                  </h1>
-                  <BlockRevealSubtitle
-                    text={slides[currentSlide].subtitle}
-                    delay={2.0}
-                  />
-                </div>
-              ) : (
-                <motion.div
-                  initial={{ opacity: 0, x: 30, filter: "blur(10px)" }}
-                  animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-                  exit={{ opacity: 0, x: -30, filter: "blur(10px)" }}
-                  transition={{ duration: 0.8 }}
-                  className="flex flex-col w-full max-w-[550px] gap-4 lg:gap-5 lg:pl-6 bg-[#030303]/40 backdrop-blur-sm lg:backdrop-blur-none p-4 lg:p-0 rounded-xl lg:rounded-none"
-                >
-                  <h3 className="font-sans font-light tracking-[0.2em] text-[#a39171] text-[13px] tracking-[0em] font-extrabold uppercase">
-                    {slides[currentSlide].subheading?.split('').map((char, i) => (
-                      char === '_' ? (
-                        <motion.span
-                          key={i}
-                          animate={{ opacity: [1, 0, 1] }}
-                          transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
-                        >
-                          _
-                        </motion.span>
-                      ) : char
-                    ))}
-                  </h3>
-                  <h2 className="font-michroma text-white text-[18px] lg:text-[22px] leading-[1.3] lg:leading-[1.4] uppercase mb-1">
-                    {slides[currentSlide].heading}
-                  </h2>
-                  <div className="flex flex-col mb-4 lg:mb-2">
-                    {slides[currentSlide].paragraphs.map((p, idx) => (
-                      <p
-                        key={idx}
-                        className="font-sans text-[#d0d0d0] text-[14px] lg:text-[15px] font-normal leading-relaxed tracking-wide"
-                      >
-                        {p}
-                      </p>
-                    ))}
-                  </div>
-                  <div className="flex flex-wrap gap-4 mb-4 lg:mb-4">
-                    {slides[currentSlide].buttons.map((btn, idx) => (
-                      <button
-                        key={idx}
-                        className="border border-[#a39171] text-[#a39171] bg-transparent hover:bg-[#a39171] hover:text-[#030303] transition-colors duration-300 font-sans text-[13px] font-light tracking-[0.1em] px-6 py-3 uppercase"
-                      >
-                        {btn.text}
-                      </button>
-                    ))}
-                  </div>
-                  <button
-                    onClick={handleNext}
-                    className="text-[#a39171] font-sans font-light tracking-[0.2em] text-[13px] tracking-[0em]  hover:text-white transition-colors flex items-center w-fit uppercase"
-                  >
-                    NEXT&gt;&gt;
-                  </button>
-                </motion.div>
-              )}
-            </motion.div>
-          </AnimatePresence>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+const cyber1Variants = {
+  hidden: { opacity: 0, filter: "blur(10px)" },
+  visible: {
+    opacity: [0, 0.8, 0, 1, 0.3, 0.9, 0, 1],
+    filter: [
+      "blur(10px)", "blur(4px)", "blur(8px)", "blur(0px)",
+      "blur(3px)", "blur(1px)", "blur(2px)", "blur(0px)",
+    ],
+    transition: {
+      duration: 0.9,
+      ease: "easeOut",
+      times: [0, 0.15, 0.25, 0.45, 0.6, 0.75, 0.88, 1],
+    },
+  },
 };
 
-const SocialIcon = ({ icon }) => (
-  <a
-    href="#"
-    className="flex items-center justify-center transition-colors hover:text-white"
-  >
-    {icon}
+const cyber2Variants = {
+  hidden: { opacity: 0, filter: "blur(10px)" },
+  visible: {
+    opacity: [0, 0.7, 0, 1, 0.4, 0.85, 0, 1],
+    filter: [
+      "blur(10px)", "blur(5px)", "blur(9px)", "blur(0px)",
+      "blur(4px)", "blur(1px)", "blur(3px)", "blur(0px)",
+    ],
+    transition: {
+      duration: 0.85,
+      ease: "easeOut",
+      delay: 0.4,
+      times: [0, 0.12, 0.22, 0.45, 0.58, 0.72, 0.88, 1],
+    },
+  },
+};
+
+const cyber2GlitchAnimation = {
+  opacity: [1, 0.7, 1, 0.8, 1],
+  x: [0, -4, 4, -2, 0],
+  y: [0, 2, -2, 1, 0],
+  scale: [1, 1.01, 0.99, 1.01, 1],
+  filter: [
+    "drop-shadow(0px 0px 15px rgba(100,180,255,0.2))",
+    "drop-shadow(5px 0px 0px rgba(255,0,80,0.8)) drop-shadow(-5px 0px 0px rgba(0,255,255,0.8)) drop-shadow(0px 0px 25px rgba(100,180,255,0.6))",
+    "drop-shadow(-4px 3px 0px rgba(255,0,80,0.8)) drop-shadow(4px -3px 0px rgba(0,255,255,0.8)) drop-shadow(0px 0px 25px rgba(100,180,255,0.6))",
+    "drop-shadow(2px -2px 0px rgba(255,0,80,0.5)) drop-shadow(-2px 2px 0px rgba(0,255,255,0.5)) drop-shadow(0px 0px 15px rgba(100,180,255,0.3))",
+    "drop-shadow(0px 0px 15px rgba(100,180,255,0.2))",
+  ],
+};
+
+const cyber2GlitchTransition = {
+  duration: 0.25,
+  ease: "linear",
+  repeat: Infinity,
+  repeatDelay: 3,
+  delay: 1.25,
+};
+
+const textSectionVariants = {
+  hidden: { opacity: 0, x: -30, filter: "blur(8px)" },
+  visible: {
+    opacity: 1,
+    x: 0,
+    filter: "blur(0px)",
+    transition: { duration: 0.8, ease: "easeOut", delay: 1.25 },
+  },
+};
+
+const socialBarVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { duration: 0.6, delay: 2.2 },
+  },
+};
+
+const slideTransition = { duration: 0.8, ease: "easeOut" };
+
+const containerSlideVariants = {
+  initial: { opacity: 0, x: 30, filter: "blur(10px)" },
+  animate: { opacity: 1, x: 0, filter: "blur(0px)" },
+  exit:    { opacity: 0, x: -30, filter: "blur(10px)" },
+};
+
+// ─── Sub-components ──────────────────────────────────────────────────────────
+
+const SocialIcon = React.memo(({ Icon }) => (
+  <a href="#" className="flex items-center justify-center transition-colors hover:text-white">
+    <Icon size={22} />
   </a>
-);
+));
+SocialIcon.displayName = "SocialIcon";
 
-const AnimatedTypingText = ({ text, delay = 0 }) => {
+const BlinkingUnderscore = React.memo(() => (
+  <motion.span
+    animate={{ opacity: [1, 0, 1] }}
+    transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
+  >
+    _
+  </motion.span>
+));
+BlinkingUnderscore.displayName = "BlinkingUnderscore";
+
+// Scattered Random Typing Effect
+const RandomRevealText = React.memo(({ text, delay = 0 }) => {
   const letters = Array.from(text);
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        delayChildren: delay,
-        staggerChildren: 0.05,
-        staggerDirection: -1, // Staggers from right to left
-      },
-    },
-  };
-
-  const letterVariants = {
-    hidden: {
-      opacity: 0,
-      x: 20,
-      filter: "blur(5px)",
-    },
-    visible: {
-      opacity: 1,
-      x: 0,
-      filter: "blur(0px)",
-      transition: {
-        duration: 0.8,
-        ease: [0.16, 1, 0.3, 1],
-      },
-    },
-  };
+  
+  // Calculate a random delay for each letter to make them pop up randomly across all lines
+  const delays = useMemo(() => {
+    return letters.map(() => Math.random() * 1.5);
+  }, [letters]);
 
   return (
-    <motion.span
-      className="block text-[45px] min-[400px]:text-[52px] sm:text-[60px] md:text-[80px] lg:text-[90px] font-extralight text-white whitespace-nowrap overflow-visible py-1 pr-4"
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-    >
+    <span className="block text-[50px] min-[400px]:text-[58px] sm:text-[68px] md:text-[90px] lg:text-[105px] font-extralight text-white whitespace-nowrap overflow-visible py-1 pr-4">
       {letters.map((char, index) => (
         <motion.span
           key={index}
-          variants={letterVariants}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{
+            duration: 0.01, // instant pop like a typing effect
+            delay: delay + delays[index],
+          }}
           className="inline-block"
         >
           {char === " " ? "\u00A0" : char}
         </motion.span>
       ))}
-    </motion.span>
+    </span>
   );
-};
-const BlockRevealSubtitle = ({ text, delay = 0 }) => {
+});
+RandomRevealText.displayName = "RandomRevealText";
+
+// Colored band block reveal followed by fast typing from the left
+const BlockRevealTypingSubtitle = React.memo(({ text, delay = 0 }) => {
   const letters = Array.from(text);
 
   const blockVariants = {
@@ -330,19 +229,19 @@ const BlockRevealSubtitle = ({ text, delay = 0 }) => {
     visible: {
       opacity: 1,
       transition: {
-        delayChildren: delay + 0.4,
-        staggerChildren: 0.03, // faster typing for subtitle
+        delayChildren: delay + 0.4, // start typing exactly when block starts sweeping right
+        staggerChildren: 0.015, // fast typing speed to match sweep
       },
     },
   };
 
   const letterVariants = {
-    hidden: { opacity: 0, filter: "blur(5px)" },
-    visible: { opacity: 1, filter: "blur(0px)", transition: { duration: 0.3 } },
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0.9 } },
   };
 
   return (
-    <div className="relative w-fit mt-2">
+    <div className="relative w-fit mt-0">
       <motion.div
         className="absolute top-0 bottom-0 bg-[#a39171] z-10"
         variants={blockVariants}
@@ -350,51 +249,208 @@ const BlockRevealSubtitle = ({ text, delay = 0 }) => {
         animate="visible"
       />
       <motion.p
-        className="font-michroma text-[10px] md:text-[12px] lg:text-[13px] font-bold tracking-[0em] text-[#a39171] uppercase whitespace-nowrap m-0"
+        className="font-michroma text-[10px] md:text-[12px] lg:text-[13px] font-bold text-[#a39171] uppercase tracking-widest m-0 relative"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        {letters.map((char, index) => {
-          if (char === "I") {
-            return (
-              <motion.span
-                key={index}
-                variants={letterVariants}
-                className="inline-block"
-              >
-                <span className="tracking-[-0.15em] pr-[0.15em]">I</span>
-              </motion.span>
-            );
-          }
-          if (char === "_") {
-            return (
-              <motion.span
-                key={index}
-                variants={letterVariants}
-                className="inline-block"
-              >
-                <motion.span
-                  animate={{ opacity: [1, 0, 1] }}
-                  transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
-                >
-                  _
-                </motion.span>
-              </motion.span>
-            );
-          }
-          return (
-            <motion.span
-              key={index}
-              variants={letterVariants}
-              className="inline-block"
-            >
-              {char === " " ? "\u00A0" : char}
-            </motion.span>
-          );
-        })}
+        {letters.map((char, index) => (
+          <motion.span
+            key={index}
+            variants={letterVariants}
+            className="inline-block"
+          >
+            {char === " " ? "\u00A0" : char}
+          </motion.span>
+        ))}
       </motion.p>
     </div>
+  );
+});
+BlockRevealTypingSubtitle.displayName = "BlockRevealTypingSubtitle";
+
+const SubheadingText = React.memo(({ text }) => (
+  <h3 className="font-sans font-light tracking-[0.2em] text-[#a39171] text-[13px] uppercase">
+    {text.split("").map((char, i) =>
+      char === "_" ? <BlinkingUnderscore key={i} /> : char
+    )}
+  </h3>
+));
+SubheadingText.displayName = "SubheadingText";
+
+const SlideButtons = React.memo(({ buttons }) => (
+  <div className="flex flex-wrap gap-4 mb-4 lg:mb-4">
+    {buttons.map((btn, idx) => (
+      <button
+        key={idx}
+        className="border border-[#a39171] text-[#a39171] bg-transparent hover:bg-[#a39171] hover:text-[#030303] transition-colors duration-300 font-sans text-[13px] font-light tracking-[0.1em] px-6 py-3 uppercase"
+      >
+        {btn.text}
+      </button>
+    ))}
+  </div>
+));
+SlideButtons.displayName = "SlideButtons";
+
+// ─── Main Component ──────────────────────────────────────────────────────────
+
+const Hero = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [pageLoaded, setPageLoaded] = useState(false);
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
+  const timerRef = useRef(null);
+
+  useEffect(() => {
+    setPageLoaded(true);
+    const initialTimer = setTimeout(() => {
+      setIsInitialLoad(false);
+    }, 4000); // After initial load delay (1.75s) + animation (1.5s), we can safely set to false
+    return () => clearTimeout(initialTimer);
+  }, []);
+
+  const startTimer = useCallback(() => {
+    clearInterval(timerRef.current);
+    timerRef.current = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % SLIDES.length);
+    }, 5000);
+  }, []);
+
+  useEffect(() => {
+    startTimer();
+    return () => clearInterval(timerRef.current);
+  }, [startTimer]);
+
+  const handleNext = useCallback(() => {
+    setCurrentSlide((prev) => (prev + 1) % SLIDES.length);
+    startTimer();
+  }, [startTimer]);
+
+  const slide = SLIDES[currentSlide];
+
+  return (
+    <section
+      id="home"
+      className="relative w-full bg-[#030303] flex items-start justify-center min-h-[128vh] lg:min-h-0 lg:h-[110vh] overflow-hidden lg:overflow-visible"
+    >
+      {/* Social icons bar */}
+      <motion.div
+        variants={socialBarVariants}
+        initial="hidden"
+        animate={pageLoaded ? "visible" : "hidden"}
+        className="absolute top-70 -translate-y-1/2 right-6 z-50 hidden lg:flex flex-col gap-3 text-[#505050]"
+      >
+        {SOCIAL_ICONS.map((Icon, i) => (
+          <SocialIcon key={i} Icon={Icon} />
+        ))}
+      </motion.div>
+
+      <div className="absolute inset-0 mx-auto flex flex-col lg:flex-row w-full max-w-7xl items-stretch justify-center px-6 lg:px-12 gap-10 md:gap-12 lg:gap-0">
+
+        {/* Left Image Section */}
+        <div className="flex w-full lg:w-1/2 justify-center lg:justify-end items-stretch z-10 relative lg:-mr-[100px] xl:-mr-[100px]">
+          <div className="flex justify-center lg:justify-end items-start gap-0 lg:gap-4 w-full max-w-none h-full relative">
+
+            {/* cyber1 */}
+            <div className="z-20 h-fit mt-10">
+              <motion.img
+                src={cyber1}
+                alt="Cyber 1"
+                variants={cyber1Variants}
+                initial="hidden"
+                animate={pageLoaded ? "visible" : "hidden"}
+                className="xl:w-[600px] lg:w-[220px] md:w-56 w-64 h-auto object-contain drop-shadow-[0_0_15px_rgba(100,180,255,0.1)]"
+              />
+            </div>
+
+            {/* cyber2 */}
+            <div className="z-10 h-fit relative top-[4vh]">
+              <motion.div
+                variants={cyber2Variants}
+                initial="hidden"
+                animate={pageLoaded ? "visible" : "hidden"}
+              >
+                <motion.img
+                  src={cyber2}
+                  alt="Cyber 2"
+                  animate={cyber2GlitchAnimation}
+                  transition={cyber2GlitchTransition}
+                  className="xl:w-[600px] lg:w-[450px] md:w-80 w-64 h-auto object-contain"
+                />
+              </motion.div>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Text Section */}
+        <motion.div
+          variants={textSectionVariants}
+          initial="hidden"
+          animate={pageLoaded ? "visible" : "hidden"}
+          className="relative w-full lg:w-1/2 flex flex-col justify-start h-full z-20 lg:-ml-12 xl:-ml-24 lg:pl-10"
+        >
+          <div className="w-full flex flex-col justify-center relative top-[5vh] min-h-[450px] lg:mt-10">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentSlide}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={slideTransition}
+                className="absolute inset-0 flex flex-col justify-center items-start text-left w-full h-full"
+              >
+                {slide.isTitleSlide ? (
+                  <div className="flex flex-col justify-center items-start text-left w-full pl-0 lg:pl-8">
+                    <h1 className="font-feonie leading-[0.9] font-normal lg:leading-[1] tracking-tight overflow-hidden">
+                      {/* Scattered Random Typing Effect */}
+                      <RandomRevealText text={slide.title1} delay={isInitialLoad ? 1.25 : 0} />
+                      <RandomRevealText text={slide.title2} delay={isInitialLoad ? 1.25 : 0} />
+                      <RandomRevealText text={slide.title3} delay={isInitialLoad ? 1.25 : 0} />
+                    </h1>
+                    {/* Colored Band Block Reveal with Fast Typing Subtitle */}
+                    <BlockRevealTypingSubtitle text={slide.subtitle} delay={isInitialLoad ? 1.5 + 1.25 : 1.5} />
+                  </div>
+                ) : (
+                  <motion.div
+                    variants={containerSlideVariants}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                    transition={slideTransition}
+                    className="flex flex-col w-full max-w-[550px] gap-4 lg:gap-5 lg:pl-6 bg-[#030303]/40 backdrop-blur-sm lg:backdrop-blur-none p-4 lg:p-0 rounded-xl lg:rounded-none"
+                  >
+                    <SubheadingText text={slide.subheading} />
+
+                    <h2 className="font-michroma text-white text-[18px] lg:text-[22px] leading-[1.3] lg:leading-[1.4] uppercase mb-1">
+                      {slide.heading}
+                    </h2>
+
+                    <div className="flex flex-col mb-4 lg:mb-2">
+                      {slide.paragraphs.map((p, idx) => (
+                        <p
+                          key={idx}
+                          className="font-sans text-[#d0d0d0] text-[14px] lg:text-[15px] font-normal leading-relaxed tracking-wide"
+                        >
+                          {p}
+                        </p>
+                      ))}
+                    </div>
+
+                    <SlideButtons buttons={slide.buttons} />
+
+                    <button
+                      onClick={handleNext}
+                      className="text-[#a39171] font-sans font-light tracking-[0.2em] text-[13px] hover:text-white transition-colors flex items-center w-fit uppercase"
+                    >
+                      NEXT&gt;&gt;
+                    </button>
+                  </motion.div>
+                )}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </motion.div>
+      </div>
+    </section>
   );
 };
 

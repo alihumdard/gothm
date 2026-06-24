@@ -1,12 +1,12 @@
 import React, { useMemo, useRef, useEffect } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
 
-import gameimg1 from "../../assets/images/games-img (6).png";
-import gameimg2 from "../../assets/images/games-img (5).png";
-import gameimg3 from "../../assets/images/games-img (4).png";
-import gameimg4 from "../../assets/images/games-img (3).png";
-import gameimg5 from "../../assets/images/games-img (2).png";
-import gameimg6 from "../../assets/images/games-img (1).png";
+import episode1 from "../../assets/images/episode1.png";
+import episode2 from "../../assets/images/episode2.png";
+import episode3 from "../../assets/images/episode3.png";
+import blog1 from "../../assets/images/blog1.png";
+import blog2 from "../../assets/images/blog2.png";
+import blog3 from "../../assets/images/blog3.png";
 
 /* ---------------- TEXT ANIMATIONS ---------------- */
 
@@ -111,7 +111,7 @@ const BlockRevealText = ({
 
 /* ---------------- IMAGE COMPONENT (BLINK + STAGGER) ---------------- */
 
-const ImageReveal = ({ image, alt, delay, sectionInView }) => {
+const ImageReveal = ({ image, alt, delay, sectionInView, number }) => {
   const controls = useAnimation();
   const ref = useRef(null);
 
@@ -163,6 +163,13 @@ const ImageReveal = ({ image, alt, delay, sectionInView }) => {
         className="w-full h-full object-cover"
       />
 
+      {/* Number Overlay */}
+      {number && (
+        <span className="absolute bottom-1 left-3 font-cinzel text-[50px] lg:text-[60px] font-normal text-[#a39171]/80 leading-none pointer-events-none drop-shadow-lg mix-blend-plus-lighter">
+          {number}
+        </span>
+      )}
+
       <motion.div
         className="absolute bottom-0 left-0 h-[22%] w-full bg-[#a39171]"
         initial={{ x: "0%" }}
@@ -184,7 +191,7 @@ const episodes = [
     subtitle:
       "How Far Does The Rabbit Hole Go? A Doctor In Politics Breaks Down Every Layer.",
     linkText: "COMING SOON ->",
-    image: gameimg1,
+    image: episode1,
   },
   {
     id: "02",
@@ -192,7 +199,7 @@ const episodes = [
     title: "WHEN YOUR BOSS IS HOMELANDER",
     subtitle: "The Side Effects of Private Tyranny.",
     linkText: "COMING SOON ->",
-    image: gameimg2,
+    image: episode2,
   },
   {
     id: "03",
@@ -201,7 +208,7 @@ const episodes = [
     subtitle:
       "An Interior Designer Dissects How Your Environment Controls Your Mind.",
     linkText: "COMING SOON ->",
-    image: gameimg3,
+    image: episode3,
   },
 ];
 
@@ -212,35 +219,38 @@ const blogs = [
     title: "NOW WE CAN SEE FACE TO FACE",
     subtitle:
       "1996 Was a Dim Image in the Mirror. In 2026 We Can See Face to Face.",
-    image: gameimg4,
+    image: blog1,
   },
   {
     id: "02",
     eyebrow: "FIGHT CLUB_",
     title: "SELF IMPROVEMENT IS MASTURBATION.",
     subtitle: "A self improvement thought experiment.",
-    image: gameimg5,
+    image: blog2,
   },
   {
     id: "03",
     eyebrow: "JOKER V FOR VENDETTA_",
     title: "MASKS OF RESISTANCE",
     subtitle: "When you're playing chess with a mask on.",
-    image: gameimg6,
+    image: blog3,
   },
 ];
 
 /* ---------------- SECTION ---------------- */
 
 const Section3 = () => {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const episodesRef = useRef(null);
+  const episodesInView = useInView(episodesRef, { once: true, margin: "-100px" });
+
+  const blogRef = useRef(null);
+  const blogInView = useInView(blogRef, { once: true, margin: "-100px" });
 
   return (
-    <section ref={ref} className="w-full bg-black xl:py-16 py-6 text-white">
+    <section className="w-full bg-black xl:py-16 py-6 text-white">
       <div className="mx-auto max-w-7xl flex flex-col gap-16 px-6">
         {/* EPISODES */}
-        <div id="episodes">
+        <div id="episodes" ref={episodesRef}>
           <BlockRevealText
             text="COMING SOON_"
             textClassName="text-[#a39171] text-[13px] font-light font-sans tracking-[0.1em]"
@@ -263,7 +273,8 @@ const Section3 = () => {
                   image={item.image}
                   alt={item.title}
                   delay={index * 200}
-                  sectionInView={inView}
+                  sectionInView={episodesInView}
+                  number={item.id}
                 />
 
                 {/* 🔥 ORIGINAL TEXT (KEPT SAME) */}
@@ -289,7 +300,7 @@ const Section3 = () => {
         </div>
 
         {/* BLOGS */}
-        <div id="blog">
+        <div id="blog" ref={blogRef}>
           <BlockRevealText
             text="GOTHM BLOG_"
             textClassName="text-[#a39171] text-[13px] font-light font-sans tracking-[0.1em]"
@@ -312,7 +323,8 @@ const Section3 = () => {
                   image={item.image}
                   alt={item.title}
                   delay={(index + 3) * 200}
-                  sectionInView={inView}
+                  sectionInView={blogInView}
+                    number={item.id}
                 />
 
                 {/* 🔥 ORIGINAL TEXT (KEPT SAME) */}

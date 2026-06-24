@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import logoImage from "../assets/images/logo.png";
+import symbolImage from "../assets/images/gothm_symbol.png";
+import textImage from "../assets/images/gothm_text.png";
+import taglineImage from "../assets/images/gothm_tagline.png";
 
 export default function Footer() {
   return (
@@ -23,12 +25,26 @@ export default function Footer() {
         {/* ================= LEFT SECTION (Logo & Tagline) ================= */}
         <div className="flex flex-col items-start">
           {/* Logo Section */}
-          <div className="flex items-center gap-4 cursor-pointer hover:opacity-80 transition-opacity">
+          <div className="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity">
+            {/* Symbol */}
             <img
-              src={logoImage}
-              alt="GOTHM Logo"
+              src={symbolImage}
+              alt="GOTHM Symbol"
               className="h-[40px] w-auto object-contain"
             />
+            {/* Text & Tagline */}
+            <div className="flex flex-col justify-center gap-1 mt-1">
+              <img
+                src={textImage}
+                alt="GOTHM Text"
+                className="h-[18px] w-auto object-contain"
+              />
+              <img
+                src={taglineImage}
+                alt="GOTHM Tagline"
+                className="h-[8px] w-[162px] object-contain object-left"
+              />
+            </div>
           </div>
 
           {/* Tagline */}
