@@ -144,19 +144,22 @@ const Section4 = () => {
   useEffect(() => {
     if (!inView) return;
 
+    let cancelled = false;
+
     const runEntranceAndGlitch = async () => {
       await imgControls.start({ opacity: 1 });
+
+      if (cancelled) return;
 
       const syncDelay = 3000 - (Date.now() % 3000);
       await new Promise((r) => setTimeout(r, syncDelay));
 
-      while (true) {
+      while (!cancelled) {
         await imgControls.start({
           opacity: [1, 0.4, 1, 0.7, 1],
           x: [0, -5, 5, -2, 0],
           y: [0, 3, -3, 1, 0],
           scale: [1, 1.03, 0.97, 1.01, 1],
-          // No blur, just contrast changes to simulate fade/glitch
           filter: [
             "contrast(1)",
             "contrast(1.5)",
@@ -166,11 +169,14 @@ const Section4 = () => {
           ],
           transition: { duration: 0.35, ease: "linear" },
         });
+        if (cancelled) break;
         await new Promise((r) => setTimeout(r, 2650));
       }
     };
 
     runEntranceAndGlitch();
+
+    return () => { cancelled = true; };
   }, [inView, imgControls]);
 
   return (

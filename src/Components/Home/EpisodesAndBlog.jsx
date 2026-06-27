@@ -118,20 +118,21 @@ const ImageReveal = ({ image, alt, delay, sectionInView, number }) => {
   useEffect(() => {
     if (!sectionInView) return;
 
+    let cancelled = false;
+
     const runEntranceAndGlitch = async () => {
-      // Synced Entrance Blink (No delay, all together)
       await controls.start({
         opacity: [0, 1, 0, 1, 0.5, 1],
         filter: ["blur(10px)", "blur(0px)", "blur(5px)", "blur(0px)", "blur(0px)", "blur(0px)"],
         transition: { duration: 0.6, ease: "easeInOut" }
       });
 
-      // Synced Infinite Glitch Loop (happens every 3 seconds)
-      // We calculate time so all images hit the glitch loop at the exact same modulo time
+      if (cancelled) return;
+
       const syncDelay = 3000 - (Date.now() % 3000);
       await new Promise((r) => setTimeout(r, syncDelay));
 
-      while (true) {
+      while (!cancelled) {
         await controls.start({
           opacity: [1, 0.4, 1, 0.7, 1],
           x: [0, -5, 5, -2, 0],
@@ -146,11 +147,14 @@ const ImageReveal = ({ image, alt, delay, sectionInView, number }) => {
           ],
           transition: { duration: 0.35, ease: "linear" }
         });
-        await new Promise((r) => setTimeout(r, 2650)); // Wait for next loop
+        if (cancelled) break;
+        await new Promise((r) => setTimeout(r, 2650));
       }
     };
 
     runEntranceAndGlitch();
+
+    return () => { cancelled = true; };
   }, [sectionInView, delay, controls]);
 
   return (

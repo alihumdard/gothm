@@ -1,18 +1,22 @@
-import React from "react";
+import React, { Suspense } from "react";
+
 import Hero from "./Hero";
-import WhatIsGothm from "./WhatIsGothm";
-import EpisodesAndBlog from "./EpisodesAndBlog";
-import AboutHost from "./AboutHost";
-import GhostMailContact from "./GhostMailContact";
+
+const WhatIsGothm = React.lazy(() => import("./WhatIsGothm"));
+const EpisodesAndBlog = React.lazy(() => import("./EpisodesAndBlog"));
+const AboutHost = React.lazy(() => import("./AboutHost"));
+const GhostMailContact = React.lazy(() => import("./GhostMailContact"));
 
 const LandingH = () => {
   return (
     <>
       <Hero />
-      <WhatIsGothm />
-      <EpisodesAndBlog />
-      <AboutHost />
-      <GhostMailContact />
+      <Suspense fallback={null}>
+        <WhatIsGothm />
+        <EpisodesAndBlog />
+        <AboutHost />
+        <GhostMailContact />
+      </Suspense>
     </>
   );
 };
