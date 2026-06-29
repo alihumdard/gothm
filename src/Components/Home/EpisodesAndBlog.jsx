@@ -65,7 +65,7 @@ const BlockRevealText = ({
           hidden: { x: "0%" },
           visible: {
             x: "100%",
-            transition: { duration: 0.8, delay },
+            transition: { duration: 0.3, delay },
           },
         }}
       />
@@ -122,7 +122,7 @@ const ImageReveal = ({ image, alt, delay, sectionInView, number }) => {
 
     const runEntranceAndGlitch = async () => {
       await controls.start({
-        opacity: [0, 1, 0, 1, 0.5, 1],
+        opacity: [0, 0.8, 0, 0.8, 0.4, 0.8],
         filter: ["blur(10px)", "blur(0px)", "blur(5px)", "blur(0px)", "blur(0px)", "blur(0px)"],
         transition: { duration: 0.6, ease: "easeInOut" }
       });
@@ -134,16 +134,16 @@ const ImageReveal = ({ image, alt, delay, sectionInView, number }) => {
 
       while (!cancelled) {
         await controls.start({
-          opacity: [1, 0.4, 1, 0.7, 1],
-          x: [0, -5, 5, -2, 0],
-          y: [0, 3, -3, 1, 0],
-          scale: [1, 1.03, 0.97, 1.01, 1],
+          opacity: [0.8, 0.4, 0.8, 0.6, 0.8],
+          x: [0, 0, 0, 0, 0],
+          y: [0, 0, 0, 0, 0],
+          scale: [1, 1, 1, 1, 1],
           filter: [
-            "blur(0px) contrast(1)",
-            "blur(3px) contrast(1.5)",
-            "blur(2px) contrast(2)",
-            "blur(1px) contrast(1.2)",
-            "blur(0px) contrast(1)"
+            "brightness(1) drop-shadow(0 0 0px rgba(163,145,113,0))",
+            "brightness(1.5) drop-shadow(0 0 15px rgba(163,145,113,0.6))",
+            "brightness(1) drop-shadow(0 0 0px rgba(163,145,113,0))",
+            "brightness(1.2) drop-shadow(0 0 8px rgba(163,145,113,0.3))",
+            "brightness(1) drop-shadow(0 0 0px rgba(163,145,113,0))"
           ],
           transition: { duration: 0.35, ease: "linear" }
         });
@@ -178,7 +178,7 @@ const ImageReveal = ({ image, alt, delay, sectionInView, number }) => {
         className="absolute bottom-0 left-0 h-[22%] w-full bg-[#a39171]"
         initial={{ x: "0%" }}
         whileInView={{ x: "100%" }}
-        transition={{ duration: 0.8, ease: "easeInOut" }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
         viewport={{ once: true }}
       />
     </div>
@@ -270,7 +270,7 @@ const Section3 = () => {
                 key={item.id}
                 className="group"
                 initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 0.8, y: 0 }}
                 transition={{ duration: 0.6 }}
               >
                 <ImageReveal
@@ -320,7 +320,7 @@ const Section3 = () => {
                 key={item.id}
                 className="group"
                 initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 0.8, y: 0 }}
                 transition={{ duration: 0.6 }}
               >
                 <ImageReveal

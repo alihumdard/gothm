@@ -132,12 +132,12 @@ const cyber2GlitchTransition = {
 };
 
 const textSectionVariants = {
-  hidden: { opacity: 0, x: -30, filter: "blur(8px)" },
+  hidden: { opacity: 0, x: -50, filter: "blur(8px)" },
   visible: {
     opacity: 1,
     x: 0,
     filter: "blur(0px)",
-    transition: { duration: 0.8, ease: "easeOut", delay: 1.25 },
+    transition: { duration: 2, ease: "easeOut", delay: 0.5 },
   },
 };
 
@@ -193,7 +193,7 @@ const RandomRevealText = React.memo(({ text, delay = 0 }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{
-            duration: 0.01, // instant pop like a typing effect
+            duration: 2, // instant pop like a typing effect
             delay: delay + delays[index],
           }}
           className="inline-block"
@@ -216,10 +216,10 @@ const BlockRevealTypingSubtitle = React.memo(({ text, delay = 0 }) => {
       left: ["0%", "0%", "100%"],
       right: ["100%", "0%", "0%"],
       transition: {
-        duration: 0.8,
+        duration: 0.3,
         ease: "easeInOut",
         delay: delay,
-        times: [0, 0.5, 1],
+        times: [0, 0.1, 0.5],
       },
     },
   };
@@ -229,7 +229,7 @@ const BlockRevealTypingSubtitle = React.memo(({ text, delay = 0 }) => {
     visible: {
       opacity: 1,
       transition: {
-        delayChildren: delay + 0.4, // start typing exactly when block starts sweeping right
+        delayChildren: delay + 0.1, // start typing exactly when block starts sweeping right
         staggerChildren: 0.015, // fast typing speed to match sweep
       },
     },
@@ -348,7 +348,7 @@ const Hero = () => {
 
         {/* Left Image Section */}
         <div className="flex w-full lg:w-1/2 justify-center lg:justify-end items-stretch z-10 relative lg:-mr-[100px] xl:-mr-[100px]">
-          <div className="flex justify-center lg:justify-end items-start gap-0 lg:gap-4 w-full max-w-none h-full relative">
+          <div className="flex justify-center lg:justify-end items-start gap-0 lg:gap-0 w-full max-w-none h-full relative">
 
             {/* cyber1 */}
             <div className="z-20 h-fit mt-10">
@@ -358,12 +358,12 @@ const Hero = () => {
                 variants={cyber1Variants}
                 initial="hidden"
                 animate={pageLoaded ? "visible" : "hidden"}
-                className="xl:w-[600px] lg:w-[220px] md:w-56 w-64 h-auto object-contain drop-shadow-[0_0_15px_rgba(100,180,255,0.1)]"
+                className="xl:w-[600px] lg:w-[220px] md:w-56 w-48 h-auto object-contain drop-shadow-[0_0_15px_rgba(100,180,255,0.1)]"
               />
             </div>
 
             {/* cyber2 */}
-            <div className="z-10 h-fit relative top-[4vh]">
+            <div className="z-10 h-fit sticky top-[4.5vh]">
               <motion.div
                 variants={cyber2Variants}
                 initial="hidden"
@@ -402,9 +402,9 @@ const Hero = () => {
                   <div className="flex flex-col justify-center items-start text-left w-full pl-0 lg:pl-8">
                     <h1 className="font-feonie leading-[0.9] font-normal lg:leading-[1] tracking-tight overflow-hidden">
                       {/* Scattered Random Typing Effect */}
-                      <RandomRevealText text={slide.title1} delay={isInitialLoad ? 1.25 : 0} />
+                      <RandomRevealText text={slide.title1} delay={isInitialLoad ? 1.5 : 0} />
                       <RandomRevealText text={slide.title2} delay={isInitialLoad ? 1.25 : 0} />
-                      <RandomRevealText text={slide.title3} delay={isInitialLoad ? 1.25 : 0} />
+                      <RandomRevealText text={slide.title3} delay={isInitialLoad ? 1.5 : 0} />
                     </h1>
                     {/* Colored Band Block Reveal with Fast Typing Subtitle */}
                     <BlockRevealTypingSubtitle text={slide.subtitle} delay={isInitialLoad ? 1.5 + 1.25 : 1.5} />

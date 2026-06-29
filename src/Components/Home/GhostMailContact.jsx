@@ -200,11 +200,11 @@ const BlockRevealText = ({
   return (
     <div className={`relative w-fit ${className}`}>
       <motion.div
-        className="absolute inset-0 bg-[#a39171] z-10"
-        initial={{ x: "0%" }}
-        whileInView={{ x: "100%" }}
+        className="absolute top-0 bottom-0 bg-[#a39171] z-10"
+        initial={{ left: "0%", right: "100%" }}
+        whileInView={{ left: ["0%", "0%", "100%"], right: ["100%", "0%", "0%"] }}
         viewport={{ once: true }}
-        transition={{ duration: 0.8, delay }}
+        transition={{ duration: 0.3, delay }}
       />
 
       <motion.p

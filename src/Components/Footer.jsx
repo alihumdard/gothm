@@ -255,7 +255,7 @@ const BlockRevealText = ({
       left: ["0%", "0%", "100%"],
       right: ["100%", "0%", "0%"],
       transition: {
-        duration: 0.8,
+        duration: 0.3,
         ease: "easeInOut",
         delay: delay,
         times: [0, 0.5, 1],
@@ -268,8 +268,8 @@ const BlockRevealText = ({
     visible: {
       opacity: 1,
       transition: {
-        delayChildren: delay + 0.4,
-        staggerChildren: 0.03,
+        delayChildren: delay + 0.15,
+        staggerChildren: 0.015,
       },
     },
   };

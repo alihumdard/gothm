@@ -8,7 +8,7 @@ const Section2 = () => {
       id="what-is-gothm"
       className="relative w-full overflow-hidden bg-[#000000] xl:py-16 py-6  text-white"
     >
-      <div className="mx-auto flex max-w-5xl flex-col lg:flex-row px-6">
+      <div className="mx-auto flex max-w-5xl flex-col lg:flex-row px-5">
         {/* LEFT SIDE: Content Section */}
         <motion.div
           initial="hidden"
@@ -48,7 +48,7 @@ const Section2 = () => {
             </p>
 
             <BlockRevealText
-              text="SAFEHOUSED AND DISTRIBUTED. MARKET AND COMMODIFIED."
+              text="SAFEHOUSED AND DISTRIBUTED. MARKETED AND COMMODIFIED."
               textClassName="font-michroma text-[12px] md:text-[12px] lg:text-[12px] font-bold tracking-[0em] text-[#a39171] uppercase"
               className="block"
               delay={0.8}
@@ -98,7 +98,7 @@ const Section2 = () => {
 
           <div className="mt-4 mb-4">
             <BlockRevealText
-              text="SAFEHOUSED AND DISTRIBUTED. MARKET AND COMMODIFIED."
+              text="SAFEHOUSED AND DISTRIBUTED. MARKETED AND COMMODIFIED."
               textClassName="font-michroma text-[12px] md:text-[12px] lg:text-[12px] font-bold tracking-[0em] text-[#a39171] uppercase"
               className="block"
               delay={0.8}
@@ -277,7 +277,7 @@ const BlockRevealText = ({
       left: ["0%", "0%", "100%"],
       right: ["100%", "0%", "0%"],
       transition: {
-        duration: 0.8,
+        duration: 0.3,
         ease: "easeInOut",
         delay: delay,
         times: [0, 0.5, 1],
@@ -290,8 +290,8 @@ const BlockRevealText = ({
     visible: {
       opacity: 1,
       transition: {
-        delayChildren: delay + 0.4,
-        staggerChildren: 0.03,
+        delayChildren: delay + 0.15,
+        staggerChildren: 0.015,
       },
     },
   };

@@ -16,7 +16,7 @@ const TypingText = ({ text = "", delay = 0, className = "" }) => {
         visible: {
           transition: {
             delayChildren: delay,
-            staggerChildren: 0.08,
+            staggerChildren: 0,
           },
         },
       }}
@@ -55,10 +55,10 @@ const BlockRevealText = ({
     <div className={`relative w-fit overflow-hidden ${className}`}>
       {/* sliding block */}
       <motion.div
-        className="absolute inset-0 bg-[#a39171] z-10"
-        initial={{ x: "0%" }}
-        whileInView={{ x: "100%" }}
-        transition={{ duration: 0.8, delay }}
+        className="absolute top-0 bottom-0 bg-[#a39171] z-10"
+        initial={{ left: "0%", right: "100%" }}
+        whileInView={{ left: ["0%", "0%", "100%"], right: ["100%", "0%", "0%"] }}
+        transition={{ duration: 0.3, delay, ease: "easeInOut" }}
         viewport={{ once: true }}
       />
 
@@ -70,8 +70,8 @@ const BlockRevealText = ({
         variants={{
           visible: {
             transition: {
-              delayChildren: delay + 0.2,
-              staggerChildren: 0.03,
+              delayChildren: delay + 0.15,
+              staggerChildren: 0.015,
             },
           },
         }}
@@ -147,7 +147,7 @@ const Section4 = () => {
     let cancelled = false;
 
     const runEntranceAndGlitch = async () => {
-      await imgControls.start({ opacity: 1 });
+      await imgControls.start({ opacity: 0.5 });
 
       if (cancelled) return;
 
@@ -156,16 +156,16 @@ const Section4 = () => {
 
       while (!cancelled) {
         await imgControls.start({
-          opacity: [1, 0.4, 1, 0.7, 1],
-          x: [0, -5, 5, -2, 0],
-          y: [0, 3, -3, 1, 0],
-          scale: [1, 1.03, 0.97, 1.01, 1],
+          opacity: [0.5, 0.3, 0.5, 0.4, 0.5],
+          x: [0, 0, 0, 0, 0],
+          y: [0, 0, 0, 0, 0],
+          scale: [1, 1, 1, 1, 1],
           filter: [
-            "contrast(1)",
-            "contrast(1.5)",
-            "contrast(2)",
-            "contrast(1.2)",
-            "contrast(1)",
+            "brightness(1) drop-shadow(0 0 0px rgba(163,145,113,0))",
+            "brightness(1.5) drop-shadow(0 0 15px rgba(163,145,113,0.6))",
+            "brightness(1) drop-shadow(0 0 0px rgba(163,145,113,0))",
+            "brightness(1.2) drop-shadow(0 0 8px rgba(163,145,113,0.3))",
+            "brightness(1) drop-shadow(0 0 0px rgba(163,145,113,0))"
           ],
           transition: { duration: 0.35, ease: "linear" },
         });
@@ -199,7 +199,7 @@ const Section4 = () => {
               alt="Julian"
               initial={{ opacity: 0 }}
               animate={imgControls}
-              className="w-full h-[500px] object-cover opacity-90 brightness-90"
+              className="w-full h-[500px] object-cover opacity-[0.5] brightness-90"
             />
           </div>
 
@@ -237,7 +237,7 @@ const Section4 = () => {
           <BlockRevealText
             text="SOME OF THE THINGS WE WATCH ARE THE SUM OF THE THINGS WE ARE."
             className="mt-4"
-            textClassName="font-michroma text-[11.5px] md:text-[12px] lg:text-[12px] font-bold tracking-[0em] text-[#a39171] uppercase"
+            textClassName="font-michroma text-[11.5px] md:text-[12px] lg:text-[13px] font-bold tracking-[0em] text-[#a39171] uppercase"
             delay={1}
             glitchI={true}
           />
@@ -265,7 +265,7 @@ const Section4 = () => {
           <BlockRevealText
             text="SOME OF THE TRUTH WE CAN'T SAY IN PLAIN LANGUAGE, CAN BE A SUM OF THE TRUTH IN A NARRATIVE."
             className="mt-4"
-            textClassName="font-michroma text-[12px] md:text-[12px] lg:text-[12px] font-bold tracking-[0em] text-[#a39171] uppercase"
+            textClassName="font-michroma text-[12px] md:text-[12px] lg:text-[13px] font-bold tracking-[0em] text-[#a39171] uppercase"
             delay={1.2}
             glitchI={true}
           />
