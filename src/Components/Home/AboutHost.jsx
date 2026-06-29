@@ -4,45 +4,36 @@ import hostImage from "../../assets/images/anchor.jpeg";
 
 /* ---------------- Typing Text ---------------- */
 const TypingText = ({ text = "", delay = 0, className = "" }) => {
-  const words = text.split(" ");
+  const letters = Array.from(text);
 
   return (
     <motion.span
-      className={`inline-flex flex-wrap ${className}`}
+      className={className}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
       variants={{
+        hidden: { opacity: 1 },
         visible: {
+          opacity: 1,
           transition: {
             delayChildren: delay,
-            staggerChildren: 0,
+            staggerChildren: 0.003, // Fast typing speed
           },
         },
       }}
     >
-      {words.map((word, wordIndex) => (
-        <span key={wordIndex} className="inline-flex whitespace-nowrap">
-          {Array.from(word).map((char, i) => (
-            <motion.span
-              key={i}
-              variants={{
-                hidden: { opacity: 0, filter: "blur(10px)" },
-                visible: {
-                  opacity: 1,
-                  filter: "blur(0px)",
-                  transition: { duration: 0.4 },
-                },
-              }}
-              className="inline-block"
-            >
-              {char}
-            </motion.span>
-          ))}
-          {wordIndex !== words.length - 1 && (
-            <span className="inline-block">&nbsp;</span>
-          )}
-        </span>
+      {letters.map((char, i) => (
+        <motion.span
+          key={i}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: { opacity: 1, transition: { duration: 0.01 } },
+          }}
+          className="inline-block"
+        >
+          {char === " " ? "\u00A0" : char}
+        </motion.span>
       ))}
     </motion.span>
   );

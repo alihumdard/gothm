@@ -32,47 +32,34 @@ const Section2 = () => {
           />
 
           <h2 className="mb-2 font-michroma xl:text-[20px] text-md font-bold leading-[1.4] tracking-wide text-white">
-            <TypingText text="THE NARRATIVE IS THE MACHINE." delay={0.8} />
+            <TypingText text="THE NARRATIVE IS THE MACHINE." delay={1.2} />
             <br />
-            <TypingText text="THE GHOST IS THE MESSAGE WITHIN." delay={2.1} />
+            <TypingText text="THE GHOST IS THE MESSAGE WITHIN." delay={1.3} />
           </h2>
 
           <div className="space-y-3 font-sans text-[15px] leading-[1.2] font-bold text-[#d4d4d4]">
             <p>
-              Hosted safely inside a story, a message that you could never say
-              out loud can be safehoused, and distributed to billions of people.
-              A memo that would be sent straight to spam for conspiracy. A truth
-              that would be rejected for wearing a plain name tag, would instead
-              be accepted with open arms by our fellow society members. And
-              embraced with open wallets by the companies in big media.
+              Hosted safely inside a story, a message that you could never say out loud can be safehoused, and distributed to billions of people. A memo that would be sent straight to spam for conspiracy. A truth that would be rejected for wearing a plain name tag, would instead be accepted with open arms by our fellow society members. And embraced with open wallets by the companies in big media.
             </p>
 
             <BlockRevealText
               text="SAFEHOUSED AND DISTRIBUTED. MARKETED AND COMMODIFIED."
               textClassName="font-michroma text-[12px] md:text-[12px] lg:text-[12px] font-bold tracking-[0em] text-[#a39171] uppercase"
               className="block"
-              delay={0.8}
+              delay={2.6}
               glitchI={true}
             />
 
             <p>
-              In a world where they'd hide the stories of truth. We'd just hide
-              the truth in the world of a story.
+              In a world where they'd hide the stories of truth. We'd just hide the truth in the world of a story.
             </p>
 
             <p>
-              GOTHM is the mouthpiece for those buried messages. A refuge for
-              those who know there's more depth there than there is media. A
-              stage for the questions that survived under the guise of
-              entertainment. For the warnings that arrived dressed as narrative.
-              The unshadowing of the overshadowed. A voice for the Ghost of the
-              Machine.
+              GOTHM is the mouthpiece for those buried messages. A refuge for those who know there's more depth there than there is media. A stage for the questions that survived under the guise of entertainment. For the warnings that arrived dressed as narrative. The unshadowing of the overshadowed. A voice for the Ghost of the Machine.
             </p>
 
             <p>
-              Welcome to the window behind the fourth wall, where we stare
-              through the lens of the media. Excavating deeper truths about
-              ourselves, our world, our culture.
+              Welcome to the window behind the fourth wall, where we stare through the lens of the media. Excavating deeper truths about ourselves, our world, our culture.
             </p>
           </div>
 
@@ -101,7 +88,7 @@ const Section2 = () => {
               text="SAFEHOUSED AND DISTRIBUTED. MARKETED AND COMMODIFIED."
               textClassName="font-michroma text-[12px] md:text-[12px] lg:text-[12px] font-bold tracking-[0em] text-[#a39171] uppercase"
               className="block"
-              delay={0.8}
+              delay={5.0}
               glitchI={true}
             />
           </div>
@@ -229,41 +216,28 @@ const Section2 = () => {
 };
 
 const TypingText = ({ text, delay = 0, className = "" }) => {
-  const words = text.split(" ");
-
   const containerVariants = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: 1 },
     visible: {
       opacity: 1,
       transition: {
         delayChildren: delay,
-        staggerChildren: 0.08,
+        staggerChildren: 0.003, // fast typing speed
       },
     },
   };
 
   const letterVariants = {
-    hidden: { opacity: 0, filter: "blur(10px)" },
-    visible: { opacity: 1, filter: "blur(0px)", transition: { duration: 0.4 } },
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0.01 } },
   };
 
   return (
-    <motion.span className={`inline-flex flex-wrap ${className}`} variants={containerVariants}>
-      {words.map((word, wordIndex) => (
-        <span key={wordIndex} className="inline-flex whitespace-nowrap">
-          {Array.from(word).map((char, index) => (
-            <motion.span
-              key={index}
-              variants={letterVariants}
-              className="inline-block"
-            >
-              {char}
-            </motion.span>
-          ))}
-          {wordIndex !== words.length - 1 && (
-            <span className="inline-block">&nbsp;</span>
-          )}
-        </span>
+    <motion.span className={className} variants={containerVariants}>
+      {Array.from(text).map((char, index) => (
+        <motion.span key={index} variants={letterVariants}>
+          {char}
+        </motion.span>
       ))}
     </motion.span>
   );

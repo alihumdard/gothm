@@ -157,7 +157,36 @@ const containerSlideVariants = {
   exit:    { opacity: 0, x: -30, filter: "blur(10px)" },
 };
 
+const typingContainerVariants = {
+  initial: { opacity: 1 },
+  animate: {
+    opacity: 1,
+    transition: {
+      delayChildren: 0.4,
+      staggerChildren: 0.006, // fast typing speed
+    },
+  },
+  exit: { opacity: 1 },
+};
+
+const letterTypingVariants = {
+  initial: { opacity: 0 },
+  animate: { opacity: 1, transition: { duration: 0.01 } },
+  exit: { opacity: 0 },
+};
+
 // ─── Sub-components ──────────────────────────────────────────────────────────
+
+const AnimatedText = React.memo(({ text }) => (
+  <>
+    {Array.from(text).map((char, index) => (
+      <motion.span key={index} variants={letterTypingVariants}>
+        {char}
+      </motion.span>
+    ))}
+  </>
+));
+AnimatedText.displayName = "AnimatedText";
 
 const SocialIcon = React.memo(({ Icon }) => (
   <a href="#" className="flex items-center justify-center transition-colors hover:text-white">
@@ -272,7 +301,15 @@ BlockRevealTypingSubtitle.displayName = "BlockRevealTypingSubtitle";
 const SubheadingText = React.memo(({ text }) => (
   <h3 className="font-sans font-light tracking-[0.2em] text-[#a39171] text-[13px] uppercase">
     {text.split("").map((char, i) =>
-      char === "_" ? <BlinkingUnderscore key={i} /> : char
+      char === "_" ? (
+        <motion.span key={i} variants={letterTypingVariants}>
+          <BlinkingUnderscore />
+        </motion.span>
+      ) : (
+        <motion.span key={i} variants={letterTypingVariants}>
+          {char}
+        </motion.span>
+      )
     )}
   </h3>
 ));
@@ -363,7 +400,7 @@ const Hero = () => {
             </div>
 
             {/* cyber2 */}
-            <div className="z-10 h-fit sticky top-[6.3vh]">
+            <div className="z-10 h-fit sticky top-[6.5vh]">
               <motion.div
                 variants={cyber2Variants}
                 initial="hidden"
@@ -418,11 +455,13 @@ const Hero = () => {
                     transition={slideTransition}
                     className="flex flex-col w-full max-w-[550px] gap-4 lg:gap-5 lg:pl-6 bg-[#030303]/40 backdrop-blur-sm lg:backdrop-blur-none p-4 lg:p-0 rounded-xl lg:rounded-none"
                   >
-                    <SubheadingText text={slide.subheading} />
+                    <motion.div variants={typingContainerVariants}>
+                      <SubheadingText text={slide.subheading} />
 
-                    <h2 className="font-michroma text-white text-[18px] lg:text-[22px] leading-[1.3] lg:leading-[1.4] uppercase mb-1">
-                      {slide.heading}
-                    </h2>
+                      <h2 className="font-michroma text-white text-[18px] lg:text-[22px] leading-[1.3] lg:leading-[1.4] uppercase mb-1 mt-1">
+                        <AnimatedText text={slide.heading} />
+                      </h2>
+                    </motion.div>
 
                     <div className="flex flex-col mb-4 lg:mb-2">
                       {slide.paragraphs.map((p, idx) => (

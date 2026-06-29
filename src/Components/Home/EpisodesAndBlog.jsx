@@ -20,10 +20,12 @@ const TypingText = ({ text = "", delay = 0, className = "" }) => {
       whileInView="visible"
       viewport={{ once: true }}
       variants={{
+        hidden: { opacity: 1 },
         visible: {
+          opacity: 1,
           transition: {
             delayChildren: delay,
-            staggerChildren: 0.05,
+            staggerChildren: 0.003, // Fast typing speed
           },
         },
       }}
@@ -32,8 +34,8 @@ const TypingText = ({ text = "", delay = 0, className = "" }) => {
         <motion.span
           key={i}
           variants={{
-            hidden: { opacity: 0, filter: "blur(10px)" },
-            visible: { opacity: 1, filter: "blur(0px)" },
+            hidden: { opacity: 0 },
+            visible: { opacity: 1, transition: { duration: 0.01 } },
           }}
           className="inline-block"
         >
