@@ -146,20 +146,22 @@ const Section2 = () => {
               style={{ mixBlendMode: "screen" }}
               initial={{ opacity: 0, filter: "blur(10px)" }}
               whileInView={{
-                opacity: [0, 1, 0, 1, 0.5, 1],
+                opacity: [0, 1, 0, 1, 0.3, 1, 0.8, 1],
                 filter: [
-                  "blur(10px) drop-shadow(0 0 0px rgba(163, 145, 113, 0))",
-                  "blur(0px) drop-shadow(0 0 15px rgba(163, 145, 113, 0.8))",
-                  "blur(5px) drop-shadow(0 0 5px rgba(163, 145, 113, 0.2))",
-                  "blur(0px) drop-shadow(0 0 15px rgba(163, 145, 113, 0.8))",
-                  "blur(0px) drop-shadow(0 0 8px rgba(163, 145, 113, 0.4))",
-                  "blur(0px) drop-shadow(0 0 10px rgba(163, 145, 113, 0.5))"
+                  "brightness(0) drop-shadow(0 0 0px rgba(163, 145, 113, 0))",
+                  "brightness(1.5) drop-shadow(0 0 20px rgba(163, 145, 113, 0.8))",
+                  "brightness(0) drop-shadow(0 0 0px rgba(163, 145, 113, 0))",
+                  "brightness(2) drop-shadow(0 0 30px rgba(163, 145, 113, 1))",
+                  "brightness(0.5) drop-shadow(0 0 5px rgba(163, 145, 113, 0.2))",
+                  "brightness(1.2) drop-shadow(0 0 15px rgba(163, 145, 113, 0.5))",
+                  "brightness(0.8) drop-shadow(0 0 10px rgba(163, 145, 113, 0.3))",
+                  "brightness(1) drop-shadow(0 0 15px rgba(163, 145, 113, 0.6))"
                 ],
               }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{
-                duration: 0.8,
-                ease: "easeInOut",
+                duration: 0.6,
+                ease: "linear",
               }}
             />
 

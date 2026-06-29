@@ -77,59 +77,38 @@ const SOCIAL_ICONS = [
 // ─── Animation Variants ──────────────────────────────────────────────────────
 
 const cyber1Variants = {
-  hidden: { opacity: 0, filter: "blur(10px)" },
+  hidden: { opacity: 0, filter: "brightness(0)" },
   visible: {
-    opacity: [0, 0.8, 0, 1, 0.3, 0.9, 0, 1],
+    opacity: [0, 1, 0, 1, 0.4, 0.9, 0.6, 1],
     filter: [
-      "blur(10px)", "blur(4px)", "blur(8px)", "blur(0px)",
-      "blur(3px)", "blur(1px)", "blur(2px)", "blur(0px)",
+      "brightness(0)", "brightness(1.5)", "brightness(0)", "brightness(1.2)",
+      "brightness(0.5)", "brightness(1.1)", "brightness(0.8)", "brightness(1)",
     ],
     transition: {
-      duration: 0.9,
-      ease: "easeOut",
-      times: [0, 0.15, 0.25, 0.45, 0.6, 0.75, 0.88, 1],
+      duration: 0.6,
+      ease: "linear",
+      times: [0, 0.1, 0.2, 0.35, 0.5, 0.65, 0.8, 1],
     },
   },
 };
 
 const cyber2Variants = {
-  hidden: { opacity: 0, filter: "blur(10px)" },
+  hidden: { opacity: 0, filter: "brightness(0)" },
   visible: {
-    opacity: [0, 0.7, 0, 1, 0.4, 0.85, 0, 1],
+    opacity: [0, 1, 0, 1, 0.3, 0.8, 0.5, 1],
     filter: [
-      "blur(10px)", "blur(5px)", "blur(9px)", "blur(0px)",
-      "blur(4px)", "blur(1px)", "blur(3px)", "blur(0px)",
+      "brightness(0)", "brightness(1.8)", "brightness(0)", "brightness(1.5)",
+      "brightness(0.4)", "brightness(1.2)", "brightness(0.7)", "brightness(1)",
     ],
     transition: {
-      duration: 0.85,
-      ease: "easeOut",
-      delay: 0.4,
-      times: [0, 0.12, 0.22, 0.45, 0.58, 0.72, 0.88, 1],
+      duration: 0.6,
+      ease: "linear",
+      delay: 0.3,
+      times: [0, 0.1, 0.2, 0.35, 0.5, 0.65, 0.8, 1],
     },
   },
 };
 
-const cyber2GlitchAnimation = {
-  opacity: [1, 0.7, 1, 0.8, 1],
-  x: [0, -4, 4, -2, 0],
-  y: [0, 2, -2, 1, 0],
-  scale: [1, 1.01, 0.99, 1.01, 1],
-  filter: [
-    "drop-shadow(0px 0px 15px rgba(100,180,255,0.2))",
-    "drop-shadow(5px 0px 0px rgba(255,0,80,0.8)) drop-shadow(-5px 0px 0px rgba(0,255,255,0.8)) drop-shadow(0px 0px 25px rgba(100,180,255,0.6))",
-    "drop-shadow(-4px 3px 0px rgba(255,0,80,0.8)) drop-shadow(4px -3px 0px rgba(0,255,255,0.8)) drop-shadow(0px 0px 25px rgba(100,180,255,0.6))",
-    "drop-shadow(2px -2px 0px rgba(255,0,80,0.5)) drop-shadow(-2px 2px 0px rgba(0,255,255,0.5)) drop-shadow(0px 0px 15px rgba(100,180,255,0.3))",
-    "drop-shadow(0px 0px 15px rgba(100,180,255,0.2))",
-  ],
-};
-
-const cyber2GlitchTransition = {
-  duration: 0.25,
-  ease: "linear",
-  repeat: Infinity,
-  repeatDelay: 3,
-  delay: 1.25,
-};
 
 const textSectionVariants = {
   hidden: { opacity: 0, x: -50, filter: "blur(8px)" },
@@ -409,8 +388,6 @@ const Hero = () => {
                 <motion.img
                   src={cyber2}
                   alt="Cyber 2"
-                  animate={cyber2GlitchAnimation}
-                  transition={cyber2GlitchTransition}
                   className="xl:w-[600px] lg:w-[450px] md:w-80 w-64 h-auto object-contain"
                 />
               </motion.div>

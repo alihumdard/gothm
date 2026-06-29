@@ -123,35 +123,20 @@ const ImageReveal = ({ image, alt, delay, sectionInView, number }) => {
     let cancelled = false;
 
     const runEntranceAndGlitch = async () => {
-      await controls.start({
-        opacity: [0, 0.8, 0, 0.8, 0.4, 0.8],
-        filter: ["blur(10px)", "blur(0px)", "blur(5px)", "blur(0px)", "blur(0px)", "blur(0px)"],
-        transition: { duration: 0.6, ease: "easeInOut" }
-      });
-
       if (cancelled) return;
 
-      const syncDelay = 3000 - (Date.now() % 3000);
-      await new Promise((r) => setTimeout(r, syncDelay));
-
-      while (!cancelled) {
-        await controls.start({
-          opacity: [0.8, 0.4, 0.8, 0.6, 0.8],
-          x: [0, 0, 0, 0, 0],
-          y: [0, 0, 0, 0, 0],
-          scale: [1, 1, 1, 1, 1],
-          filter: [
-            "brightness(1) drop-shadow(0 0 0px rgba(163,145,113,0))",
-            "brightness(1.5) drop-shadow(0 0 15px rgba(163,145,113,0.6))",
-            "brightness(1) drop-shadow(0 0 0px rgba(163,145,113,0))",
-            "brightness(1.2) drop-shadow(0 0 8px rgba(163,145,113,0.3))",
-            "brightness(1) drop-shadow(0 0 0px rgba(163,145,113,0))"
-          ],
-          transition: { duration: 0.35, ease: "linear" }
-        });
-        if (cancelled) break;
-        await new Promise((r) => setTimeout(r, 2650));
-      }
+      await controls.start({
+        opacity: [0, 0.8, 0, 0.8, 0.4, 0.8],
+        filter: [
+          "brightness(0) drop-shadow(0 0 0px rgba(163,145,113,0))",
+          "brightness(1.5) drop-shadow(0 0 20px rgba(163,145,113,0.8))",
+          "brightness(0) drop-shadow(0 0 0px rgba(163,145,113,0))",
+          "brightness(1.2) drop-shadow(0 0 10px rgba(163,145,113,0.4))",
+          "brightness(0.5) drop-shadow(0 0 0px rgba(163,145,113,0))",
+          "brightness(1) drop-shadow(0 0 0px rgba(163,145,113,0))"
+        ],
+        transition: { duration: 0.6, ease: "linear" }
+      });
     };
 
     runEntranceAndGlitch();
