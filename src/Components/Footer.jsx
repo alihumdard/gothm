@@ -247,7 +247,7 @@ const BlockRevealText = ({
   style = {},
   glitchI = false,
 }) => {
-  const letters = Array.from(text);
+  const words = text.split(" ");
 
   const blockVariants = {
     hidden: { left: "0%", right: "100%" },
@@ -280,38 +280,45 @@ const BlockRevealText = ({
   };
 
   return (
-    <div className={`relative w-fit ${className}`}>
+    <div className={`relative w-fit max-w-full overflow-hidden ${className}`}>
       <motion.div
         className="absolute top-0 bottom-0 bg-[#a39171] z-10"
         variants={blockVariants}
       />
       <motion.p
-        className={`m-0 w-full ${textClassName}`}
+        className={`flex flex-wrap m-0 w-full ${textClassName}`}
         style={style}
         variants={containerVariants}
       >
-        {letters.map((char, index) => {
-          if (glitchI && char === "I") {
-            return (
-              <motion.span
-                key={index}
-                variants={letterVariants}
-                className="inline-block"
-              >
-                <span className="tracking-[-0.2em] pr-[0.2em]">|||</span>
-              </motion.span>
-            );
-          }
-          return (
-            <motion.span
-              key={index}
-              variants={letterVariants}
-              className="inline-block"
-            >
-              {char === " " ? "\u00A0" : char}
-            </motion.span>
-          );
-        })}
+        {words.map((word, wordIndex) => (
+          <span key={wordIndex} className="inline-flex whitespace-nowrap">
+            {Array.from(word).map((char, index) => {
+              if (glitchI && char === "I") {
+                return (
+                  <motion.span
+                    key={index}
+                    variants={letterVariants}
+                    className="inline-block"
+                  >
+                    <span className="tracking-[-0.2em] pr-[0.2em]">|||</span>
+                  </motion.span>
+                );
+              }
+              return (
+                <motion.span
+                  key={index}
+                  variants={letterVariants}
+                  className="inline-block"
+                >
+                  {char}
+                </motion.span>
+              );
+            })}
+            {wordIndex !== words.length - 1 && (
+              <span className="inline-block">&nbsp;</span>
+            )}
+          </span>
+        ))}
       </motion.p>
     </div>
   );

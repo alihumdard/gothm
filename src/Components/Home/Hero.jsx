@@ -351,14 +351,14 @@ const Hero = () => {
           <div className="flex justify-center lg:justify-end items-start gap-0 lg:gap-0 w-full max-w-none h-full relative">
 
             {/* cyber1 */}
-            <div className="z-20 h-fit mt-10">
+            <div className="z-20 h-fit lg:mt-10 mt-8.5">
               <motion.img
                 src={cyber1}
                 alt="Cyber 1"
                 variants={cyber1Variants}
                 initial="hidden"
                 animate={pageLoaded ? "visible" : "hidden"}
-                className="xl:w-[600px] lg:w-[220px] md:w-56 w-48 h-auto object-contain drop-shadow-[0_0_15px_rgba(100,180,255,0.1)]"
+                className="xl:w-[600px] lg:w-[220px] md:w-56 w-64 h-auto object-contain drop-shadow-[0_0_15px_rgba(100,180,255,0.1)]"
               />
             </div>
 

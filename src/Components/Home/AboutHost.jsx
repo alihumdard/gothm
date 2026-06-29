@@ -4,11 +4,11 @@ import hostImage from "../../assets/images/anchor.jpeg";
 
 /* ---------------- Typing Text ---------------- */
 const TypingText = ({ text = "", delay = 0, className = "" }) => {
-  const letters = Array.from(text);
+  const words = text.split(" ");
 
   return (
     <motion.span
-      className={className}
+      className={`inline-flex flex-wrap ${className}`}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
@@ -21,21 +21,28 @@ const TypingText = ({ text = "", delay = 0, className = "" }) => {
         },
       }}
     >
-      {letters.map((char, i) => (
-        <motion.span
-          key={i}
-          variants={{
-            hidden: { opacity: 0, filter: "blur(10px)" },
-            visible: {
-              opacity: 1,
-              filter: "blur(0px)",
-              transition: { duration: 0.4 },
-            },
-          }}
-          className="inline-block"
-        >
-          {char === " " ? "\u00A0" : char}
-        </motion.span>
+      {words.map((word, wordIndex) => (
+        <span key={wordIndex} className="inline-flex whitespace-nowrap">
+          {Array.from(word).map((char, i) => (
+            <motion.span
+              key={i}
+              variants={{
+                hidden: { opacity: 0, filter: "blur(10px)" },
+                visible: {
+                  opacity: 1,
+                  filter: "blur(0px)",
+                  transition: { duration: 0.4 },
+                },
+              }}
+              className="inline-block"
+            >
+              {char}
+            </motion.span>
+          ))}
+          {wordIndex !== words.length - 1 && (
+            <span className="inline-block">&nbsp;</span>
+          )}
+        </span>
       ))}
     </motion.span>
   );
@@ -49,10 +56,10 @@ const BlockRevealText = ({
   textClassName = "",
   glitchI = false,
 }) => {
-  const letters = Array.from(text);
+  const words = text.split(" ");
 
   return (
-    <div className={`relative w-fit overflow-hidden ${className}`}>
+    <div className={`relative w-fit max-w-full overflow-hidden ${className}`}>
       {/* sliding block */}
       <motion.div
         className="absolute top-0 bottom-0 bg-[#a39171] z-10"
@@ -63,7 +70,7 @@ const BlockRevealText = ({
       />
 
       <motion.p
-        className={textClassName}
+        className={`flex flex-wrap m-0 w-full ${textClassName}`}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -76,57 +83,64 @@ const BlockRevealText = ({
           },
         }}
       >
-        {letters.map((char, i) => {
-          if (glitchI && char === "I") {
-            return (
-              <motion.span
-                key={i}
-                variants={{
-                  hidden: { opacity: 0, filter: "blur(5px)" },
-                  visible: { opacity: 1, filter: "blur(0px)" },
-                }}
-                className="inline-block"
-              >
-                <span className="tracking-[-0.2em] pr-[0.2em]">I</span>
-              </motion.span>
-            );
-          }
-          if (char === "_") {
-            return (
-              <motion.span
-                key={i}
-                variants={{
-                  hidden: { opacity: 0, filter: "blur(5px)" },
-                  visible: { opacity: 1, filter: "blur(0px)" },
-                }}
-                className="inline-block"
-              >
+        {words.map((word, wordIndex) => (
+          <span key={wordIndex} className="inline-flex whitespace-nowrap">
+            {Array.from(word).map((char, i) => {
+              if (glitchI && char === "I") {
+                return (
+                  <motion.span
+                    key={i}
+                    variants={{
+                      hidden: { opacity: 0, filter: "blur(5px)" },
+                      visible: { opacity: 1, filter: "blur(0px)" },
+                    }}
+                    className="inline-block"
+                  >
+                    <span className="tracking-[-0.2em] pr-[0.2em]">I</span>
+                  </motion.span>
+                );
+              }
+              if (char === "_") {
+                return (
+                  <motion.span
+                    key={i}
+                    variants={{
+                      hidden: { opacity: 0, filter: "blur(5px)" },
+                      visible: { opacity: 1, filter: "blur(0px)" },
+                    }}
+                    className="inline-block"
+                  >
+                    <motion.span
+                      animate={{ opacity: [1, 0, 1] }}
+                      transition={{
+                        duration: 0.8,
+                        repeat: Infinity,
+                        ease: "linear",
+                      }}
+                    >
+                      _
+                    </motion.span>
+                  </motion.span>
+                );
+              }
+              return (
                 <motion.span
-                  animate={{ opacity: [1, 0, 1] }}
-                  transition={{
-                    duration: 0.8,
-                    repeat: Infinity,
-                    ease: "linear",
+                  key={i}
+                  variants={{
+                    hidden: { opacity: 0, filter: "blur(5px)" },
+                    visible: { opacity: 1, filter: "blur(0px)" },
                   }}
+                  className="inline-block"
                 >
-                  _
+                  {char}
                 </motion.span>
-              </motion.span>
-            );
-          }
-          return (
-            <motion.span
-              key={i}
-              variants={{
-                hidden: { opacity: 0, filter: "blur(5px)" },
-                visible: { opacity: 1, filter: "blur(0px)" },
-              }}
-              className="inline-block"
-            >
-              {char === " " ? "\u00A0" : char}
-            </motion.span>
-          );
-        })}
+              );
+            })}
+            {wordIndex !== words.length - 1 && (
+              <span className="inline-block">&nbsp;</span>
+            )}
+          </span>
+        ))}
       </motion.p>
     </div>
   );
