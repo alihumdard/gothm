@@ -330,7 +330,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative w-full bg-[#030303] flex items-start justify-center min-h-[128vh] lg:min-h-0 lg:h-[110vh] overflow-hidden lg:overflow-visible"
+      className="relative w-full bg-[#030303] flex items-start justify-center min-h-[128vh] lg:min-h-0 lg:h-[97vh] overflow-hidden lg:overflow-visible"
     >
       {/* Social icons bar */}
       <motion.div
@@ -363,7 +363,7 @@ const Hero = () => {
             </div>
 
             {/* cyber2 */}
-            <div className="z-10 h-fit sticky top-[4.5vh]">
+            <div className="z-10 h-fit sticky top-[6.3vh]">
               <motion.div
                 variants={cyber2Variants}
                 initial="hidden"
