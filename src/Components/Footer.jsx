@@ -9,7 +9,7 @@ export default function Footer() {
   return (
     <footer className="w-full bg-[#000000] py-16 lg:px-0 px-6 font-sans overflow-hidden">
       <motion.div
-        className=" flex w-full max-w-7xl flex-col lg:flex-row justify-between gap-16 pl-0 pr-6 lg:pr-0"
+        className=" flex w-full max-w-7xl flex-col lg:flex-row justify-between gap-4 pl-0 pr-6 lg:pr-0"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-50px" }}
@@ -23,7 +23,7 @@ export default function Footer() {
         }}
       >
         {/* ================= LEFT SECTION (Logo & Tagline) ================= */}
-        <div className="flex flex-col items-start">
+        <div className="flex flex-col items-center">
           {/* Logo Section */}
           <div className="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity">
             {/* Symbol */}
@@ -51,7 +51,7 @@ export default function Footer() {
           <div className="mt-1 flex flex-col gap-0">
             <BlockRevealText
               text="THE THINGS YOU WATCH,"
-              textClassName="font-michroma text-[10px] lg:text-[12px] ml-14 mt-5 font-bold text-[#a39171] uppercase tracking-[0em]"
+              textClassName="font-michroma text-[10px] lg:text-[12px] ml-14 mt-0 font-bold text-[#a39171] uppercase tracking-[0em]"
               delay={0.8}
               glitchI={true}
             />
