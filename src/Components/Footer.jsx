@@ -65,25 +65,25 @@ export default function Footer() {
         </div>
 
         {/* ================= RIGHT SECTION (Links Grid) ================= */}
-        <div className="flex flex-col sm:flex-row sm:ml-4 gap-8 lg:gap-24">
-          {/* Column 1: EXPLORE */}
-          <div className="flex flex-col">
+        <div className="flex flex-row justify-between sm:justify-start sm:ml-4 gap-2 sm:gap-8 lg:gap-24 w-full lg:w-auto">
+          {/* Column 1: NAVIGATE */}
+          <div className="flex flex-col w-1/3 sm:w-auto">
             <BlockRevealText
-              text="EXPLORE"
-              className="mb-2 block"
-              textClassName="font-sans text-[14px] font-light text-[#a39171] tracking-[0.1em] uppercase"
+              text="NAVIGATE"
+              className="mb-4 block"
+              textClassName="font-sans text-[10px] md:text-[14px] font-light text-[#a39171] tracking-[0.1em] uppercase"
               delay={0.8}
             />
-            <ul className="flex flex-col gap-2 font-sans text-[12px] font-light text-white uppercase tracking-[0.1em]">
+            <ul className="flex flex-col gap-3 font-sans text-[9px] md:text-[12px] font-bold md:font-light text-white uppercase tracking-[0.1em]">
               <li>
-                <Link to="/" className="hover:text-white transition-colors">
+                <Link to="/" className="hover:text-[#a39171] transition-colors">
                   HOME
                 </Link>
               </li>
               <li>
                 <Link
                   to="/what-is-gothm"
-                  className="hover:text-white transition-colors"
+                  className="hover:text-[#a39171] transition-colors"
                 >
                   WHAT IS GOTHM
                 </Link>
@@ -91,28 +91,28 @@ export default function Footer() {
               <li>
                 <Link
                   to="/episodes"
-                  className="hover:text-white transition-colors"
+                  className="hover:text-[#a39171] transition-colors"
                 >
                   EPISODES
                 </Link>
               </li>
               <li>
-                <Link to="/blog" className="hover:text-white transition-colors">
+                <Link to="/blog" className="hover:text-[#a39171] transition-colors">
                   BLOG
                 </Link>
               </li>
               <li>
                 <Link
                   to="/about-the-host"
-                  className="hover:text-white transition-colors"
+                  className="hover:text-[#a39171] transition-colors"
                 >
-                  MEET THE HOST
+                  ABOUT THE HOST
                 </Link>
               </li>
               <li>
                 <Link
                   to="/ghost-mail"
-                  className="hover:text-white transition-colors"
+                  className="hover:text-[#a39171] transition-colors"
                 >
                   GHOST MAIL
                 </Link>
@@ -120,7 +120,7 @@ export default function Footer() {
               <li>
                 <Link
                   to="/contact"
-                  className="hover:text-white transition-colors"
+                  className="hover:text-[#a39171] transition-colors"
                 >
                   CONTACT
                 </Link>
@@ -129,83 +129,83 @@ export default function Footer() {
           </div>
 
           {/* Column 2: FOLLOW */}
-          <div className="flex flex-col">
+          <div className="flex flex-col w-1/3 sm:w-auto">
             <BlockRevealText
               text="FOLLOW"
-              className="mb-2 block"
-              textClassName="font-sans text-[14px] font-light text-[#a39171] tracking-[0.1em] uppercase"
+              className="mb-4 block"
+              textClassName="font-sans text-[10px] md:text-[14px] font-light text-[#a39171] tracking-[0.1em] uppercase"
               delay={1.0}
             />
-            <ul className="flex flex-col gap-2 font-sans text-[12px] font-light text-white uppercase tracking-[0.1em]">
+            <ul className="flex flex-col gap-3 font-sans text-[9px] md:text-[12px] font-bold md:font-light text-white uppercase tracking-[0.1em]">
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <a href="#" className="hover:text-[#a39171] transition-colors">
                   YOUTUBE
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <a href="#" className="hover:text-[#a39171] transition-colors">
                   SPOTIFY
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <a href="#" className="hover:text-[#a39171] transition-colors">
                   APPLE PODCASTS
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <a href="#" className="hover:text-[#a39171] transition-colors">
+                  AMAZON MUSIC
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-[#a39171] transition-colors">
                   INSTAGRAM
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  FACEBOOK
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <a href="#" className="hover:text-[#a39171] transition-colors">
                   TIKTOK
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <a href="#" className="hover:text-[#a39171] transition-colors">
                   X
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Column 3: THE SMALL PRINT */}
-          <div className="flex flex-col">
+          {/* Column 3: STAY CONNECTED */}
+          <div className="flex flex-col w-1/3 sm:w-auto">
             <BlockRevealText
-              text="THE SMALL PRINT"
-              className="mb-2 block"
-              textClassName="font-sans text-[14px] font-light text-[#a39171] tracking-[0.1em] uppercase"
+              text="STAY CONNECTED"
+              className="mb-4 block"
+              textClassName="font-sans text-[10px] md:text-[14px] font-light text-[#a39171] tracking-[0.1em] uppercase"
               delay={1.2}
             />
-            <ul className="flex flex-col gap-2 font-sans text-[12px] font-light text-white uppercase tracking-[0.1em]">
+            <ul className="flex flex-col gap-3 font-sans text-[9px] md:text-[12px] font-bold md:font-light text-white uppercase tracking-[0.1em]">
               <li>
                 <Link
-                  to="/terms"
-                  className="hover:text-white transition-colors"
+                  to="/ghost-mail"
+                  className="hover:text-[#a39171] transition-colors"
                 >
-                  TERMS & CONDITIONS
+                  GHOST MAIL NEWSLETTER
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/privacy"
-                  className="hover:text-white transition-colors"
+                  to="/contact"
+                  className="hover:text-[#a39171] transition-colors"
                 >
-                  PRIVACY POLICY
+                  GUEST ENQUIRY
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/cookie"
-                  className="hover:text-white transition-colors"
+                  to="/contact"
+                  className="hover:text-[#a39171] transition-colors"
                 >
-                  COOKIE POLICY
+                  SPONSORSHIP ENQUIRY
                 </Link>
               </li>
             </ul>
@@ -215,7 +215,7 @@ export default function Footer() {
 
       {/* ================= BOTTOM BAR ================= */}
       <motion.div
-        className="mx-auto mt-24 w-full max-w-[1400px] px-8"
+        className="mx-auto mt-16 lg:mt-24 w-full max-w-[1400px] px-8"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-50px" }}
@@ -227,10 +227,10 @@ export default function Footer() {
           },
         }}
       >
-        <div className="flex w-full items-center justify-start border-t border-[#a39171]/30 pt-8">
+        <div className="flex w-full items-center justify-start pt-4">
           <BlockRevealText
-            text="© GOTHM / GHOST OF THE MACHINE."
-            textClassName="font-michroma text-[12px] font-extrabold text-[#a39171] tracking-[0.1em] uppercase"
+            text="© GOTHM / GHOST OF THE MACHINE"
+            textClassName="font-michroma text-[9px] md:text-[12px] font-extrabold text-[#8a7a5b] tracking-[0.1em] uppercase"
             delay={1.0}
           />
         </div>

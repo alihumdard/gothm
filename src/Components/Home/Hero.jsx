@@ -168,8 +168,8 @@ const AnimatedText = React.memo(({ text }) => (
 AnimatedText.displayName = "AnimatedText";
 
 const SocialIcon = React.memo(({ Icon }) => (
-  <a href="#" className="flex items-center justify-center transition-colors hover:text-white">
-    <Icon size={22} />
+  <a href="#" className="flex items-center justify-center transition-colors hover:text-white text-[14px] lg:text-[22px]">
+    <Icon size="1em" />
   </a>
 ));
 SocialIcon.displayName = "SocialIcon";
@@ -194,7 +194,7 @@ const RandomRevealText = React.memo(({ text, delay = 0 }) => {
   }, [letters]);
 
   return (
-    <span className="block text-[50px] min-[400px]:text-[58px] sm:text-[68px] md:text-[90px] lg:text-[105px] font-extralight text-white whitespace-nowrap overflow-visible py-1 pr-4">
+    <span className="block text-[32px] min-[400px]:text-[38px] sm:text-[50px] md:text-[70px] lg:text-[105px] font-extralight text-white whitespace-nowrap overflow-visible py-1 pr-4">
       {letters.map((char, index) => (
         <motion.span
           key={index}
@@ -257,7 +257,7 @@ const BlockRevealTypingSubtitle = React.memo(({ text, delay = 0 }) => {
         animate="visible"
       />
       <motion.p
-        className="font-michroma text-[10px] md:text-[12px] lg:text-[13px] font-bold text-[#a39171] uppercase tracking-widest m-0 relative"
+        className="font-michroma text-[7.5px] md:text-[11px] lg:text-[13px] font-bold text-[#a39171] uppercase tracking-[0.1em] md:tracking-widest m-0 relative"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -278,7 +278,7 @@ const BlockRevealTypingSubtitle = React.memo(({ text, delay = 0 }) => {
 BlockRevealTypingSubtitle.displayName = "BlockRevealTypingSubtitle";
 
 const SubheadingText = React.memo(({ text }) => (
-  <h3 className="font-sans font-light tracking-[0.2em] text-[#a39171] text-[13px] uppercase">
+  <h3 className="font-sans font-light tracking-[0.15em] lg:tracking-[0.2em] text-[#a39171] text-[10px] md:text-[11px] lg:text-[13px] uppercase">
     {text.split("").map((char, i) =>
       char === "_" ? (
         <motion.span key={i} variants={letterTypingVariants}>
@@ -295,11 +295,11 @@ const SubheadingText = React.memo(({ text }) => (
 SubheadingText.displayName = "SubheadingText";
 
 const SlideButtons = React.memo(({ buttons }) => (
-  <div className="flex flex-wrap gap-4 mb-4 lg:mb-4">
+  <div className="flex flex-wrap gap-2 lg:gap-4 mb-2 lg:mb-4">
     {buttons.map((btn, idx) => (
       <button
         key={idx}
-        className="border border-[#a39171] text-[#a39171] bg-transparent hover:bg-[#a39171] hover:text-[#030303] transition-colors duration-300 font-sans text-[13px] font-light tracking-[0.1em] px-6 py-3 uppercase"
+        className="border border-[#a39171] text-[#a39171] bg-transparent hover:bg-[#a39171] hover:text-[#030303] transition-colors duration-300 font-sans text-[9px] lg:text-[13px] font-light tracking-[0.1em] px-3 py-1.5 lg:px-6 lg:py-3 uppercase"
       >
         {btn.text}
       </button>
@@ -346,40 +346,40 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative w-full bg-[#030303] flex items-start justify-center min-h-[128vh] lg:min-h-0 lg:h-[97vh] overflow-hidden lg:overflow-visible"
+      className="relative w-full bg-[#030303] flex items-start justify-center min-h-[53vh] lg:min-h-0 lg:h-[97vh] overflow-hidden lg:overflow-visible"
     >
       {/* Social icons bar */}
       <motion.div
         variants={socialBarVariants}
         initial="hidden"
         animate={pageLoaded ? "visible" : "hidden"}
-        className="absolute top-70 -translate-y-1/2 right-6 z-50 hidden lg:flex flex-col gap-3 text-[#505050]"
+        className="absolute top-[40%] lg:top-70 -translate-y-1/2 right-2 lg:right-6 z-50 flex flex-col gap-2 lg:gap-3 text-[#505050]"
       >
         {SOCIAL_ICONS.map((Icon, i) => (
           <SocialIcon key={i} Icon={Icon} />
         ))}
       </motion.div>
 
-      <div className="absolute inset-0 mx-auto flex flex-col lg:flex-row w-full max-w-7xl items-stretch justify-center px-6 lg:px-12 gap-10 md:gap-12 lg:gap-0">
+      <div className="absolute inset-0 mx-auto flex flex-row w-full max-w-7xl items-stretch justify-center px-1 md:px-6 lg:px-12 gap-0">
 
         {/* Left Image Section */}
-        <div className="flex w-full lg:w-1/2 justify-center lg:justify-end items-stretch z-10 relative lg:-mr-[100px] xl:-mr-[100px]">
-          <div className="flex justify-center lg:justify-end items-start gap-0 lg:gap-0 w-full max-w-none h-full relative">
+        <div className="flex w-1/2 justify-end items-stretch z-10 relative -mr-8 md:-mr-16 lg:-mr-[100px] xl:-mr-[100px]">
+          <div className="flex justify-end items-start gap-0 w-full max-w-none h-full relative">
 
             {/* cyber1 */}
-            <div className="z-20 h-fit lg:mt-10 mt-8.5">
+            <div className="z-20 h-fit mt-22 md:mt-10 lg:mt-10">
               <motion.img
                 src={cyber1}
                 alt="Cyber 1"
                 variants={cyber1Variants}
                 initial="hidden"
                 animate={pageLoaded ? "visible" : "hidden"}
-                className="xl:w-[600px] lg:w-[220px] md:w-56 w-64 h-auto object-contain drop-shadow-[0_0_15px_rgba(100,180,255,0.1)]"
+                className="xl:w-[600px] lg:w-[220px] md:w-56 w-[200px] h-auto object-contain drop-shadow-[0_0_15px_rgba(100,180,255,0.1)]"
               />
             </div>
 
             {/* cyber2 */}
-            <div className="z-10 h-fit sticky top-[6.5vh]">
+            <div className="z-10 h-fit sticky lg:top-[6.5vh] top-[13vh]">
               <motion.div
                 variants={cyber2Variants}
                 initial="hidden"
@@ -388,7 +388,7 @@ const Hero = () => {
                 <motion.img
                   src={cyber2}
                   alt="Cyber 2"
-                  className="xl:w-[600px] lg:w-[450px] md:w-80 w-64 h-auto object-contain"
+                  className="xl:w-[600px] lg:w-[450px] md:w-80 w-[200px] h-auto object-contain"
                 />
               </motion.div>
             </div>
@@ -400,9 +400,9 @@ const Hero = () => {
           variants={textSectionVariants}
           initial="hidden"
           animate={pageLoaded ? "visible" : "hidden"}
-          className="relative w-full lg:w-1/2 flex flex-col justify-start h-full z-20 lg:-ml-12 xl:-ml-24 lg:pl-10"
+          className="relative w-1/2 flex flex-col justify-start h-full z-20 -ml-2 md:-ml-6 lg:-ml-12 xl:-ml-24 lg:pl-10"
         >
-          <div className="w-full flex flex-col justify-center relative top-[5vh] min-h-[450px] lg:mt-10">
+          <div className="w-full flex flex-col justify-center relative top-[5vh] min-h-[240px] lg:min-h-[450px] mt-4 lg:mt-10">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentSlide}
@@ -413,7 +413,7 @@ const Hero = () => {
                 className="absolute inset-0 flex flex-col justify-center items-start text-left w-full h-full"
               >
                 {slide.isTitleSlide ? (
-                  <div className="flex flex-col justify-center items-start text-left w-full pl-0 lg:pl-8">
+                  <div className="flex flex-col justify-center items-start text-left w-full pl-2 lg:pl-8">
                     <h1 className="font-feonie leading-[0.9] font-normal lg:leading-[1] tracking-tight overflow-hidden">
                       {/* Scattered Random Typing Effect */}
                       <RandomRevealText text={slide.title1} delay={isInitialLoad ? 1.5 : 0} />
@@ -430,12 +430,12 @@ const Hero = () => {
                     animate="animate"
                     exit="exit"
                     transition={slideTransition}
-                    className="flex flex-col w-full max-w-[550px] gap-4 lg:gap-5 lg:pl-6 bg-[#030303]/40 backdrop-blur-sm lg:backdrop-blur-none p-4 lg:p-0 rounded-xl lg:rounded-none"
+                    className="flex flex-col w-full max-w-[550px] gap-2 md:gap-4 lg:gap-5 pl-1 lg:pl-6 bg-transparent lg:bg-transparent backdrop-blur-none p-1 lg:p-0 rounded-none"
                   >
                     <motion.div variants={typingContainerVariants}>
                       <SubheadingText text={slide.subheading} />
 
-                      <h2 className="font-michroma text-white text-[18px] lg:text-[22px] leading-[1.3] lg:leading-[1.4] uppercase mb-1 mt-1">
+                      <h2 className="font-michroma text-white text-[11px] md:text-[15px] lg:text-[22px] leading-[1.3] lg:leading-[1.4] uppercase mb-1 mt-1">
                         <AnimatedText text={slide.heading} />
                       </h2>
                     </motion.div>
@@ -444,7 +444,7 @@ const Hero = () => {
                       {slide.paragraphs.map((p, idx) => (
                         <p
                           key={idx}
-                          className="font-sans text-[#d0d0d0] text-[14px] lg:text-[15px] font-normal leading-relaxed tracking-wide"
+                          className="font-sans text-[#d0d0d0] text-[9.5px] md:text-[12px] lg:text-[15px] font-normal leading-[1.4] lg:leading-relaxed tracking-wide"
                         >
                           {p}
                         </p>
@@ -455,7 +455,7 @@ const Hero = () => {
 
                     <button
                       onClick={handleNext}
-                      className="text-[#a39171] font-sans font-light tracking-[0.2em] text-[13px] hover:text-white transition-colors flex items-center w-fit uppercase"
+                      className="text-[#a39171] font-sans font-light tracking-[0.2em] text-[10px] lg:text-[13px] hover:text-white transition-colors flex items-center w-fit uppercase"
                     >
                       NEXT&gt;&gt;
                     </button>

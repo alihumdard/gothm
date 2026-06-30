@@ -6,7 +6,7 @@ const Section5 = () => {
   return (
     <section className="w-full bg-[#000000] xl:py-16 py-6 text-white">
       {/* BOXED CONTAINER */}
-      <div className="mx-auto flex max-w-5xl flex-col lg:flex-row gap-16 lg:gap-10 px-6">
+      <div className="mx-auto flex max-w-5xl flex-col lg:flex-row gap-6 lg:gap-10 px-6">
         {/* LEFT SIDE */}
         <motion.div
           id="ghost-mail"
@@ -30,19 +30,19 @@ const Section5 = () => {
             delay={0.8}
           />
 
-          <h2 className="mb-4 font-michroma xl:text-[20px] text-[16px] font-extrabold uppercase tracking-tight text-white leading-[1.2]">
+          <h2 className="mb-4 font-michroma text-[18px] lg:text-[20px] xl:text-[20px] font-extrabold uppercase tracking-tight text-white leading-[1.2]">
             <TypingText text="A WEEKLY DISPATCH" delay={0.8} />
             <br />
             <TypingText text="FROM INSIDE THE MACHINE" delay={2.1} />
           </h2>
 
-          <p className="mb-2 font-sans text-[16px] max-w-lg font-bold leading-[1.2] text-[#d4d4d4]">
+          <p className="mb-3 font-sans text-[11px] md:text-[16px] max-w-lg font-bold leading-[1.4] md:leading-[1.2] text-[#d4d4d4]">
             What I've watched. What I've read. What I can't stop thinking about.
             System hacks, cultural observations, and the occasional rabbit hole
             you didn't know you needed.
           </p>
 
-          <p className="mb-6 font-sans text-[15px] font-bold max-w-lg leading-[1.2] text-[#d4d4d4]">
+          <p className="mb-6 font-sans text-[11px] md:text-[15px] font-bold max-w-lg leading-[1.4] md:leading-[1.2] text-[#d4d4d4]">
             No algorithms. No noise. Just the things that got under my skin that
             week — delivered straight to yours.
           </p>
@@ -51,13 +51,38 @@ const Section5 = () => {
             <BlockRevealText
               text="JOIN THE PEOPLE WHO READ BETWEEN THE LINES"
               className="mb-4 block"
-              textClassName="font-michroma text-[12px] md:text-[12px] lg:text-[12px] font-bold tracking-[0em] text-[#a39171] uppercase"
+              textClassName="font-michroma text-[9px] md:text-[12px] lg:text-[12px] font-bold tracking-[0em] text-[#a39171] uppercase"
               delay={0.8}
               glitchI={true}
             />
 
+            {/* --- MOBILE GHOST MAIL FORM --- */}
             <form
-              className="flex w-full max-w-md gap-[1px]"
+              className="flex lg:hidden flex-col w-full max-w-md gap-4 mt-2"
+              onSubmit={(e) => e.preventDefault()}
+            >
+              <input
+                type="email"
+                placeholder="Your Email"
+                className="w-full bg-transparent border border-[#222222] px-4 py-2.5 text-[#d4d4d4] font-serif placeholder:text-[#555] focus:outline-none focus:border-[#a39171]/50 text-[12px]"
+                required
+              />
+              <button
+                type="submit"
+                className="w-fit mx-auto bg-[#67563D] text-[#888] font-light font-sans tracking-[0.1em] text-[11px] px-6 py-2.5 flex items-center justify-center gap-2"
+              >
+                SUBSCRIBE{" "}
+                <img
+                  src={diagramImg}
+                  alt="diagram"
+                  className="w-5 h-5 object-contain"
+                />
+              </button>
+            </form>
+
+            {/* --- DESKTOP GHOST MAIL FORM --- */}
+            <form
+              className="hidden lg:flex w-full max-w-md gap-[1px]"
               onSubmit={(e) => e.preventDefault()}
             >
               <input
@@ -104,21 +129,59 @@ const Section5 = () => {
             delay={1.2}
           />
 
-          <h2 className="mb-4 font-michroma xl:text-[20px] text-[21px] font-extrabold uppercase text-white leading-[1.2] tracking-tight">
+          <h2 className="mb-4 font-michroma text-[14.5px] lg:text-[21px] xl:text-[20px] font-extrabold uppercase text-white leading-[1.2] tracking-tight">
             <TypingText
               text="COME MEET US AT THE WINDOW BEHIND THE FOURTH WALL"
               delay={1.2}
             />
           </h2>
 
-          <p className="mb-4 font-sans text-[15px] font-bold leading-[1.2] text-[#d4d4d4]">
+          <p className="mb-6 font-sans text-[11px] md:text-[15px] font-bold leading-[1.4] md:leading-[1.2] text-[#d4d4d4]">
             Whether you made something worth excavating, know someone who can
             explain what it did to us, or want to be part of what we're building
             — we want to hear from you.
           </p>
 
+          {/* --- MOBILE GET IN TOUCH FORM --- */}
           <form
-            className="flex flex-col w-full"
+            className="flex lg:hidden flex-col w-full gap-3"
+            onSubmit={(e) => e.preventDefault()}
+          >
+            <div className="flex flex-col w-full gap-3 mb-0">
+              <input
+                className="w-[65%] bg-transparent border border-[#a39171]/30 px-4 py-2.5 text-[#d4d4d4] font-serif placeholder:text-[#7a6b52] focus:outline-none focus:border-[#a39171]/60 text-[12px]"
+                placeholder="Your Name"
+              />
+
+              <input
+                type="email"
+                className="w-[65%] bg-transparent border border-[#a39171]/30 px-4 py-2.5 text-[#d4d4d4] font-serif placeholder:text-[#7a6b52] focus:outline-none focus:border-[#a39171]/60 text-[12px]"
+                placeholder="Your Email"
+              />
+            </div>
+            
+            <input
+              className="w-full bg-transparent border border-[#a39171]/30 px-4 py-2.5 text-[#d4d4d4] font-serif placeholder:text-[#7a6b52] focus:outline-none focus:border-[#a39171]/60 text-[12px]"
+              placeholder="Enquiry Type"
+            />
+
+            <textarea
+              className="w-full bg-transparent border border-[#a39171]/30 px-4 py-2.5 text-[#d4d4d4] font-serif placeholder:text-[#7a6b52] focus:outline-none focus:border-[#a39171]/60 text-[12px] resize-none"
+              rows="4"
+              placeholder="Your Message"
+            />
+
+            <button
+              type="submit"
+              className="w-fit mt-2 text-[11px] border border-[#a39171]/40 px-6 py-2.5 font-light tracking-[0.1em] font-sans text-[#a39171] hover:bg-[#a39171] hover:text-black hover:border-[#a39171] transition-colors"
+            >
+              SEND IT THROUGH &gt;&gt;
+            </button>
+          </form>
+
+          {/* --- DESKTOP GET IN TOUCH FORM --- */}
+          <form
+            className="hidden lg:flex flex-col w-full"
             onSubmit={(e) => e.preventDefault()}
           >
             <div className="flex flex-col sm:flex-row gap-3 mb-2">

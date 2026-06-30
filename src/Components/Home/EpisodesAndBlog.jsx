@@ -66,7 +66,7 @@ const BlockRevealText = ({
         variants={{
           hidden: { x: "0%" },
           visible: {
-            x: "100%",
+            x: "105%",
             transition: { duration: 0.3, delay },
           },
         }}
@@ -239,7 +239,7 @@ const Section3 = () => {
 
   return (
     <section className="w-full bg-black xl:py-16 py-6 text-white">
-      <div className="mx-auto max-w-7xl flex flex-col gap-16 px-6">
+      <div className="mx-auto max-w-7xl flex flex-col gap-20 lg:gap-16 px-6">
         {/* EPISODES */}
         <div id="episodes" ref={episodesRef}>
           <BlockRevealText
@@ -247,7 +247,7 @@ const Section3 = () => {
             textClassName="text-[#a39171] text-[13px] font-light font-sans tracking-[0.1em]"
           />
 
-          <h2 className="lg:text-[28px] text-[26px] font-bold font-orbitron uppercase mt-2 mb-10">
+          <h2 className="lg:text-[28px] text-[26px] font-bold font-orbitron uppercase mt-2 mb-4 lg:mb-10">
             <TypingText text="FEATURED EPISODES" />
           </h2>
 
@@ -297,7 +297,7 @@ const Section3 = () => {
             textClassName="text-[#a39171] text-[13px] font-light font-sans tracking-[0.1em]"
           />
 
-          <h2 className="text-[28px] font-bold font-orbitron uppercase mt-2 mb-10">
+          <h2 className="text-[28px] font-bold font-orbitron uppercase mt-2 mb-4 lg:mb-10">
             <TypingText text="FEATURED BLOGS" />
           </h2>
 
