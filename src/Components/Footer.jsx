@@ -51,13 +51,13 @@ export default function Footer() {
           <div className="mt-1 flex flex-col gap-0">
             <BlockRevealText
               text="THE THINGS YOU WATCH,"
-              textClassName="font-michroma text-[10px] lg:text-[12px] ml-14 mt-0 font-bold text-[#a39171] uppercase tracking-[0em]"
+              textClassName="font-michroma text-[10px] lg:text-[12px] ml-20 lg:ml-28 mt-0 font-bold text-[#a39171] uppercase tracking-[0em]"
               delay={0.8}
               glitchI={true}
             />
             <BlockRevealText
               text="ARE WATCHING YOU."
-              textClassName="font-michroma text-[10px] lg:text-[12px] ml-14 font-bold text-[#a39171] uppercase tracking-[0em]"
+              textClassName="font-michroma text-[10px] lg:text-[12px] ml-20 lg:ml-28 font-bold text-[#a39171] uppercase tracking-[0em]"
               delay={1.2}
               glitchI={true}
             />
@@ -215,7 +215,7 @@ export default function Footer() {
 
       {/* ================= BOTTOM BAR ================= */}
       <motion.div
-        className="mx-auto mt-16 lg:mt-24 w-full max-w-[1400px] px-8"
+        className=" mt-16 lg:mt-24 w-full max-w-[1400px] lg:px-8 px-0"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-50px" }}

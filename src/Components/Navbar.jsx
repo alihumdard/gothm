@@ -83,7 +83,7 @@ export default function SourceGuyNavbar() {
           {/* Fixed Top Bar with Hamburger */}
           <div className="fixed top-0 left-0 right-0 z-[60] flex w-full justify-end bg-[#000000]/95 backdrop-blur-sm px-6 py-4 shadow-md shadow-black/20">
             <button
-              className="text-white hover:text-[#a39171] transition-colors"
+              className="text-white cursor-pointer"
               onClick={() => setIsMobileMenuOpen(true)}
             >
               <FaBars size={24} />
@@ -141,36 +141,29 @@ export default function SourceGuyNavbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute top-0 right-0 bottom-0 w-[75%] max-w-sm bg-[#0a0a0a] border-l border-[#a39171]/20 flex flex-col p-8 overflow-y-auto shadow-2xl"
+              className="absolute top-0 right-0 bottom-0 w-[45%] max-w-[220px] bg-[#000000] flex flex-col pt-16 pl-6 pr-4 overflow-y-auto shadow-2xl"
             >
-              <button
-                className="self-end text-white hover:text-[#a39171] transition-colors mb-10"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                <FaTimes size={28} />
-              </button>
-              
-              <div className="flex flex-col items-start w-full font-sans text-[14px] font-light tracking-[0.15em] text-[#a39171]">
-                <a href="#home" onClick={(e) => handleScrollTo(e, 'home')} className="w-full hover:text-white transition-colors cursor-pointer border-b border-[#a39171]/10 py-4">
-                  HOME
+              <div className="flex flex-col items-start w-full gap-6 font-sans text-[13px] font-bold tracking-[0.05em] text-white/50">
+                <a href="#home" onClick={(e) => handleScrollTo(e, 'home')} className="hover:text-white transition-colors cursor-pointer">
+                  Home
                 </a>
-                <a href="#what-is-gothm" onClick={(e) => handleScrollTo(e, 'what-is-gothm')} className="w-full hover:text-white transition-colors cursor-pointer border-b border-[#a39171]/10 py-4">
-                  WHAT IS GOTHM
+                <a href="#what-is-gothm" onClick={(e) => handleScrollTo(e, 'what-is-gothm')} className="hover:text-white transition-colors cursor-pointer">
+                  What is Gothm
                 </a>
-                <a href="#episodes" onClick={(e) => handleScrollTo(e, 'episodes')} className="w-full hover:text-white transition-colors cursor-pointer border-b border-[#a39171]/10 py-4">
-                  EPISODES
+                <a href="#episodes" onClick={(e) => handleScrollTo(e, 'episodes')} className="hover:text-white transition-colors cursor-pointer">
+                  Episodes
                 </a>
-                <a href="#blog" onClick={(e) => handleScrollTo(e, 'blog')} className="w-full hover:text-white transition-colors cursor-pointer border-b border-[#a39171]/10 py-4">
-                  BLOG
+                <a href="#blog" onClick={(e) => handleScrollTo(e, 'blog')} className="hover:text-white transition-colors cursor-pointer">
+                  Blog
                 </a>
-                <a href="#about-the-host" onClick={(e) => handleScrollTo(e, 'about-the-host')} className="w-full hover:text-white transition-colors cursor-pointer border-b border-[#a39171]/10 py-4">
-                  ABOUT THE HOST
+                <a href="#about-the-host" onClick={(e) => handleScrollTo(e, 'about-the-host')} className="hover:text-white transition-colors cursor-pointer">
+                  About the Host
                 </a>
-                <a href="#ghost-mail" onClick={(e) => handleScrollTo(e, 'ghost-mail')} className="w-full hover:text-white transition-colors cursor-pointer border-b border-[#a39171]/10 py-4">
-                  GHOST MAIL
+                <a href="#ghost-mail" onClick={(e) => handleScrollTo(e, 'ghost-mail')} className="hover:text-white transition-colors cursor-pointer">
+                  Ghost Mail
                 </a>
-                <a href="#contact" onClick={(e) => handleScrollTo(e, 'contact')} className="w-full hover:text-white transition-colors cursor-pointer py-4">
-                  CONTACT
+                <a href="#contact" onClick={(e) => handleScrollTo(e, 'contact')} className="hover:text-white transition-colors cursor-pointer">
+                  Contact
                 </a>
               </div>
             </motion.div>
