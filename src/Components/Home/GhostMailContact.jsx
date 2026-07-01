@@ -58,24 +58,24 @@ const Section5 = () => {
 
             {/* --- MOBILE GHOST MAIL FORM --- */}
             <form
-              className="flex lg:hidden flex-col w-full max-w-md gap-4 mt-2"
+              className="flex lg:hidden w-full max-w-md gap-[1px] mt-2"
               onSubmit={(e) => e.preventDefault()}
             >
               <input
                 type="email"
                 placeholder="Your Email"
-                className="w-full bg-transparent border border-[#222222] px-4 py-2.5 text-[#d4d4d4] font-serif placeholder:text-[#555] focus:outline-none focus:border-[#a39171]/50 text-[12px]"
+                className="w-2/3 bg-transparent border border-[#222222] px-4 py-2.5 text-[#d4d4d4] font-serif placeholder:text-[#555] focus:outline-none focus:border-[#a39171]/50 text-[12px]"
                 required
               />
               <button
                 type="submit"
-                className="w-fit mx-auto bg-[#67563D] text-[#888] font-light font-sans tracking-[0.1em] text-[11px] px-6 py-2.5 flex items-center justify-center gap-2"
+                className="w-1/3 bg-[#67563D] text-[#888] font-light font-sans tracking-[0.05em] sm:tracking-[0.1em] text-[10px] sm:text-[11px] px-2 py-2.5 flex items-center justify-center gap-1 opacity-90"
               >
                 SUBSCRIBE{" "}
                 <img
                   src={diagramImg}
                   alt="diagram"
-                  className="w-5 h-5 object-contain"
+                  className="w-4 h-4 object-contain opacity-40"
                 />
               </button>
             </form>
@@ -144,36 +144,34 @@ const Section5 = () => {
 
           {/* --- MOBILE GET IN TOUCH FORM --- */}
           <form
-            className="flex lg:hidden flex-col w-full gap-3"
+            className="flex lg:hidden flex-col w-full gap-3 mt-2"
             onSubmit={(e) => e.preventDefault()}
           >
-            <div className="flex flex-col w-full gap-3 mb-0">
-              <input
-                className="w-[65%] bg-transparent border border-[#a39171]/30 px-4 py-2.5 text-[#d4d4d4] font-serif placeholder:text-[#7a6b52] focus:outline-none focus:border-[#a39171]/60 text-[12px]"
-                placeholder="Your Name"
-              />
+            <input
+              className="w-full bg-transparent border border-[#222222] px-4 py-3 text-[#d4d4d4] font-serif placeholder:text-[#555] focus:outline-none focus:border-[#a39171]/60 text-[12px]"
+              placeholder="Your Name"
+            />
 
-              <input
-                type="email"
-                className="w-[65%] bg-transparent border border-[#a39171]/30 px-4 py-2.5 text-[#d4d4d4] font-serif placeholder:text-[#7a6b52] focus:outline-none focus:border-[#a39171]/60 text-[12px]"
-                placeholder="Your Email"
-              />
-            </div>
+            <input
+              type="email"
+              className="w-full bg-transparent border border-[#222222] px-4 py-3 text-[#d4d4d4] font-serif placeholder:text-[#555] focus:outline-none focus:border-[#a39171]/60 text-[12px]"
+              placeholder="Your Email"
+            />
             
             <input
-              className="w-full bg-transparent border border-[#a39171]/30 px-4 py-2.5 text-[#d4d4d4] font-serif placeholder:text-[#7a6b52] focus:outline-none focus:border-[#a39171]/60 text-[12px]"
+              className="w-full bg-transparent border border-[#222222] px-4 py-3 text-[#d4d4d4] font-serif placeholder:text-[#555] focus:outline-none focus:border-[#a39171]/60 text-[12px]"
               placeholder="Enquiry Type"
             />
 
             <textarea
-              className="w-full bg-transparent border border-[#a39171]/30 px-4 py-2.5 text-[#d4d4d4] font-serif placeholder:text-[#7a6b52] focus:outline-none focus:border-[#a39171]/60 text-[12px] resize-none"
+              className="w-full bg-transparent border border-[#222222] px-4 py-3 text-[#d4d4d4] font-serif placeholder:text-[#555] focus:outline-none focus:border-[#a39171]/60 text-[12px] resize-none"
               rows="4"
               placeholder="Your Message"
             />
 
             <button
               type="submit"
-              className="w-fit mt-2 text-[11px] border border-[#a39171]/40 px-6 py-2.5 font-light tracking-[0.1em] font-sans text-[#a39171] hover:bg-[#a39171] hover:text-black hover:border-[#a39171] transition-colors"
+              className="w-fit mt-1 text-[11px] border border-[#222222] px-8 py-3 font-light tracking-[0.1em] font-sans text-[#a39171] hover:bg-[#a39171] hover:text-black hover:border-[#a39171] transition-colors"
             >
               SEND IT THROUGH &gt;&gt;
             </button>

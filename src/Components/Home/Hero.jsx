@@ -185,7 +185,7 @@ const BlinkingUnderscore = React.memo(() => (
 BlinkingUnderscore.displayName = "BlinkingUnderscore";
 
 // Scattered Random Typing Effect
-const RandomRevealText = React.memo(({ text, delay = 0 }) => {
+const RandomRevealText = React.memo(({ text, delay = 0, className = "" }) => {
   const letters = Array.from(text);
   
   // Calculate a random delay for each letter to make them pop up randomly across all lines
@@ -194,7 +194,7 @@ const RandomRevealText = React.memo(({ text, delay = 0 }) => {
   }, [letters]);
 
   return (
-    <span className="block text-[32px] min-[400px]:text-[38px] sm:text-[50px] md:text-[70px] lg:text-[105px] font-extralight text-white whitespace-nowrap overflow-visible py-1 pr-4">
+    <span className={`block text-[63px] min-[400px]:text-[62px] sm:text-[50px] md:text-[70px] lg:text-[105px] font-extralight text-white whitespace-nowrap overflow-visible py-1 sm:pr-4 ${className}`}>
       {letters.map((char, index) => (
         <motion.span
           key={index}
@@ -215,7 +215,7 @@ const RandomRevealText = React.memo(({ text, delay = 0 }) => {
 RandomRevealText.displayName = "RandomRevealText";
 
 // Colored band block reveal followed by fast typing from the left
-const BlockRevealTypingSubtitle = React.memo(({ text, delay = 0 }) => {
+const BlockRevealTypingSubtitle = React.memo(({ text, delay = 0, className = "" }) => {
   const letters = Array.from(text);
 
   const blockVariants = {
@@ -249,7 +249,7 @@ const BlockRevealTypingSubtitle = React.memo(({ text, delay = 0 }) => {
   };
 
   return (
-    <div className="relative w-fit mt-0">
+    <div className={`relative w-fit mt-0 ${className}`}>
       <motion.div
         className="absolute top-0 bottom-0 bg-[#a39171] z-10"
         variants={blockVariants}
@@ -315,6 +315,14 @@ const Hero = () => {
   const [pageLoaded, setPageLoaded] = useState(false);
   const [isInitialLoad, setIsInitialLoad] = useState(true);
   const timerRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     setPageLoaded(true);
@@ -324,10 +332,19 @@ const Hero = () => {
     return () => clearTimeout(initialTimer);
   }, []);
 
+  useEffect(() => {
+    if (isMobile) {
+      setCurrentSlide(0);
+    }
+  }, [isMobile]);
+
   const startTimer = useCallback(() => {
     clearInterval(timerRef.current);
     timerRef.current = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % SLIDES.length);
+      setCurrentSlide((prev) => {
+        if (window.innerWidth < 768) return 0;
+        return (prev + 1) % SLIDES.length;
+      });
     }, 5000);
   }, []);
 
@@ -346,40 +363,40 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative w-full bg-[#030303] flex items-start justify-center min-h-[53vh] lg:min-h-0 lg:h-[97vh] overflow-hidden lg:overflow-visible"
+      className="relative w-full bg-[#030303] flex items-start justify-center min-h-[78vh] lg:min-h-0 lg:h-[97vh] overflow-hidden lg:overflow-visible"
     >
       {/* Social icons bar */}
       <motion.div
         variants={socialBarVariants}
         initial="hidden"
         animate={pageLoaded ? "visible" : "hidden"}
-        className="absolute top-[40%] lg:top-70 -translate-y-1/2 right-2 lg:right-6 z-50 flex flex-col gap-2 lg:gap-3 text-[#505050]"
+        className="absolute top-[40%] lg:top-70 -translate-y-1/2 right-2 lg:right-6 z-50 hidden sm:flex flex-col gap-2 lg:gap-3 text-[#505050]"
       >
         {SOCIAL_ICONS.map((Icon, i) => (
           <SocialIcon key={i} Icon={Icon} />
         ))}
       </motion.div>
 
-      <div className="absolute inset-0 mx-auto flex flex-row w-full max-w-7xl items-stretch justify-center px-1 md:px-6 lg:px-12 gap-0">
+      <div className="absolute inset-0 mx-auto flex flex-col sm:flex-row w-full max-w-7xl items-center sm:items-stretch justify-center px-0 sm:px-1 md:px-6 lg:px-12 gap-0">
 
         {/* Left Image Section */}
-        <div className="flex w-1/2 justify-end items-stretch z-10 relative -mr-8 md:-mr-16 lg:-mr-[100px] xl:-mr-[100px]">
-          <div className="flex justify-end items-start gap-0 w-full max-w-none h-full relative">
+        <div className="flex w-full sm:w-1/2 justify-center sm:justify-end items-stretch z-10 absolute sm:relative inset-0 sm:inset-auto -mr-0 sm:-mr-8 md:-mr-16 lg:-mr-[100px] xl:-mr-[100px] opacity-70 sm:opacity-100 pointer-events-none sm:pointer-events-auto">
+          <div className="flex justify-center sm:justify-end items-start gap-0 w-full max-w-none h-full relative">
 
             {/* cyber1 */}
-            <div className="z-20 h-fit mt-22 md:mt-10 lg:mt-10">
+            <div className="z-20 h-fit mt-42 sm:mt-22 md:mt-10 lg:mt-10">
               <motion.img
                 src={cyber1}
                 alt="Cyber 1"
                 variants={cyber1Variants}
                 initial="hidden"
                 animate={pageLoaded ? "visible" : "hidden"}
-                className="xl:w-[600px] lg:w-[220px] md:w-56 w-[200px] h-auto object-contain drop-shadow-[0_0_15px_rgba(100,180,255,0.1)]"
+                className="xl:w-[600px] lg:w-[220px] md:w-56 sm:w-[200px] w-[100px] h-auto object-contain drop-shadow-[0_0_15px_rgba(100,180,255,0.1)]"
               />
             </div>
 
             {/* cyber2 */}
-            <div className="z-10 h-fit sticky lg:top-[6.5vh] top-[13vh]">
+            <div className="z-10 lg:sticky lg:top-[19.7vh] top-[5vh] sm:top-[13vh]  sm:-ml-0">
               <motion.div
                 variants={cyber2Variants}
                 initial="hidden"
@@ -388,7 +405,7 @@ const Hero = () => {
                 <motion.img
                   src={cyber2}
                   alt="Cyber 2"
-                  className="xl:w-[600px] lg:w-[450px] md:w-80 w-[200px] h-auto object-contain"
+                  className="xl:w-[600px] lg:w-[450px] md:w-80 sm:w-[200px] w-[280px] h-auto object-contain"
                 />
               </motion.div>
             </div>
@@ -400,9 +417,9 @@ const Hero = () => {
           variants={textSectionVariants}
           initial="hidden"
           animate={pageLoaded ? "visible" : "hidden"}
-          className="relative w-1/2 flex flex-col justify-start h-full z-20 -ml-2 md:-ml-6 lg:-ml-12 xl:-ml-24 lg:pl-10"
+          className="relative w-full sm:w-1/2 flex flex-col justify-start h-full z-20 ml-28 sm:-ml-2 md:-ml-6 lg:-ml-12 xl:-ml-24 lg:pl-10 pointer-events-auto"
         >
-          <div className="w-full flex flex-col justify-center relative top-[5vh] min-h-[240px] lg:min-h-[450px] mt-4 lg:mt-10">
+          <div className="w-full flex flex-col justify-center relative top-[5vh] min-h-[240px] lg:min-h-[450px] mt-44 lg:mt-10">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentSlide}
@@ -413,15 +430,15 @@ const Hero = () => {
                 className="absolute inset-0 flex flex-col justify-center items-start text-left w-full h-full"
               >
                 {slide.isTitleSlide ? (
-                  <div className="flex flex-col justify-center items-start text-left w-full pl-2 lg:pl-8">
-                    <h1 className="font-feonie leading-[0.9] font-normal lg:leading-[1] tracking-tight overflow-hidden">
+                  <div className="flex flex-col justify-center items-start text-left w-full px-0 sm:px-0 sm:pl-2 lg:pl-8 mt-[20vh] sm:mt-0">
+                    <h1 className="font-feonie leading-[0.9] font-normal lg:leading-[1] tracking-tight overflow-hidden w-full">
                       {/* Scattered Random Typing Effect */}
-                      <RandomRevealText text={slide.title1} delay={isInitialLoad ? 1.5 : 0} />
-                      <RandomRevealText text={slide.title2} delay={isInitialLoad ? 1.25 : 0} />
-                      <RandomRevealText text={slide.title3} delay={isInitialLoad ? 1.5 : 0} />
+                      <RandomRevealText text={slide.title1} delay={isInitialLoad ? 1.5 : 0} className="text-left" />
+                      <RandomRevealText text={slide.title2} delay={isInitialLoad ? 1.25 : 0} className="text-left" />
+                      <RandomRevealText text={slide.title3} delay={isInitialLoad ? 1.5 : 0} className="text-left" />
                     </h1>
                     {/* Colored Band Block Reveal with Fast Typing Subtitle */}
-                    <BlockRevealTypingSubtitle text={slide.subtitle} delay={isInitialLoad ? 1.5 + 1.25 : 1.5} />
+                    <BlockRevealTypingSubtitle text={slide.subtitle} delay={isInitialLoad ? 1.5 + 1.25 : 1.5} className="mt-3 sm:mt-0" />
                   </div>
                 ) : (
                   <motion.div

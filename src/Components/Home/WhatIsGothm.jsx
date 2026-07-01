@@ -71,19 +71,19 @@ const Section2 = () => {
 
           <div className="mt-6 flex flex-col gap-4 sm:gap-3">
             <div className="flex flex-row items-center justify-between gap-2 sm:gap-6 w-full">
-              <span className="w-auto sm:w-56 font-sans text-[10px] sm:text-[15px] font-bold text-[#d4d4d4]">
+              <span className="flex-1 sm:flex-none sm:w-56 font-sans text-[10px] sm:text-[15px] font-bold text-[#d4d4d4]">
                 Extracting the ideas within...
               </span>
-              <button className="w-fit whitespace-nowrap border border-[#303030] font-light bg-[#000000] px-4 py-1.5 sm:px-6 sm:py-2 font-sans text-[9px] sm:text-[13px] tracking-[0.1em] text-[#a39171] transition-colors hover:border-[#a39171]">
+              <button className="w-[140px] sm:w-fit flex-shrink-0 flex justify-center items-center whitespace-nowrap border border-[#303030] font-light bg-[#000000] px-2 py-1.5 sm:px-6 sm:py-2 font-sans text-[9px] sm:text-[13px] tracking-[0.1em] text-[#a39171] transition-colors hover:border-[#a39171]">
                 GOTHM PODCAST &gt;&gt;
               </button>
             </div>
 
             <div className="flex flex-row items-center justify-between gap-2 sm:gap-6 w-full">
-              <span className="w-auto sm:w-56 font-sans text-[10px] sm:text-[15px] font-bold text-[#d4d4d4]">
+              <span className="flex-1 sm:flex-none sm:w-56 font-sans text-[10px] sm:text-[15px] font-bold text-[#d4d4d4]">
                 Synthesizing the findings...
               </span>
-              <button className="w-fit whitespace-nowrap border border-[#303030] bg-[#000000] px-4 py-1.5 sm:px-6 sm:py-2 font-sans text-[9px] sm:text-[13px] font-light tracking-[0.1em] text-[#a39171] transition-colors hover:border-[#a39171]">
+              <button className="w-[140px] sm:w-fit flex-shrink-0 flex justify-center items-center whitespace-nowrap border border-[#303030] bg-[#000000] px-2 py-1.5 sm:px-6 sm:py-2 font-sans text-[9px] sm:text-[13px] font-light tracking-[0.1em] text-[#a39171] transition-colors hover:border-[#a39171]">
                 GOTHM BLOG &gt;&gt;
               </button>
             </div>
@@ -99,7 +99,7 @@ const Section2 = () => {
             />
           </div>
 
-          <div>
+          <div className="flex justify-center ml-4 lg:ml-0 sm:justify-start">
             <button className="border border-[#303030] bg-[#000000] px-6 py-2.5 sm:px-8 sm:py-3.5 font-sans text-[11px] sm:text-[13px] font-light tracking-[0.1em] text-[#a39171] transition-colors hover:border-[#a39171]">
               SUBSCRIBE TO GHOST MAIL &gt;&gt;
             </button>

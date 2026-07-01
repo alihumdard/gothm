@@ -48,7 +48,7 @@ export default function Footer() {
           </div>
 
           {/* Tagline */}
-          <div className="mt-1 flex flex-col gap-0">
+          <div className="mt-3 flex flex-col gap-0">
             <BlockRevealText
               text="THE THINGS YOU WATCH,"
               textClassName="font-michroma text-[10px] lg:text-[12px] ml-20 lg:ml-28 mt-0 font-bold text-[#a39171] uppercase tracking-[0em]"

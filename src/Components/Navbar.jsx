@@ -79,44 +79,44 @@ export default function SourceGuyNavbar() {
         <div className="hidden lg:block h-[88px] w-full"></div>
 
         {/* === MOBILE NAVBAR === */}
-        <div className="flex lg:hidden flex-col w-full bg-[#000000] pb-2">
-          {/* Fixed Top Bar with Hamburger */}
-          <div className="fixed top-0 left-0 right-0 z-[60] flex w-full justify-end bg-[#000000]/95 backdrop-blur-sm px-6 py-4 shadow-md shadow-black/20">
+        <div className="flex lg:hidden fixed top-0 left-0 right-0 z-[60] w-full bg-[#030303] shadow-md shadow-black/20">
+          <div className="mx-auto flex w-full items-center justify-between px-5 py-4 relative">
+            {/* Logo Section (Centered) */}
+            <div className="absolute left-40 -translate-x-1/2 flex items-center gap-[12px] cursor-pointer hover:opacity-80 transition-opacity">
+              {/* Symbol */}
+              <img
+                src={symbolImage}
+                alt="GOTHM Symbol"
+                className="h-[42px] w-auto object-contain"
+              />
+              {/* Text & Tagline */}
+              <div className="flex flex-col justify-center gap-[4px] mt-[2px]">
+                <img
+                  src={textImage}
+                  alt="GOTHM Text"
+                  className="h-[18px] w-auto object-contain"
+                />
+                <img
+                  src={taglineImage}
+                  alt="GOTHM Tagline"
+                  className="h-[8px] w-[158px] object-contain object-left"
+                />
+              </div>
+            </div>
+
+            {/* Hamburger */}
             <button
-              className="text-white cursor-pointer"
+              className="ml-auto mr-5 flex flex-col justify-center gap-[6px] cursor-pointer p-1"
               onClick={() => setIsMobileMenuOpen(true)}
             >
-              <FaBars size={24} />
+              <div className="w-[28px] h-[2px] bg-[#a39171] opacity-70 rounded-full"></div>
+              <div className="w-[28px] h-[2px] bg-[#a39171] opacity-70 rounded-full"></div>
+              <div className="w-[28px] h-[2px] bg-[#a39171] opacity-70 rounded-full"></div>
             </button>
           </div>
-          
-          {/* Spacer to prevent the logo from hiding under the fixed top bar */}
-          <div className="h-[56px] w-full"></div>
-          
-          {/* Mobile Centered Logo (Scrolls Away) */}
-          <div className="flex items-center justify-center gap-3 mt-4 mb-2 cursor-pointer hover:opacity-80 transition-opacity px-6">
-            <img src={symbolImage} alt="GOTHM Symbol" className="h-[48px] w-auto object-contain" />
-            <div className="flex flex-col justify-center gap-1 mt-1">
-              <img src={textImage} alt="GOTHM Text" className="h-[22px] w-auto object-contain" />
-              <img src={taglineImage} alt="GOTHM Tagline" className="h-[10px] w-[180px] object-contain object-left" />
-            </div>
-          </div>
-
-          {/* Mobile Centered Links (2 Rows, Scrolls Away) */}
-          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-0 text-[13px] font-sans font-light tracking-[0.05em] text-[#a39171] px-6">
-            <a href="#home" onClick={(e) => handleScrollTo(e, 'home')} className="hover:text-white transition-colors cursor-pointer">HOME</a>
-            <a href="#what-is-gothm" onClick={(e) => handleScrollTo(e, 'what-is-gothm')} className="hover:text-white transition-colors cursor-pointer">WHAT IS GOTHM</a>
-            <a href="#episodes" onClick={(e) => handleScrollTo(e, 'episodes')} className="hover:text-white transition-colors cursor-pointer">EPISODES</a>
-            <a href="#blog" onClick={(e) => handleScrollTo(e, 'blog')} className="hover:text-white transition-colors cursor-pointer">BLOG</a>
-            
-            {/* Force Line Break */}
-            <div className="w-full h-0"></div>
-            
-            <a href="#about-the-host" onClick={(e) => handleScrollTo(e, 'about-the-host')} className="hover:text-white transition-colors cursor-pointer">ABOUT THE HOST</a>
-            <a href="#ghost-mail" onClick={(e) => handleScrollTo(e, 'ghost-mail')} className="hover:text-white transition-colors cursor-pointer">GHOST MAIL</a>
-            <a href="#contact" onClick={(e) => handleScrollTo(e, 'contact')} className="hover:text-white transition-colors cursor-pointer">CONTACT</a>
-          </div>
         </div>
+        {/* Spacer to prevent content jumping under the fixed mobile navbar */}
+        <div className="block lg:hidden h-[74px] w-full bg-[#030303]"></div>
       </nav>
 
       {/* Mobile Menu Overlay */}
