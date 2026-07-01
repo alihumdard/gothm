@@ -417,7 +417,7 @@ const Hero = () => {
           variants={textSectionVariants}
           initial="hidden"
           animate={pageLoaded ? "visible" : "hidden"}
-          className="relative w-full sm:w-1/2 flex flex-col justify-start h-full z-20 ml-28 sm:-ml-2 md:-ml-6 lg:-ml-12 xl:-ml-24 lg:pl-10 pointer-events-auto"
+          className="relative w-full sm:w-1/2 flex flex-col justify-start h-full z-20 ml-20 sm:-ml-2 md:-ml-6 lg:-ml-12 xl:-ml-24 lg:pl-10 pointer-events-auto"
         >
           <div className="w-full flex flex-col justify-center relative top-[5vh] min-h-[240px] lg:min-h-[450px] mt-44 lg:mt-10">
             <AnimatePresence mode="wait">

@@ -80,9 +80,9 @@ export default function SourceGuyNavbar() {
 
         {/* === MOBILE NAVBAR === */}
         <div className="flex lg:hidden fixed top-0 left-0 right-0 z-[60] w-full bg-[#030303] shadow-md shadow-black/20">
-          <div className="mx-auto flex w-full items-center justify-between px-5 py-4 relative">
+          <div className="mx-auto flex w-full items-center justify-between px-5 py-5 relative">
             {/* Logo Section (Centered) */}
-            <div className="absolute left-40 top-4 -translate-x-1/2 flex items-center gap-[12px] cursor-pointer hover:opacity-80 transition-opacity">
+            <div className="absolute left-36 top-5 -translate-x-1/2 flex items-center gap-[12px] cursor-pointer hover:opacity-80 transition-opacity">
               {/* Symbol */}
               <img
                 src={symbolImage}
@@ -90,28 +90,28 @@ export default function SourceGuyNavbar() {
                 className="h-[42px] w-auto object-contain"
               />
               {/* Text & Tagline */}
-              <div className="flex flex-col justify-center gap-[4px] mt-[2px]">
+              <div className="flex flex-col justify-center gap-[0px] mt-[14px]">
                 <img
                   src={textImage}
                   alt="GOTHM Text"
-                  className="h-[18px] w-auto object-contain"
+                  className="h-[22px] w-auto object-contain"
                 />
                 <img
                   src={taglineImage}
                   alt="GOTHM Tagline"
-                  className="h-[8px] w-[158px] object-contain object-left"
+                  className="h-[12px] w-[178px] object-contain object-left"
                 />
               </div>
             </div>
 
             {/* Hamburger */}
             <button
-              className="ml-auto mr-5 mt-2 flex flex-col justify-center gap-[6px] cursor-pointer p-1"
+              className="ml-auto mt-5 flex flex-col justify-center gap-[6px] cursor-pointer p-1"
               onClick={() => setIsMobileMenuOpen(true)}
             >
-              <div className="w-[28px] h-[2px] bg-[#a39171] opacity-70 rounded-full"></div>
-              <div className="w-[28px] h-[2px] bg-[#a39171] opacity-70 rounded-full"></div>
-              <div className="w-[28px] h-[2px] bg-[#a39171] opacity-70 rounded-full"></div>
+              <div className="w-[28px] h-[2px] bg-[#3E3425] opacity-70 rounded-full"></div>
+              <div className="w-[28px] h-[2px] bg-[#3E3425] opacity-70 rounded-full"></div>
+              <div className="w-[28px] h-[2px] bg-[#3E3425] opacity-70 rounded-full"></div>
             </button>
           </div>
         </div>
