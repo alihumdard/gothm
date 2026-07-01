@@ -148,7 +148,7 @@ const mobileSlideVariants = {
     opacity: 1, 
     x: 0, 
     filter: "blur(0px)", 
-    scale: [0.90, 1.02, 0.95],
+    scale: [0.95, 1.01, 0.98],
     transition: { 
       opacity: { duration: 1.2, ease: "easeOut" },
       x: { duration: 1.2, ease: "easeOut" },
@@ -156,7 +156,7 @@ const mobileSlideVariants = {
       scale: {
         duration: 4.8, 
         ease: "easeInOut", 
-        times: [0, 0.5, 1]
+        times: [0, 0.85, 1]
       }
     }
   },
@@ -279,7 +279,7 @@ const BlockRevealTypingSubtitle = React.memo(({ text, delay = 0, className = "" 
   };
 
   return (
-    <div className={`relative w-fit mt-0 ${className}`}>
+    <div className={`relative max-w-[calc(100vw-6rem)] sm:max-w-none w-fit mt-0 ${className}`}>
       <motion.div
         className="absolute top-0 bottom-0 bg-[#a39171] z-10"
         variants={blockVariants}
@@ -287,7 +287,7 @@ const BlockRevealTypingSubtitle = React.memo(({ text, delay = 0, className = "" 
         animate="visible"
       />
       <motion.p
-        className="font-michroma text-[13.5px] lg:pr-0 pr-16  md:text-[11px] lg:text-[13px] font-bold text-[#a39171] uppercase tracking-[0.1em] md:tracking-widest m-0 relative"
+        className="font-michroma text-[12px] sm:text-[13.5px] md:text-[11px] lg:text-[13px] font-bold text-[#a39171] uppercase tracking-[0.1em] md:tracking-widest m-0 relative"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -328,11 +328,11 @@ const SubheadingText = React.memo(({ text }) => (
 SubheadingText.displayName = "SubheadingText";
 
 const SlideButtons = React.memo(({ buttons }) => (
-  <div className="flex flex-wrap gap-2 lg:gap-4 mb-2 lg:mb-4">
+  <div className="flex flex-row flex-nowrap gap-2 lg:gap-4 mb-2 lg:mb-4">
     {buttons.map((btn, idx) => (
       <button
         key={idx}
-        className="border border-[#a39171] text-[#a39171] bg-transparent hover:bg-[#a39171] hover:text-[#030303] transition-colors duration-300 font-sans text-[11px] lg:text-[13px] font-light tracking-[0.1em] px-3 py-1.5 lg:px-6 lg:py-3 uppercase"
+        className="whitespace-nowrap border border-[#a39171] text-[#a39171] bg-transparent hover:bg-[#a39171] hover:text-[#030303] transition-colors duration-300 font-sans text-[10px] sm:text-[11px] lg:text-[13px] font-light tracking-[0.05em] sm:tracking-[0.1em] px-2 sm:px-3 py-1.5 lg:px-6 lg:py-3 uppercase"
       >
         {btn.text}
       </button>
@@ -443,7 +443,7 @@ const Hero = () => {
           variants={textSectionVariants}
           initial="hidden"
           animate={pageLoaded ? "visible" : "hidden"}
-          className="relative w-full sm:w-1/2 flex flex-col justify-start h-full z-20 ml-20 sm:-ml-2 md:-ml-6 lg:-ml-12 xl:-ml-24 lg:pl-10 pr-24 sm:pr-0 pointer-events-auto"
+          className="relative w-full sm:w-1/2 flex flex-col justify-start h-full z-20 ml-20 sm:-ml-2 md:-ml-6 lg:-ml-12 xl:-ml-24 lg:pl-10 pointer-events-auto"
         >
           <div className="w-full flex flex-col justify-center relative top-[5vh] min-h-[240px] lg:min-h-[450px] mt-44 lg:mt-10">
             <AnimatePresence mode="wait">
@@ -472,7 +472,7 @@ const Hero = () => {
                     initial="initial"
                     animate="animate"
                     exit="exit"
-                    className="flex flex-col w-full max-w-[550px] gap-2 md:gap-4 lg:gap-5 pl-1 lg:pl-6 bg-transparent lg:bg-transparent backdrop-blur-none p-1 lg:p-0 rounded-none"
+                    className="flex flex-col w-full max-w-[calc(100vw-6rem)] sm:max-w-[550px] gap-2 md:gap-4 lg:gap-5 pl-1 lg:pl-6 bg-transparent lg:bg-transparent backdrop-blur-none p-1 lg:p-0 rounded-none"
                   >
                     <motion.div variants={typingContainerVariants}>
                       <SubheadingText text={slide.subheading} />
