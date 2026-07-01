@@ -195,20 +195,23 @@ const RandomRevealText = React.memo(({ text, delay = 0, className = "" }) => {
 
   return (
     <span className={`block text-[63px] min-[400px]:text-[62px] sm:text-[50px] md:text-[70px] lg:text-[105px] font-extralight text-white whitespace-nowrap overflow-visible py-1 sm:pr-4 ${className}`}>
-      {letters.map((char, index) => (
-        <motion.span
-          key={index}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{
-            duration: 2, // instant pop like a typing effect
-            delay: delay + delays[index],
-          }}
-          className="inline-block"
-        >
-          {char === " " ? "\u00A0" : char}
-        </motion.span>
-      ))}
+      {letters.map((char, index) => {
+        if (char === " ") return " ";
+        return (
+          <motion.span
+            key={index}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{
+              duration: 2, // instant pop like a typing effect
+              delay: delay + delays[index],
+            }}
+            className="inline-block"
+          >
+            {char}
+          </motion.span>
+        );
+      })}
     </span>
   );
 });
@@ -262,15 +265,18 @@ const BlockRevealTypingSubtitle = React.memo(({ text, delay = 0, className = "" 
         initial="hidden"
         animate="visible"
       >
-        {letters.map((char, index) => (
-          <motion.span
-            key={index}
-            variants={letterVariants}
-            className="inline-block"
-          >
-            {char === " " ? "\u00A0" : char}
-          </motion.span>
-        ))}
+        {letters.map((char, index) => {
+          if (char === " ") return " ";
+          return (
+            <motion.span
+              key={index}
+              variants={letterVariants}
+              className="inline-block"
+            >
+              {char}
+            </motion.span>
+          );
+        })}
       </motion.p>
     </div>
   );
