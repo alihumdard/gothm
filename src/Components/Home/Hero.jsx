@@ -311,7 +311,7 @@ const BlockRevealTypingSubtitle = React.memo(({ text, delay = 0, className = "" 
 BlockRevealTypingSubtitle.displayName = "BlockRevealTypingSubtitle";
 
 const SubheadingText = React.memo(({ text }) => (
-  <h3 className="font-sans font-light tracking-[0.15em] lg:tracking-[0.2em] text-[#a39171] text-[12px] md:text-[13px] uppercase">
+  <h3 className="font-sans font-light tracking-[0.15em] lg:tracking-[0.2em] leading-tighter lg:leading-normal text-[#a39171] text-[12px] md:text-[13px] uppercase">
     {text.split("").map((char, i) =>
       char === "_" ? (
         <motion.span key={i} variants={letterTypingVariants}>
@@ -328,11 +328,11 @@ const SubheadingText = React.memo(({ text }) => (
 SubheadingText.displayName = "SubheadingText";
 
 const SlideButtons = React.memo(({ buttons }) => (
-  <div className="flex flex-row flex-nowrap gap-2 lg:gap-4 mb-2 lg:mb-4">
+  <div className="flex flex-col sm:flex-row justify-center sm:justify-start items-center sm:items-start flex-nowrap gap-4 sm:gap-4 mb-2 lg:mb-4 w-full sm:w-max">
     {buttons.map((btn, idx) => (
       <button
         key={idx}
-        className="whitespace-nowrap border border-[#a39171] text-[#a39171] bg-transparent hover:bg-[#a39171] hover:text-[#030303] transition-colors duration-300 font-sans text-[10px] sm:text-[11px] lg:text-[13px] font-light tracking-[0.05em] sm:tracking-[0.1em] px-2 sm:px-3 py-1.5 lg:px-6 lg:py-3 uppercase"
+        className="w-max sm:w-auto text-center whitespace-nowrap border border-[#a39171] text-[#a39171] bg-transparent hover:bg-[#a39171] hover:text-[#030303] transition-colors duration-300 font-sans text-[13px] sm:text-[11px] lg:text-[13px] font-light tracking-[0.1em] px-6 py-3 sm:px-3 sm:py-2 lg:px-6 lg:py-3 uppercase"
       >
         {btn.text}
       </button>
@@ -389,7 +389,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative w-full bg-[#030303] flex items-start justify-center min-h-[78vh] lg:min-h-0 lg:h-[97vh] overflow-hidden lg:overflow-visible"
+      className="relative w-full bg-[#030303] flex items-start justify-center min-h-[115vh] lg:min-h-0 lg:h-[97vh] overflow-hidden lg:overflow-visible"
     >
       {/* Social icons bar */}
       <motion.div
@@ -443,7 +443,7 @@ const Hero = () => {
           variants={textSectionVariants}
           initial="hidden"
           animate={pageLoaded ? "visible" : "hidden"}
-          className="relative w-full sm:w-1/2 flex flex-col justify-start h-full z-20 ml-20 sm:-ml-2 md:-ml-6 lg:-ml-12 xl:-ml-24 lg:pl-10 pointer-events-auto"
+          className="relative w-full sm:w-1/2 flex flex-col justify-start h-full z-20 px-6 sm:px-0 sm:-ml-2 md:-ml-6 lg:-ml-12 xl:-ml-24 lg:pl-10 pointer-events-auto"
         >
           <div className="w-full flex flex-col justify-center relative top-[5vh] min-h-[240px] lg:min-h-[450px] mt-44 lg:mt-10">
             <AnimatePresence mode="wait">
@@ -472,21 +472,21 @@ const Hero = () => {
                     initial="initial"
                     animate="animate"
                     exit="exit"
-                    className="flex flex-col w-full max-w-[calc(100vw-6rem)] sm:max-w-[550px] gap-2 md:gap-4 lg:gap-5 pl-1 lg:pl-6 bg-transparent lg:bg-transparent backdrop-blur-none p-1 lg:p-0 rounded-none"
+                    className="flex flex-col w-full max-w-[calc(100vw-3rem)] sm:max-w-[550px] gap-2 md:gap-4 lg:gap-5 pl-1 lg:pl-6 bg-transparent lg:bg-transparent backdrop-blur-none p-1 lg:p-0 rounded-none mt-[45vh] sm:mt-0"
                   >
                     <motion.div variants={typingContainerVariants}>
                       <SubheadingText text={slide.subheading} />
 
-                      <h2 className="font-michroma text-white text-[11px] md:text-[15px] lg:text-[22px] leading-[1.3] lg:leading-[1.4] uppercase mb-1 mt-1">
+                      <h2 className="font-michroma text-white text-[16px] md:text-[15px] lg:text-[22px] leading-[1.2] lg:leading-[1.4] uppercase mb-1 mt-1">
                         <AnimatedText text={slide.heading} />
                       </h2>
                     </motion.div>
 
-                    <div className="flex flex-col mb-4 lg:mb-2">
+                    <div className="flex flex-col gap-3 sm:gap-0 mb-6 lg:mb-2 mt-2">
                       {slide.paragraphs.map((p, idx) => (
                         <p
                           key={idx}
-                          className="font-sans text-[#d0d0d0] text-[14px] md:text-[15px] font-normal leading-[1.4] lg:leading-relaxed tracking-wide text-justify sm:text-left"
+                          className="font-sans text-[#e0e0e0] text-[13px] md:text-[15px] font-medium sm:font-normal leading-[1.4] lg:leading-relaxed tracking-wide text-left"
                         >
                           {p}
                         </p>
