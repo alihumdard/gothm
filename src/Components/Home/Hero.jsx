@@ -279,7 +279,7 @@ const BlockRevealTypingSubtitle = React.memo(({ text, delay = 0, className = "" 
   };
 
   return (
-    <div className={`relative max-w-[calc(100vw-6rem)] sm:max-w-none w-fit mt-0 ${className}`}>
+    <div className={`relative w-full sm:w-fit mt-0 ${className}`}>
       <motion.div
         className="absolute top-0 bottom-0 bg-[#a39171] z-10"
         variants={blockVariants}
@@ -287,18 +287,17 @@ const BlockRevealTypingSubtitle = React.memo(({ text, delay = 0, className = "" 
         animate="visible"
       />
       <motion.p
-        className="font-michroma text-[12px] sm:text-[13.5px] md:text-[11px] lg:text-[13px] font-bold text-[#a39171] uppercase tracking-[0.1em] md:tracking-widest m-0 relative"
+        className="font-michroma text-[12px] sm:text-[13.5px] md:text-[11px] lg:text-[13px] font-bold text-[#a39171] uppercase tracking-[0.1em] md:tracking-widest m-0 relative pr-0"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         {letters.map((char, index) => {
-          if (char === " ") return " ";
+          if (char === " ") return <span key={index} className="whitespace-pre"> </span>;
           return (
             <motion.span
               key={index}
               variants={letterVariants}
-              className="inline-block"
             >
               {char}
             </motion.span>

@@ -4,7 +4,7 @@ import hostImage from "../../assets/images/anchor.jpeg";
 
 /* ---------------- Typing Text ---------------- */
 const TypingText = ({ text = "", delay = 0, className = "" }) => {
-  const letters = Array.from(text);
+  const words = text.split(" ");
 
   return (
     <motion.span
@@ -23,21 +23,25 @@ const TypingText = ({ text = "", delay = 0, className = "" }) => {
         },
       }}
     >
-      {letters.map((char, i) => {
-        if (char === " ") return " ";
-        return (
-          <motion.span
-            key={i}
-            variants={{
-              hidden: { opacity: 0 },
-              visible: { opacity: 1, transition: { duration: 0.01 } },
-            }}
-            className="inline-block"
-          >
-            {char}
-          </motion.span>
-        );
-      })}
+      {words.map((word, wordIndex) => (
+        <span key={wordIndex} className="inline-block whitespace-nowrap">
+          {Array.from(word).map((char, i) => (
+            <motion.span
+              key={i}
+              variants={{
+                hidden: { opacity: 0 },
+                visible: { opacity: 1, transition: { duration: 0.01 } },
+              }}
+              className="inline-block"
+            >
+              {char}
+            </motion.span>
+          ))}
+          {wordIndex !== words.length - 1 && (
+            <span className="inline-block whitespace-pre"> </span>
+          )}
+        </span>
+      ))}
     </motion.span>
   );
 };

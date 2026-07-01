@@ -11,7 +11,7 @@ import blog3 from "../../assets/images/blog3.png";
 /* ---------------- TEXT ANIMATIONS ---------------- */
 
 const TypingText = ({ text = "", delay = 0, className = "" }) => {
-  const letters = useMemo(() => Array.from(text), [text]);
+  const words = text.split(" ");
 
   return (
     <motion.span
@@ -30,21 +30,25 @@ const TypingText = ({ text = "", delay = 0, className = "" }) => {
         },
       }}
     >
-      {letters.map((char, i) => {
-        if (char === " ") return " ";
-        return (
-          <motion.span
-            key={i}
-            variants={{
-              hidden: { opacity: 0 },
-              visible: { opacity: 1, transition: { duration: 0.01 } },
-            }}
-            className="inline-block"
-          >
-            {char}
-          </motion.span>
-        );
-      })}
+      {words.map((word, wordIndex) => (
+        <span key={wordIndex} className="inline-block whitespace-nowrap">
+          {Array.from(word).map((char, i) => (
+            <motion.span
+              key={i}
+              variants={{
+                hidden: { opacity: 0 },
+                visible: { opacity: 1, transition: { duration: 0.01 } },
+              }}
+              className="inline-block"
+            >
+              {char}
+            </motion.span>
+          ))}
+          {wordIndex !== words.length - 1 && (
+            <span className="inline-block whitespace-pre"> </span>
+          )}
+        </span>
+      ))}
     </motion.span>
   );
 };
@@ -181,7 +185,7 @@ const ImageReveal = ({ image, alt, delay, sectionInView, number }) => {
 const episodes = [
   {
     id: "01",
-    eyebrow: "THE MATRIX...",
+    eyebrow: "THE MATRIX_",
     title: "THE SYSTEM IS AN ICEBERG",
     subtitle:
       "How Far Does The Rabbit Hole Go? A Doctor In Politics Breaks Down Every Layer.",
