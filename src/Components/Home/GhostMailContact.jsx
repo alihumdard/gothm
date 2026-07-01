@@ -36,13 +36,13 @@ const Section5 = () => {
             <TypingText text="FROM INSIDE THE MACHINE" delay={2.1} />
           </h2>
 
-          <p className="mb-3 font-sans text-[11px] md:text-[16px] max-w-lg font-bold leading-[1.4] md:leading-[1.2] text-[#d4d4d4] text-justify sm:text-left">
+          <p className="mb-3 font-sans text-[14px] md:text-[16px] max-w-lg font-bold leading-[1.4] md:leading-[1.2] text-[#d4d4d4] text-justify sm:text-left">
             What I've watched. What I've read. What I can't stop thinking about.
             System hacks, cultural observations, and the occasional rabbit hole
             you didn't know you needed.
           </p>
 
-          <p className="mb-6 font-sans text-[11px] md:text-[15px] font-bold max-w-lg leading-[1.4] md:leading-[1.2] text-[#d4d4d4] text-justify sm:text-left">
+          <p className="mb-6 font-sans text-[14px] md:text-[15px] font-bold max-w-lg leading-[1.4] md:leading-[1.2] text-[#d4d4d4] text-justify sm:text-left">
             No algorithms. No noise. Just the things that got under my skin that
             week — delivered straight to yours.
           </p>
@@ -51,7 +51,7 @@ const Section5 = () => {
             <BlockRevealText
               text="JOIN THE PEOPLE WHO READ BETWEEN THE LINES"
               className="mb-4 block"
-              textClassName="font-michroma text-[9px] md:text-[12px] lg:text-[12px] font-bold tracking-[0em] text-[#a39171] uppercase"
+              textClassName="font-michroma text-[12px] md:text-[12px] lg:text-[12px] font-bold tracking-[0em] text-[#a39171] uppercase"
               delay={0.8}
               glitchI={true}
             />
@@ -69,7 +69,7 @@ const Section5 = () => {
               />
               <button
                 type="submit"
-                className="w-1/3 bg-[#67563D] text-[#888] font-light font-sans tracking-[0.05em] sm:tracking-[0.1em] text-[10px] sm:text-[11px] px-2 py-2.5 flex items-center justify-center gap-1 opacity-90"
+                className="w-1/3 bg-[#67563D] text-[#888] font-light font-sans tracking-[0.05em] sm:tracking-[0.1em] text-[12px] sm:text-[12px] px-2 py-2.5 flex items-center justify-center gap-1 opacity-90"
               >
                 SUBSCRIBE{" "}
                 <img
@@ -129,14 +129,14 @@ const Section5 = () => {
             delay={1.2}
           />
 
-          <h2 className="mb-4 font-michroma text-[13.5px] lg:text-[21px] xl:text-[20px] font-extrabold uppercase text-white leading-[1.2] tracking-tight">
+          <h2 className="mb-4 font-michroma text-[15px] lg:text-[21px] xl:text-[20px] font-extrabold uppercase text-white leading-[1.2] tracking-tight">
             <TypingText
               text="COME MEET US AT THE WINDOW BEHIND THE FOURTH WALL"
               delay={1.2}
             />
           </h2>
 
-          <p className="mb-6 font-sans text-[11px] md:text-[15px] font-bold leading-[1.4] md:leading-[1.2] text-[#d4d4d4] text-justify sm:text-left">
+          <p className="mb-6 font-sans text-[14px] md:text-[15px] font-bold leading-[1.4] md:leading-[1.2] text-[#d4d4d4] text-justify sm:text-left">
             Whether you made something worth excavating, know someone who can
             explain what it did to us, or want to be part of what we're building
             — we want to hear from you.
@@ -171,7 +171,7 @@ const Section5 = () => {
 
             <button
               type="submit"
-              className="w-fit mt-1 text-[11px] border border-[#222222] px-8 py-3 font-light tracking-[0.1em] font-sans text-[#a39171] hover:bg-[#a39171] hover:text-black hover:border-[#a39171] transition-colors"
+              className="w-fit mt-1 text-[12px] border border-[#222222] px-8 py-3 font-light tracking-[0.1em] font-sans text-[#a39171] hover:bg-[#a39171] hover:text-black hover:border-[#a39171] transition-colors"
             >
               SEND IT THROUGH &gt;&gt;
             </button>

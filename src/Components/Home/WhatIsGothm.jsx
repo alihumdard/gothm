@@ -8,7 +8,7 @@ const Section2 = () => {
       id="what-is-gothm"
       className="relative w-full overflow-hidden bg-[#000000] xl:py-16 py-6  text-white"
     >
-      <div className="mx-auto flex max-w-5xl flex-col lg:flex-row px-4 lg:px-6">
+      <div className="mx-auto flex max-w-5xl flex-col lg:flex-row px-4 lg:px-5">
         {/* LEFT SIDE: Content Section */}
         <motion.div
           initial="hidden"
@@ -27,7 +27,7 @@ const Section2 = () => {
           <BlockRevealText
             text="WHAT IS GOTHM_"
             className="mb-1 text-left block"
-            textClassName="font-sans text-[13px] font-light tracking-[0.1em] text-[#a39171]"
+            textClassName="font-sans text-[13px] font-light tracking-[0.1em] text-[#a39171] uppercase"
             delay={0.8}
           />
 
@@ -42,7 +42,7 @@ const Section2 = () => {
           </h2>
 
           <div className="space-y-3 font-sans">
-            <p className="text-[13px] md:text-[15px] leading-[1.3] md:leading-[1.2] font-bold text-[#d4d4d4] text-justify sm:text-left">
+            <p className="text-[14px] md:text-[15px] leading-[1.3] md:leading-[1.2] font-bold text-[#d4d4d4] text-justify sm:text-left">
               Hosted safely inside a story, a message that you could never say out loud can be safehoused, and distributed to billions of people. A memo that would be sent straight to spam for conspiracy. A truth that would be rejected for wearing a plain name tag, would instead be accepted with open arms by our fellow society members. And embraced with open wallets by the companies in big media.
             </p>
 
@@ -54,7 +54,7 @@ const Section2 = () => {
               glitchI={true}
             />
 
-            <div className="space-y-3 text-[10px] md:text-[15px] font-normal md:font-bold leading-[1.3] md:leading-[1.2] text-[#d4d4d4] text-justify sm:text-left">
+            <div className="space-y-3 text-[14px] md:text-[15px] font-bold md:font-bold leading-[1.3] md:leading-[1.2] text-[#d4d4d4] text-justify sm:text-left">
               <p>
                 In a world where they'd hide the stories of truth. We'd just hide the truth in the world of a story.
               </p>
@@ -71,19 +71,19 @@ const Section2 = () => {
 
           <div className="mt-6 flex flex-col gap-4 sm:gap-3">
             <div className="flex flex-row items-center justify-between gap-2 sm:gap-6 w-full">
-              <span className="flex-1 sm:flex-none sm:w-56 font-sans text-[10px] sm:text-[15px] font-bold text-[#d4d4d4]">
+              <span className="flex-1 sm:flex-none sm:w-56 font-sans text-[13px] font-bold text-[#d4d4d4]">
                 Extracting the ideas within...
               </span>
-              <button className="w-[140px] sm:w-fit flex-shrink-0 flex justify-center items-center whitespace-nowrap border border-[#303030] font-light bg-[#000000] px-2 py-1.5 sm:px-6 sm:py-2 font-sans text-[9px] sm:text-[13px] tracking-[0.1em] text-[#a39171] transition-colors hover:border-[#a39171]">
+              <button className="w-[140px] sm:w-fit flex-shrink-0 flex justify-center items-center whitespace-nowrap border border-[#303030] font-light bg-[#000000] px-2 py-1.5 sm:px-6 sm:py-2 font-sans text-[12px] tracking-[0.1em] text-[#a39171] transition-colors hover:border-[#a39171]">
                 GOTHM PODCAST &gt;&gt;
               </button>
             </div>
 
             <div className="flex flex-row items-center justify-between gap-2 sm:gap-6 w-full">
-              <span className="flex-1 sm:flex-none sm:w-56 font-sans text-[10px] sm:text-[15px] font-bold text-[#d4d4d4]">
+              <span className="flex-1 sm:flex-none sm:w-56 font-sans text-[14px] sm:text-[15px] font-bold text-[#d4d4d4]">
                 Synthesizing the findings...
               </span>
-              <button className="w-[140px] sm:w-fit flex-shrink-0 flex justify-center items-center whitespace-nowrap border border-[#303030] bg-[#000000] px-2 py-1.5 sm:px-6 sm:py-2 font-sans text-[9px] sm:text-[13px] font-light tracking-[0.1em] text-[#a39171] transition-colors hover:border-[#a39171]">
+              <button className="w-[140px] sm:w-fit flex-shrink-0 flex justify-center items-center whitespace-nowrap border border-[#303030] bg-[#000000] px-2 py-1.5 sm:px-6 sm:py-2 font-sans text-[12px] sm:text-[13px] font-light tracking-[0.1em] text-[#a39171] transition-colors hover:border-[#a39171]">
                 GOTHM BLOG &gt;&gt;
               </button>
             </div>

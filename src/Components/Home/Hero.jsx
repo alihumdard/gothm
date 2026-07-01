@@ -130,10 +130,37 @@ const socialBarVariants = {
 
 const slideTransition = { duration: 0.8, ease: "easeOut" };
 
-const containerSlideVariants = {
-  initial: { opacity: 0, x: 30, filter: "blur(10px)" },
-  animate: { opacity: 1, x: 0, filter: "blur(0px)" },
-  exit:    { opacity: 0, x: -30, filter: "blur(10px)" },
+const desktopSlideVariants = {
+  initial: { opacity: 0, x: 30, filter: "blur(10px)", scale: 1 },
+  animate: { 
+    opacity: 1, 
+    x: 0, 
+    filter: "blur(0px)", 
+    scale: 1,
+    transition: { duration: 0.8, ease: "easeOut" }
+  },
+  exit: { opacity: 0, x: -30, filter: "blur(10px)", scale: 1 },
+};
+
+const mobileSlideVariants = {
+  initial: { opacity: 0, x: 0, filter: "blur(10px)", scale: 0.90 },
+  animate: { 
+    opacity: 1, 
+    x: 0, 
+    filter: "blur(0px)", 
+    scale: [0.90, 1.02, 0.95],
+    transition: { 
+      opacity: { duration: 1.2, ease: "easeOut" },
+      x: { duration: 1.2, ease: "easeOut" },
+      filter: { duration: 1.2, ease: "easeOut" },
+      scale: {
+        duration: 4.8, 
+        ease: "easeInOut", 
+        times: [0, 0.5, 1]
+      }
+    }
+  },
+  exit: { opacity: 0, x: 0, filter: "blur(10px)", scale: 0.95 },
 };
 
 const typingContainerVariants = {
@@ -260,7 +287,7 @@ const BlockRevealTypingSubtitle = React.memo(({ text, delay = 0, className = "" 
         animate="visible"
       />
       <motion.p
-        className="font-michroma text-[7.5px] md:text-[11px] lg:text-[13px] font-bold text-[#a39171] uppercase tracking-[0.1em] md:tracking-widest m-0 relative"
+        className="font-michroma text-[13.5px] lg:pr-0 pr-16  md:text-[11px] lg:text-[13px] font-bold text-[#a39171] uppercase tracking-[0.1em] md:tracking-widest m-0 relative"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -284,7 +311,7 @@ const BlockRevealTypingSubtitle = React.memo(({ text, delay = 0, className = "" 
 BlockRevealTypingSubtitle.displayName = "BlockRevealTypingSubtitle";
 
 const SubheadingText = React.memo(({ text }) => (
-  <h3 className="font-sans font-light tracking-[0.15em] lg:tracking-[0.2em] text-[#a39171] text-[10px] md:text-[11px] lg:text-[13px] uppercase">
+  <h3 className="font-sans font-light tracking-[0.15em] lg:tracking-[0.2em] text-[#a39171] text-[12px] md:text-[13px] uppercase">
     {text.split("").map((char, i) =>
       char === "_" ? (
         <motion.span key={i} variants={letterTypingVariants}>
@@ -305,7 +332,7 @@ const SlideButtons = React.memo(({ buttons }) => (
     {buttons.map((btn, idx) => (
       <button
         key={idx}
-        className="border border-[#a39171] text-[#a39171] bg-transparent hover:bg-[#a39171] hover:text-[#030303] transition-colors duration-300 font-sans text-[9px] lg:text-[13px] font-light tracking-[0.1em] px-3 py-1.5 lg:px-6 lg:py-3 uppercase"
+        className="border border-[#a39171] text-[#a39171] bg-transparent hover:bg-[#a39171] hover:text-[#030303] transition-colors duration-300 font-sans text-[11px] lg:text-[13px] font-light tracking-[0.1em] px-3 py-1.5 lg:px-6 lg:py-3 uppercase"
       >
         {btn.text}
       </button>
@@ -338,19 +365,12 @@ const Hero = () => {
     return () => clearTimeout(initialTimer);
   }, []);
 
-  useEffect(() => {
-    if (isMobile) {
-      setCurrentSlide(0);
-    }
-  }, [isMobile]);
+
 
   const startTimer = useCallback(() => {
     clearInterval(timerRef.current);
     timerRef.current = setInterval(() => {
-      setCurrentSlide((prev) => {
-        if (window.innerWidth < 768) return 0;
-        return (prev + 1) % SLIDES.length;
-      });
+      setCurrentSlide((prev) => (prev + 1) % SLIDES.length);
     }, 5000);
   }, []);
 
@@ -423,7 +443,7 @@ const Hero = () => {
           variants={textSectionVariants}
           initial="hidden"
           animate={pageLoaded ? "visible" : "hidden"}
-          className="relative w-full sm:w-1/2 flex flex-col justify-start h-full z-20 ml-20 sm:-ml-2 md:-ml-6 lg:-ml-12 xl:-ml-24 lg:pl-10 pointer-events-auto"
+          className="relative w-full sm:w-1/2 flex flex-col justify-start h-full z-20 ml-20 sm:-ml-2 md:-ml-6 lg:-ml-12 xl:-ml-24 lg:pl-10 pr-24 sm:pr-0 pointer-events-auto"
         >
           <div className="w-full flex flex-col justify-center relative top-[5vh] min-h-[240px] lg:min-h-[450px] mt-44 lg:mt-10">
             <AnimatePresence mode="wait">
@@ -448,11 +468,10 @@ const Hero = () => {
                   </div>
                 ) : (
                   <motion.div
-                    variants={containerSlideVariants}
+                    variants={isMobile ? mobileSlideVariants : desktopSlideVariants}
                     initial="initial"
                     animate="animate"
                     exit="exit"
-                    transition={slideTransition}
                     className="flex flex-col w-full max-w-[550px] gap-2 md:gap-4 lg:gap-5 pl-1 lg:pl-6 bg-transparent lg:bg-transparent backdrop-blur-none p-1 lg:p-0 rounded-none"
                   >
                     <motion.div variants={typingContainerVariants}>
@@ -467,7 +486,7 @@ const Hero = () => {
                       {slide.paragraphs.map((p, idx) => (
                         <p
                           key={idx}
-                          className="font-sans text-[#d0d0d0] text-[9.5px] md:text-[12px] lg:text-[15px] font-normal leading-[1.4] lg:leading-relaxed tracking-wide"
+                          className="font-sans text-[#d0d0d0] text-[14px] md:text-[15px] font-normal leading-[1.4] lg:leading-relaxed tracking-wide text-justify sm:text-left"
                         >
                           {p}
                         </p>
@@ -478,7 +497,7 @@ const Hero = () => {
 
                     <button
                       onClick={handleNext}
-                      className="text-[#a39171] font-sans font-light tracking-[0.2em] text-[10px] lg:text-[13px] hover:text-white transition-colors flex items-center w-fit uppercase"
+                      className="text-[#a39171] font-sans font-light tracking-[0.2em] text-[12px] lg:text-[13px] hover:text-white transition-colors flex items-center w-fit uppercase"
                     >
                       NEXT&gt;&gt;
                     </button>

@@ -261,7 +261,7 @@ const Section4 = () => {
           <BlockRevealText
             text="SOME OF THE TRUTH WE CAN'T SAY IN PLAIN LANGUAGE, CAN BE A SUM OF THE TRUTH IN A NARRATIVE."
             className="mt-4"
-            textClassName="font-michroma text-[12px] md:text-[12px] lg:text-[13px] font-bold tracking-[0em] text-[#a39171] uppercase"
+            textClassName="font-michroma text-[12px] md:text-[12px] font-bold tracking-[0.1em] text-[#a39171] uppercase"
             delay={1.2}
             glitchI={true}
           />
@@ -279,7 +279,7 @@ const Section4 = () => {
             </p>
           </div>
 
-          <h3 className="mt-10 font-michroma lg:text-[20px] text-[16px] text-[#d4d4d4]">
+          <h3 className="mt-10 font-michroma lg:text-[20px] text-[18.5px] text-[#d4d4d4]">
             <TypingText text="The Things You Watch, Are Watching You." />
           </h3>
 

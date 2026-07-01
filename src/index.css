@@ -30,3 +30,5 @@ html, body, #root, * {
   -ms-overflow-style: none !important;  /* IE and Edge */
   scrollbar-width: none !important;  /* Firefox */
 }
+
+body { overflow-x: hidden !important; max-width: 100vw; }
