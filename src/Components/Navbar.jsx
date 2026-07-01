@@ -80,38 +80,38 @@ export default function SourceGuyNavbar() {
 
         {/* === MOBILE NAVBAR === */}
         <div className="flex lg:hidden fixed top-0 left-0 right-0 z-[60] w-full bg-[#030303] shadow-md shadow-black/20">
-          <div className="mx-auto flex w-full items-center justify-between px-5 py-5 relative">
-            {/* Logo Section (Centered) */}
-            <div className="absolute left-36 top-5 -translate-x-1/2 flex items-center gap-[12px] cursor-pointer hover:opacity-80 transition-opacity">
+          <div className="mx-auto flex w-full h-[74px] items-center justify-between px-6">
+            {/* Logo Section */}
+            <div className="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity">
               {/* Symbol */}
               <img
                 src={symbolImage}
                 alt="GOTHM Symbol"
-                className="h-[42px] w-auto object-contain"
+                className="h-[40px] w-auto object-contain"
               />
               {/* Text & Tagline */}
-              <div className="flex flex-col justify-center gap-[0px] mt-[14px]">
+              <div className="flex flex-col justify-center gap-1 mt-1">
                 <img
                   src={textImage}
                   alt="GOTHM Text"
-                  className="h-[22px] w-auto object-contain"
+                  className="h-[18px] w-auto object-contain object-left"
                 />
                 <img
                   src={taglineImage}
                   alt="GOTHM Tagline"
-                  className="h-[12px] w-[178px] object-contain object-left"
+                  className="h-[8px] w-[162px] object-contain object-left"
                 />
               </div>
             </div>
 
             {/* Hamburger */}
             <button
-              className="ml-auto mt-5 flex flex-col justify-center gap-[6px] cursor-pointer p-1"
+              className="flex flex-col justify-center gap-[6px] cursor-pointer p-1"
               onClick={() => setIsMobileMenuOpen(true)}
             >
-              <div className="w-[28px] h-[2px] bg-[#3E3425] opacity-70 rounded-full"></div>
-              <div className="w-[28px] h-[2px] bg-[#3E3425] opacity-70 rounded-full"></div>
-              <div className="w-[28px] h-[2px] bg-[#3E3425] opacity-70 rounded-full"></div>
+              <div className="w-[30px] h-[2.5px] bg-[#50432c] rounded-full"></div>
+              <div className="w-[30px] h-[2.5px] bg-[#50432c] rounded-full"></div>
+              <div className="w-[30px] h-[2.5px] bg-[#50432c] rounded-full"></div>
             </button>
           </div>
         </div>
