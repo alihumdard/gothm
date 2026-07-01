@@ -71,7 +71,7 @@ const Section2 = () => {
 
           <div className="mt-6 flex flex-col gap-4 sm:gap-3">
             <div className="flex flex-row items-center justify-between gap-2 sm:gap-6 w-full">
-              <span className="flex-1 sm:flex-none sm:w-56 font-sans text-[16px] font-bold text-[#d4d4d4]">
+              <span className="flex-1 sm:flex-none sm:w-56 font-sans text-[13px] font-bold text-[#d4d4d4]">
                 Extracting the ideas within...
               </span>
               <button className="w-[140px] sm:w-fit flex-shrink-0 flex justify-center items-center whitespace-nowrap border border-[#303030] font-light bg-[#000000] px-2 py-1.5 sm:px-6 sm:py-2 font-sans lg:text-[12px] text-[10px] tracking-[0.1em] text-[#a39171] transition-colors hover:border-[#a39171]">
@@ -80,7 +80,7 @@ const Section2 = () => {
             </div>
 
             <div className="flex flex-row items-center justify-between gap-2 sm:gap-6 w-full">
-              <span className="flex-1 sm:flex-none sm:w-56 font-sans text-[16px] sm:text-[15px] font-bold text-[#d4d4d4]">
+              <span className="flex-1 sm:flex-none sm:w-56 font-sans text-[14px] sm:text-[15px] font-bold text-[#d4d4d4]">
                 Synthesizing the findings...
               </span>
               <button className="w-[140px] sm:w-fit flex-shrink-0 flex justify-center items-center whitespace-nowrap border border-[#303030] bg-[#000000] px-2 py-1.5 sm:px-6 sm:py-2 font-sans text-[10px] lg:text-[12px] font-light tracking-[0.1em] text-[#a39171] transition-colors hover:border-[#a39171]">
