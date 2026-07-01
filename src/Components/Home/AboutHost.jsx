@@ -204,7 +204,7 @@ const Section4 = () => {
             <BlockRevealText
               text="HOST OF THE GHOST"
               className="mt-1"
-              textClassName="font-michroma lg:text-[10px] text-[8px] font-bold uppercase text-[#a39171]"
+              textClassName="font-michroma text-[10px] font-bold uppercase text-[#a39171]"
               delay={0.8}
             />
           </div>
@@ -223,7 +223,7 @@ const Section4 = () => {
             delay={0.6}
           />
 
-          <h2 className="mt-2 font-michroma xl:text-[28px] text-[20px] font-bold uppercase text-white">
+          <h2 className="mt-2 font-michroma xl:text-[28px] text-[18px] font-bold uppercase text-white">
             <TypingText text="HOST OF THE GHOST" delay={0.8} />
           </h2>
 
@@ -276,7 +276,7 @@ const Section4 = () => {
             </p>
           </div>
 
-          <h3 className="mt-10 font-michroma lg:text-[20px] text-[18px] text-[#d4d4d4]">
+          <h3 className="mt-10 font-michroma lg:text-[20px] text-[16px] text-[#d4d4d4]">
             <TypingText text="The Things You Watch, Are Watching You." />
           </h3>
 

@@ -384,7 +384,7 @@ const Hero = () => {
           <div className="flex justify-center sm:justify-end items-start gap-0 w-full max-w-none h-full relative">
 
             {/* cyber1 */}
-            <div className="z-20 h-fit mt-42 sm:mt-22 md:mt-10 lg:mt-10">
+            <div className="z-20 h-fit mt-40 sm:mt-22 md:mt-10 lg:mt-10">
               <motion.img
                 src={cyber1}
                 alt="Cyber 1"

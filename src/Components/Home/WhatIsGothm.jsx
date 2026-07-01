@@ -48,7 +48,7 @@ const Section2 = () => {
 
             <BlockRevealText
               text="SAFEHOUSED AND DISTRIBUTED. MARKETED AND COMMODIFIED."
-              textClassName="font-michroma text-[9px] md:text-[12px] lg:text-[12px] font-bold tracking-[0em] text-[#a39171] uppercase"
+              textClassName="font-michroma text-[8px] md:text-[12px] lg:text-[12px] font-bold tracking-[0em] text-[#a39171] uppercase"
               className="block"
               delay={2.6}
               glitchI={true}
@@ -92,7 +92,7 @@ const Section2 = () => {
           <div className="mt-4 mb-4">
             <BlockRevealText
               text="SAFEHOUSED AND DISTRIBUTED. MARKETED AND COMMODIFIED."
-              textClassName="font-michroma text-[9px] md:text-[12px] lg:text-[12px] font-bold tracking-[0em] text-[#a39171] uppercase"
+              textClassName="font-michroma text-[8px] md:text-[12px] lg:text-[12px] font-bold tracking-[0em] text-[#a39171] uppercase"
               className="block"
               delay={5.0}
               glitchI={true}

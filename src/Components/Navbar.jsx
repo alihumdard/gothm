@@ -82,7 +82,7 @@ export default function SourceGuyNavbar() {
         <div className="flex lg:hidden fixed top-0 left-0 right-0 z-[60] w-full bg-[#030303] shadow-md shadow-black/20">
           <div className="mx-auto flex w-full items-center justify-between px-5 py-4 relative">
             {/* Logo Section (Centered) */}
-            <div className="absolute left-40 -translate-x-1/2 flex items-center gap-[12px] cursor-pointer hover:opacity-80 transition-opacity">
+            <div className="absolute left-40 top-4 -translate-x-1/2 flex items-center gap-[12px] cursor-pointer hover:opacity-80 transition-opacity">
               {/* Symbol */}
               <img
                 src={symbolImage}
@@ -106,7 +106,7 @@ export default function SourceGuyNavbar() {
 
             {/* Hamburger */}
             <button
-              className="ml-auto mr-5 flex flex-col justify-center gap-[6px] cursor-pointer p-1"
+              className="ml-auto mr-5 mt-2 flex flex-col justify-center gap-[6px] cursor-pointer p-1"
               onClick={() => setIsMobileMenuOpen(true)}
             >
               <div className="w-[28px] h-[2px] bg-[#a39171] opacity-70 rounded-full"></div>
