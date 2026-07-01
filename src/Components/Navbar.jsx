@@ -90,23 +90,23 @@ export default function SourceGuyNavbar() {
                 className="h-[40px] w-auto object-contain"
               />
               {/* Text & Tagline */}
-              <div className="flex flex-col justify-center gap-1 mt-1">
+              <div className="flex flex-col justify-center gap-1 mt-2.5">
                 <img
                   src={textImage}
                   alt="GOTHM Text"
-                  className="h-[18px] w-auto object-contain object-left"
+                  className="h-[20px] w-auto object-contain object-left"
                 />
                 <img
                   src={taglineImage}
                   alt="GOTHM Tagline"
-                  className="h-[8px] w-[162px] object-contain object-left"
+                  className="h-[10px] w-[180px] object-contain object-left"
                 />
               </div>
             </div>
 
             {/* Hamburger */}
             <button
-              className="flex flex-col justify-center gap-[6px] cursor-pointer p-1"
+              className="flex flex-col mt-3 justify-center gap-[6px] cursor-pointer p-1"
               onClick={() => setIsMobileMenuOpen(true)}
             >
               <div className="w-[30px] h-[2.5px] bg-[#50432c] rounded-full"></div>
