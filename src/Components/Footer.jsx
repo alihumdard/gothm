@@ -71,10 +71,10 @@ export default function Footer() {
             <BlockRevealText
               text="NAVIGATE"
               className="mb-4 block"
-              textClassName="font-sans text-[10px] md:text-[14px] font-light text-[#a39171] tracking-[0.1em] uppercase"
+              textClassName="font-sans text-[8px] md:text-[14px] font-light text-[#a39171] tracking-[0.1em] uppercase"
               delay={0.8}
             />
-            <ul className="flex flex-col gap-3 font-sans text-[9px] md:text-[12px] font-bold md:font-light text-white uppercase tracking-[0.1em]">
+            <ul className="flex flex-col lg:gap-3 gap-2 font-sans text-[8px] md:text-[12px] font-bold md:font-light text-white uppercase tracking-[0.1em]">
               <li>
                 <Link to="/" className="hover:text-[#a39171] transition-colors">
                   HOME
@@ -133,10 +133,10 @@ export default function Footer() {
             <BlockRevealText
               text="FOLLOW"
               className="mb-4 block"
-              textClassName="font-sans text-[10px] md:text-[14px] font-light text-[#a39171] tracking-[0.1em] uppercase"
+              textClassName="font-sans text-[8px] md:text-[14px] font-light text-[#a39171] tracking-[0.1em] uppercase"
               delay={1.0}
             />
-            <ul className="flex flex-col gap-3 font-sans text-[9px] md:text-[12px] font-bold md:font-light text-white uppercase tracking-[0.1em]">
+            <ul className="flex flex-col lg:gap-3 gap-2 font-sans text-[8px] md:text-[12px] font-bold md:font-light text-white uppercase tracking-[0.1em]">
               <li>
                 <a href="#" className="hover:text-[#a39171] transition-colors">
                   YOUTUBE
@@ -180,10 +180,10 @@ export default function Footer() {
             <BlockRevealText
               text="STAY CONNECTED"
               className="mb-4 block"
-              textClassName="font-sans text-[10px] md:text-[14px] font-light text-[#a39171] tracking-[0.1em] uppercase"
+              textClassName="font-sans text-[8px] md:text-[14px] font-light text-[#a39171] tracking-[0.1em] uppercase"
               delay={1.2}
             />
-            <ul className="flex flex-col gap-3 font-sans text-[9px] md:text-[12px] font-bold md:font-light text-white uppercase tracking-[0.1em]">
+            <ul className="flex flex-col lg:gap-3 gap-2 font-sans text-[8px] md:text-[12px] font-bold md:font-light text-white uppercase tracking-[0.1em]">
               <li>
                 <Link
                   to="/ghost-mail"

@@ -247,7 +247,7 @@ const Section3 = () => {
             textClassName="text-[#a39171] text-[13px] font-light font-sans tracking-[0.1em]"
           />
 
-          <h2 className="lg:text-[28px] text-[26px] font-bold font-orbitron uppercase mt-2 mb-4 lg:mb-10">
+          <h2 className="lg:text-[28px] text-[24px] font-bold font-orbitron uppercase mt-2 mb-4 lg:mb-10">
             <TypingText text="FEATURED EPISODES" />
           </h2>
 
@@ -274,7 +274,7 @@ const Section3 = () => {
                   textClassName="text-[#a39171] text-[12px] mt-4"
                 />
 
-                <h3 className="mt-2 text-[16px] font-bold font-orbitron uppercase">
+                <h3 className="mt-2 lg:text-[16px] text-[14px] font-bold font-orbitron uppercase">
                   <TypingText text={item.title} />
                 </h3>
 
@@ -297,7 +297,7 @@ const Section3 = () => {
             textClassName="text-[#a39171] text-[13px] font-light font-sans tracking-[0.1em]"
           />
 
-          <h2 className="text-[28px] font-bold font-orbitron uppercase mt-2 mb-4 lg:mb-10">
+          <h2 className="text-[24px] font-bold font-orbitron uppercase mt-2 mb-4 lg:mb-10">
             <TypingText text="FEATURED BLOGS" />
           </h2>
 

@@ -30,7 +30,7 @@ const Section5 = () => {
             delay={0.8}
           />
 
-          <h2 className="mb-4 font-michroma text-[18px] lg:text-[20px] xl:text-[20px] font-extrabold uppercase tracking-tight text-white leading-[1.2]">
+          <h2 className="mb-4 font-michroma text-[15px] lg:text-[20px] xl:text-[20px] font-extrabold uppercase tracking-tight text-white leading-[1.2]">
             <TypingText text="A WEEKLY DISPATCH" delay={0.8} />
             <br />
             <TypingText text="FROM INSIDE THE MACHINE" delay={2.1} />
@@ -129,7 +129,7 @@ const Section5 = () => {
             delay={1.2}
           />
 
-          <h2 className="mb-4 font-michroma text-[14.5px] lg:text-[21px] xl:text-[20px] font-extrabold uppercase text-white leading-[1.2] tracking-tight">
+          <h2 className="mb-4 font-michroma text-[13.5px] lg:text-[21px] xl:text-[20px] font-extrabold uppercase text-white leading-[1.2] tracking-tight">
             <TypingText
               text="COME MEET US AT THE WINDOW BEHIND THE FOURTH WALL"
               delay={1.2}
