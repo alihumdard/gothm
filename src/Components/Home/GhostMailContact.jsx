@@ -6,7 +6,7 @@ const Section5 = () => {
   return (
     <section className="w-full bg-[#000000] xl:py-16 py-6 text-white">
       {/* BOXED CONTAINER */}
-      <div className="mx-auto flex max-w-5xl flex-col lg:flex-row gap-6 lg:gap-10 px-6">
+      <div className="mx-auto flex max-w-5xl flex-col lg:flex-row gap-6 lg:gap-10 px-4 lg:px-6">
         {/* LEFT SIDE */}
         <motion.div
           id="ghost-mail"
@@ -36,13 +36,13 @@ const Section5 = () => {
             <TypingText text="FROM INSIDE THE MACHINE" delay={2.1} />
           </h2>
 
-          <p className="mb-3 font-sans text-[11px] md:text-[16px] max-w-lg font-bold leading-[1.4] md:leading-[1.2] text-[#d4d4d4]">
+          <p className="mb-3 font-sans text-[11px] md:text-[16px] max-w-lg font-bold leading-[1.4] md:leading-[1.2] text-[#d4d4d4] text-justify sm:text-left">
             What I've watched. What I've read. What I can't stop thinking about.
             System hacks, cultural observations, and the occasional rabbit hole
             you didn't know you needed.
           </p>
 
-          <p className="mb-6 font-sans text-[11px] md:text-[15px] font-bold max-w-lg leading-[1.4] md:leading-[1.2] text-[#d4d4d4]">
+          <p className="mb-6 font-sans text-[11px] md:text-[15px] font-bold max-w-lg leading-[1.4] md:leading-[1.2] text-[#d4d4d4] text-justify sm:text-left">
             No algorithms. No noise. Just the things that got under my skin that
             week — delivered straight to yours.
           </p>
@@ -136,7 +136,7 @@ const Section5 = () => {
             />
           </h2>
 
-          <p className="mb-6 font-sans text-[11px] md:text-[15px] font-bold leading-[1.4] md:leading-[1.2] text-[#d4d4d4]">
+          <p className="mb-6 font-sans text-[11px] md:text-[15px] font-bold leading-[1.4] md:leading-[1.2] text-[#d4d4d4] text-justify sm:text-left">
             Whether you made something worth excavating, know someone who can
             explain what it did to us, or want to be part of what we're building
             — we want to hear from you.
@@ -239,18 +239,21 @@ const TypingText = ({ text = "", delay = 0, className = "" }) => {
         },
       }}
     >
-      {letters.map((char, i) => (
-        <motion.span
-          key={i}
-          variants={{
-            hidden: { opacity: 0 },
-            visible: { opacity: 1, transition: { duration: 0.01 } },
-          }}
-          className="inline-block"
-        >
-          {char === " " ? "\u00A0" : char}
-        </motion.span>
-      ))}
+      {letters.map((char, i) => {
+        if (char === " ") return " ";
+        return (
+          <motion.span
+            key={i}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: { opacity: 1, transition: { duration: 0.01 } },
+            }}
+            className="inline-block"
+          >
+            {char}
+          </motion.span>
+        );
+      })}
     </motion.span>
   );
 };

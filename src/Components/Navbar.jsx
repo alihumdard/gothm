@@ -80,7 +80,7 @@ export default function SourceGuyNavbar() {
 
         {/* === MOBILE NAVBAR === */}
         <div className="flex lg:hidden fixed top-0 left-0 right-0 z-[60] w-full bg-[#030303] shadow-md shadow-black/20">
-          <div className="mx-auto flex w-full h-[74px] items-center justify-between px-6">
+          <div className="mx-auto flex w-full h-[74px] items-center justify-between pl-6 pr-3">
             {/* Logo Section */}
             <div className="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity">
               {/* Symbol */}

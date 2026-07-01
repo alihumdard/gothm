@@ -23,18 +23,21 @@ const TypingText = ({ text = "", delay = 0, className = "" }) => {
         },
       }}
     >
-      {letters.map((char, i) => (
-        <motion.span
-          key={i}
-          variants={{
-            hidden: { opacity: 0 },
-            visible: { opacity: 1, transition: { duration: 0.01 } },
-          }}
-          className="inline-block"
-        >
-          {char === " " ? "\u00A0" : char}
-        </motion.span>
-      ))}
+      {letters.map((char, i) => {
+        if (char === " ") return " ";
+        return (
+          <motion.span
+            key={i}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: { opacity: 1, transition: { duration: 0.01 } },
+            }}
+            className="inline-block"
+          >
+            {char}
+          </motion.span>
+        );
+      })}
     </motion.span>
   );
 };
@@ -178,7 +181,7 @@ const Section4 = () => {
       ref={ref}
       className="w-full bg-[#000000] xl:py-16 py-6 text-white"
     >
-      <div className="mx-auto flex max-w-7xl flex-col lg:flex-row gap-8 px-6">
+      <div className="mx-auto flex max-w-7xl flex-col lg:flex-row gap-8 px-4 lg:px-6">
         {/* LEFT SIDE */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
@@ -215,7 +218,7 @@ const Section4 = () => {
           initial={{ opacity: 0, x: 50 }}
           animate={inView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 1, delay: 0.2 }}
-          className="flex w-full lg:w-3/5 flex-col pr-4"
+          className="flex w-full lg:w-3/5 flex-col pr-0 lg:pr-4"
         >
           <BlockRevealText
             text="MEET THE HOST_"
@@ -235,7 +238,7 @@ const Section4 = () => {
             glitchI={true}
           />
 
-          <div className="space-y-3 mt-4 text-[15px] text-[#d4d4d4] font-bold leading-[1.2] w-full max-w-[550px]">
+          <div className="space-y-3 mt-4 text-[15px] text-[#d4d4d4] font-bold leading-[1.2] w-full max-w-[550px] text-justify sm:text-left">
             <p>
               I've never been able to watch something and take it at face value.
               Some of the things we watch have more faces than a fifty cent
@@ -263,7 +266,7 @@ const Section4 = () => {
             glitchI={true}
           />
 
-          <div className="space-y-3 mt-4 text-[15px] text-[#d4d4d4] font-bold leading-[1] w-full max-w-[550px]">
+          <div className="space-y-3 mt-4 text-[15px] text-[#d4d4d4] font-bold leading-[1] w-full max-w-[550px] text-justify sm:text-left">
             <p>
               I'm building GOTHM on a single belief: Some truths are too
               dangerous to say in plain language. Too profound. Too

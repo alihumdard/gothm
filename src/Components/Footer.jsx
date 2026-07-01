@@ -7,9 +7,9 @@ import taglineImage from "../assets/images/gothm_tagline.png";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-[#000000] py-16 lg:px-0 px-6 font-sans overflow-hidden">
+    <footer className="w-full bg-[#000000] py-16 lg:px-0 px-4 font-sans overflow-hidden">
       <motion.div
-        className=" flex w-full max-w-7xl flex-col lg:flex-row justify-between gap-4 pl-0 pr-6 lg:pr-0"
+        className="mx-auto flex w-full max-w-7xl flex-col lg:flex-row justify-between gap-4"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-50px" }}

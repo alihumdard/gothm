@@ -8,7 +8,7 @@ const Section2 = () => {
       id="what-is-gothm"
       className="relative w-full overflow-hidden bg-[#000000] xl:py-16 py-6  text-white"
     >
-      <div className="mx-auto flex max-w-5xl flex-col lg:flex-row px-5">
+      <div className="mx-auto flex max-w-5xl flex-col lg:flex-row px-4 lg:px-6">
         {/* LEFT SIDE: Content Section */}
         <motion.div
           initial="hidden"
@@ -22,7 +22,7 @@ const Section2 = () => {
               transition: { duration: 1, ease: [0.16, 1, 0.3, 1] },
             },
           }}
-          className="flex w-full lg:w-3/5 flex-col pr-8"
+          className="flex w-full lg:w-3/5 flex-col pr-0 lg:pr-8"
         >
           <BlockRevealText
             text="WHAT IS GOTHM_"
@@ -42,7 +42,7 @@ const Section2 = () => {
           </h2>
 
           <div className="space-y-3 font-sans">
-            <p className="text-[13px] md:text-[15px] leading-[1.3] md:leading-[1.2] font-bold text-[#d4d4d4]">
+            <p className="text-[13px] md:text-[15px] leading-[1.3] md:leading-[1.2] font-bold text-[#d4d4d4] text-justify sm:text-left">
               Hosted safely inside a story, a message that you could never say out loud can be safehoused, and distributed to billions of people. A memo that would be sent straight to spam for conspiracy. A truth that would be rejected for wearing a plain name tag, would instead be accepted with open arms by our fellow society members. And embraced with open wallets by the companies in big media.
             </p>
 
@@ -54,7 +54,7 @@ const Section2 = () => {
               glitchI={true}
             />
 
-            <div className="space-y-3 text-[10px] md:text-[15px] font-normal md:font-bold leading-[1.3] md:leading-[1.2] text-[#d4d4d4]">
+            <div className="space-y-3 text-[10px] md:text-[15px] font-normal md:font-bold leading-[1.3] md:leading-[1.2] text-[#d4d4d4] text-justify sm:text-left">
               <p>
                 In a world where they'd hide the stories of truth. We'd just hide the truth in the world of a story.
               </p>

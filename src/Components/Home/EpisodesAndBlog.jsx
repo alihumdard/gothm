@@ -30,18 +30,21 @@ const TypingText = ({ text = "", delay = 0, className = "" }) => {
         },
       }}
     >
-      {letters.map((char, i) => (
-        <motion.span
-          key={i}
-          variants={{
-            hidden: { opacity: 0 },
-            visible: { opacity: 1, transition: { duration: 0.01 } },
-          }}
-          className="inline-block"
-        >
-          {char === " " ? "\u00A0" : char}
-        </motion.span>
-      ))}
+      {letters.map((char, i) => {
+        if (char === " ") return " ";
+        return (
+          <motion.span
+            key={i}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: { opacity: 1, transition: { duration: 0.01 } },
+            }}
+            className="inline-block"
+          >
+            {char}
+          </motion.span>
+        );
+      })}
     </motion.span>
   );
 };
@@ -93,6 +96,7 @@ const BlockRevealText = ({
               </motion.span>
             );
           }
+          if (char === " ") return " ";
           return (
             <motion.span
               key={i}
@@ -102,7 +106,7 @@ const BlockRevealText = ({
               }}
               className="inline-block"
             >
-              {char === " " ? "\u00A0" : char}
+              {char}
             </motion.span>
           );
         })}
@@ -239,7 +243,7 @@ const Section3 = () => {
 
   return (
     <section className="w-full bg-black xl:py-16 py-6 text-white">
-      <div className="mx-auto max-w-7xl flex flex-col gap-20 lg:gap-16 px-6">
+      <div className="mx-auto max-w-7xl flex flex-col gap-20 lg:gap-16 px-4 lg:px-6">
         {/* EPISODES */}
         <div id="episodes" ref={episodesRef}>
           <BlockRevealText
