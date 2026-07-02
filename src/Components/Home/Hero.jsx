@@ -249,7 +249,7 @@ RandomRevealText.displayName = "RandomRevealText";
 
 // Colored band block reveal followed by fast typing from the left
 const BlockRevealTypingSubtitle = React.memo(({ text, delay = 0, className = "" }) => {
-  const letters = Array.from(text);
+  const words = text.split(" ");
 
   const blockVariants = {
     hidden: { left: "0%", right: "100%" },
@@ -290,23 +290,27 @@ const BlockRevealTypingSubtitle = React.memo(({ text, delay = 0, className = "" 
         animate="visible"
       />
       <motion.p
-        className="font-michroma text-[12px] sm:text-[13.5px] md:text-[11px] lg:text-[13px] font-bold text-[#a39171] uppercase tracking-[0.1em] md:tracking-widest m-0 relative pr-0 whitespace-normal break-words max-w-full"
+        className="font-michroma text-[12px] sm:text-[13.5px] md:text-[11px] lg:text-[13px] font-bold text-[#a39171] uppercase tracking-[0.1em] md:tracking-widest m-0 relative pr-0 flex flex-wrap max-w-full"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        {letters.map((char, index) => {
-          if (char === " ") return <span key={index}> </span>;
-          return (
-            <motion.span
-              key={index}
-              variants={letterVariants}
-              className="inline-block"
-            >
-              {char}
-            </motion.span>
-          );
-        })}
+        {words.map((word, wordIndex) => (
+          <span key={wordIndex} className="inline-flex whitespace-nowrap">
+            {Array.from(word).map((char, index) => (
+              <motion.span
+                key={index}
+                variants={letterVariants}
+                className="inline-block"
+              >
+                {char}
+              </motion.span>
+            ))}
+            {wordIndex !== words.length - 1 && (
+              <span className="inline-block">&nbsp;</span>
+            )}
+          </span>
+        ))}
       </motion.p>
     </div>
   );
