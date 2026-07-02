@@ -221,7 +221,10 @@ const RandomRevealText = React.memo(({ text, delay = 0, className = "" }) => {
   }, [letters]);
 
   return (
-    <span className={`block text-[63px] min-[400px]:text-[62px] sm:text-[50px] md:text-[70px] lg:text-[105px] font-extralight text-white whitespace-nowrap overflow-visible py-1 sm:pr-4 ${className}`}>
+    <span
+      className={`block font-extralight text-white whitespace-nowrap overflow-visible py-1 sm:pr-4 ${className}`}
+      style={{ fontSize: "clamp(2.2rem, 11vw, 6.5625rem)" }}
+    >
       {letters.map((char, index) => {
         if (char === " ") return " ";
         return (
