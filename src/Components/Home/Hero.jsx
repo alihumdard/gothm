@@ -223,7 +223,7 @@ const RandomRevealText = React.memo(({ text, delay = 0, className = "" }) => {
   return (
     <span
       className={`block font-extralight text-white whitespace-nowrap overflow-visible py-1 sm:pr-4 ${className}`}
-      style={{ fontSize: "clamp(2.2rem, 11vw, 6.5625rem)" }}
+      style={{ fontSize: "clamp(4rem, 14vw, 6.5625rem)" }}
     >
       {letters.map((char, index) => {
         if (char === " ") return " ";
@@ -396,7 +396,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative w-full bg-[#030303] flex items-start justify-center min-h-[115vh] lg:min-h-0 lg:h-[97vh] overflow-hidden lg:overflow-visible"
+      className="relative w-full bg-[#030303] flex items-start justify-center min-h-[110vh] lg:min-h-0 lg:h-[97vh] overflow-hidden lg:overflow-visible"
     >
       {/* Social icons bar */}
       <motion.div
@@ -417,7 +417,7 @@ const Hero = () => {
           <div className="flex justify-center sm:justify-end items-start gap-0 w-full max-w-none h-full relative">
 
             {/* cyber1 */}
-            <div className="z-20 h-fit mt-40 sm:mt-22 md:mt-10 lg:mt-10">
+            <div className="z-20 h-fit mt-40 sm:mt-22 lg:mt-10">
               <motion.img
                 src={cyber1}
                 alt="Cyber 1"
@@ -463,7 +463,7 @@ const Hero = () => {
                 className="absolute inset-0 flex flex-col justify-center items-start text-left w-full h-full"
               >
                 {slide.isTitleSlide ? (
-                  <div className="flex flex-col justify-center items-start text-left w-full px-0 sm:px-0 sm:pl-2 lg:pl-8 mt-[20vh] sm:mt-0">
+                  <div className="flex flex-col justify-center items-start text-left w-full px-0 sm:px-0 sm:pl-2 lg:pl-8 mt-[27vh] sm:mt-0">
                     <h1 className="font-feonie leading-[0.9] font-normal lg:leading-[1] tracking-tight overflow-hidden w-full">
                       {/* Scattered Random Typing Effect */}
                       <RandomRevealText text={slide.title1} delay={isInitialLoad ? 1.5 : 0} className="text-left" />
