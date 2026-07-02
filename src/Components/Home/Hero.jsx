@@ -429,7 +429,7 @@ const Hero = () => {
             </div>
 
             {/* cyber2 */}
-            <div className="z-10 lg:sticky lg:top-[19.7vh] top-[5vh] sm:top-[13vh]  sm:-ml-0">
+            <div className="z-10 lg:sticky lg:top-[19.7vh] top-[5vh] -mt-[8px] md:mt-0 sm:-ml-0">
               <motion.div
                 variants={cyber2Variants}
                 initial="hidden"
@@ -463,7 +463,7 @@ const Hero = () => {
                 className="absolute inset-0 flex flex-col justify-center items-start text-left w-full h-full"
               >
                 {slide.isTitleSlide ? (
-                  <div className="flex flex-col justify-center items-start text-left w-full px-0 sm:px-0 sm:pl-2 lg:pl-8 mt-[27vh] sm:mt-0">
+                  <div className="flex flex-col justify-center items-start text-left w-full px-0 sm:px-0 sm:pl-2 lg:pl-8 mt-[25vh] sm:mt-0">
                     <h1 className="font-feonie leading-[0.9] font-normal lg:leading-[1] tracking-tight overflow-hidden w-full">
                       {/* Scattered Random Typing Effect */}
                       <RandomRevealText text={slide.title1} delay={isInitialLoad ? 1.5 : 0} className="text-left" />
